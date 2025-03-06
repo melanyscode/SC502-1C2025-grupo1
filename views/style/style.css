@@ -1,7 +1,54 @@
+/* Generales */
+a, h1, h2, h3, h4, h5, h6, p{
+    font-family: "Poppins", sans-serif;
+}
 li{
     list-style: none;
 }
 
+
 .header{
     background-image: url("../assets/img.png");
+}
+/* colores de fondo */
+.bg-azul-oscuro{
+    background-color: #176B87;
+}
+.bg-celeste{
+    background-color: #EEF5FF;
+}
+
+/* colores de de texto*/
+.txt-black{
+    color: rgb(61, 61, 61) !important;
+}
+.txt-azul-oscuro{
+    color: #176B87;
+}
+.txt-celeste{
+    color: #EEF5FF;
+} 
+
+/* nav bar*/
+
+.links a {
+    position: relative;
+    margin: 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0px;
+}
+.links a::after{
+    content: "";
+    position: absolute;
+    background-color: #176B87;
+    height: 2px;
+    width: 0px;
+    left: 0px;
+    bottom: -2px;
+    transition: 0.3s;
+
+}
+.links a:hover::after{
+    width: 100%;
 }
