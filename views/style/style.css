@@ -1,33 +1,45 @@
 /* Generales */
-a, h1, h2, h3, h4, h5, h6, p{
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
     font-family: "Poppins", sans-serif;
 }
-li{
+
+li {
     list-style: none;
 }
 
 
-.header{
+.header {
     background-image: url("../assets/img.png");
 }
+
 /* colores de fondo */
-.bg-azul-oscuro{
+.bg-azul-oscuro {
     background-color: #176B87;
 }
-.bg-celeste{
+
+.bg-celeste {
     background-color: #EEF5FF;
 }
 
 /* colores de de texto*/
-.txt-black{
+.txt-black {
     color: rgb(61, 61, 61) !important;
 }
-.txt-azul-oscuro{
+
+.txt-azul-oscuro {
     color: #176B87;
 }
-.txt-celeste{
+
+.txt-celeste {
     color: #EEF5FF;
-} 
+}
 
 /* nav bar*/
 
@@ -38,7 +50,8 @@ li{
     font-weight: 600;
     padding: 0px;
 }
-.links a::after{
+
+.links a::after {
     content: "";
     position: absolute;
     background-color: #176B87;
@@ -49,6 +62,18 @@ li{
     transition: 0.3s;
 
 }
-.links a:hover::after{
+
+.links a:hover::after {
     width: 100%;
+}
+
+/*contenedor de login y registro*/
+.login-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 8px;
+    border: solid #176B87 4px;
+    text-align: center;
 }
