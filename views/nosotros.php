@@ -9,7 +9,7 @@
 <body>
     <?php include_once("navbar.php"); ?>
 
-    /* Aqui va lo de index */
+ <!--Aqui va va el codigo -->
 
     <?php include "footer.php"; ?>
 </body>
