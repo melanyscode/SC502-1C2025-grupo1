@@ -14,7 +14,7 @@
     <body>
 
         <div class="login-container">
-            <h3 class="mb-4 txt-azul-oscuro">Inicio Sesion</h3>
+            <h3 class="mb-4 txt-azul-oscuro">Registrate</h3>
             <form>
                 <div class="mb-3 text-start">
                     <label for="nombre" class="form-label">Nombre</label>
@@ -33,7 +33,7 @@
                     <input type="password" class="form-control bg-celeste" id="password"
                         placeholder="Ingresa tu contraseña">
                 </div>
-                <button type="submit" class="btn bg-azul-oscuro txt-celeste w-100">Iniciar Sesion</button>
+                <button type="submit" class="btn bg-azul-oscuro txt-celeste w-100">Registrarse</button>
             </form>
             <div class="mt-3">
                 <p>¿Ya tienes una cuenta? Inicia sesion <a href="#" class="txt-azul-oscuro">aqui.</a></p>
