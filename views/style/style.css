@@ -49,6 +49,32 @@ li{
     transition: 0.3s;
 
 }
+
 .links a:hover::after{
     width: 100%;
+}
+.links a.active::after {
+    width: 100%;
+}
+/* estilos admin */
+
+.body-admin{
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+.side{
+    width: 250px;
+    height: 100vh;
+}
+.admin-link a{
+    display: inline-block; /* Para que transform funcione bien */
+    transition: all 0.1s ease;
+    transform-origin: left; /* Fija el crecimiento desde la izquierda */
+  
+}
+.admin-link a:hover {
+
+        transform: scale(1) ;
+        color: #115c75;
+    
 }

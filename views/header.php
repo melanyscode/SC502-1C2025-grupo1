@@ -7,7 +7,7 @@
     <?php include "links.php";?>  
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     
     <div class="header">
     <?php include_once("navbar.php"); ?>

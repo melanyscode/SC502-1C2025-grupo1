@@ -6,7 +6,7 @@
     <title>Contacto</title>
     <?php include "links.php";?>  
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <?php include_once("navbar.php"); ?>
 
    <!--Aqui va va el codigo -->
