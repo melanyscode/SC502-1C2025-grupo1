@@ -53,9 +53,7 @@ li{
 .links a:hover::after{
     width: 100%;
 }
-.links a.active::after {
-    width: 100%;
-}
+
 /* estilos admin */
 
 .body-admin{
@@ -67,14 +65,23 @@ li{
     height: 100vh;
 }
 .admin-link a{
-    display: inline-block; /* Para que transform funcione bien */
+    display: inline-block; 
     transition: all 0.1s ease;
-    transform-origin: left; /* Fija el crecimiento desde la izquierda */
+    transform-origin: left;
   
 }
 .admin-link a:hover {
 
-        transform: scale(1) ;
+        transform: scale(1.1) ;
         color: #115c75;
     
+}
+.login-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 8px;
+    border: solid #176B87 4px;
+    text-align: center;
 }

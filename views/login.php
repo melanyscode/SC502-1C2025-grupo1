@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login </title>
-    <?php include "links.php"; ?>
+    <?php include "componentes/links.php"; ?>
 </head>
 
 <body>
-    <?php include_once("navbar.php"); ?>
+    <?php include_once("componentes/navbar.php"); ?>
 
     <body>
 
