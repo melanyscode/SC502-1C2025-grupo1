@@ -1,44 +1,42 @@
 /* Generales */
-a,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
+a, h1, h2, h3, h4, h5, h6, p{
     font-family: "Poppins", sans-serif;
 }
-
-li {
+.nav-list li{
     list-style: none;
 }
 
 
-.header {
-    background-image: url("../assets/img.png");
+.header-inicio{
+    background-image: url("../assets/bg-2.png");
+    background-repeat: no-repeat;
 }
-
 /* colores de fondo */
-.bg-azul-oscuro {
+.bg-azul-oscuro{
     background-color: #176B87;
 }
-
-.bg-celeste {
+.bg-celeste{
     background-color: #EEF5FF;
 }
 
 /* colores de de texto*/
-.txt-black {
+.txt-black{
     color: rgb(61, 61, 61) !important;
 }
-
-.txt-azul-oscuro {
+.txt-azul-oscuro{
     color: #176B87;
 }
+.txt-celeste{
+    color: #86B6F6;
+} 
 
-.txt-celeste {
-    color: #EEF5FF;
+/* botones */
+.btn-celeste{
+
+}
+img{
+    object-fit: cover;
+    background-repeat: none;
 }
 
 /* nav bar*/
@@ -50,8 +48,7 @@ li {
     font-weight: 600;
     padding: 0px;
 }
-
-.links a::after {
+.links a::after{
     content: "";
     position: absolute;
     background-color: #176B87;
@@ -63,17 +60,39 @@ li {
 
 }
 
-.links a:hover::after {
+.links a:hover::after{
     width: 100%;
 }
 
-/*contenedor de login y registro*/
+/* estilos admin */
+
+.body-admin{
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+.side{
+    width: 250px;
+    height: 100vh;
+}
+.admin-link a{
+    display: inline-block; 
+    transition: all 0.1s ease;
+    transform-origin: left;
+  
+}
+.admin-link a:hover {
+
+        transform: scale(1.1) ;
+        color: #115c75;
+    
+}
 .login-container {
     max-width: 600px;
-    margin: 50px auto;
+    margin: auto;
     padding: 30px;
     background: white;
     border-radius: 8px;
     border: solid #176B87 4px;
     text-align: center;
+    
 }

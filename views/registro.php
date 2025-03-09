@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login </title>
-    <?php include "links.php"; ?>
+    <?php include "componentes/links.php"; ?>
 </head>
 
 <body>
-    <?php include_once("navbar.php"); ?>
+    <?php include_once("componentes/navbar.php"); ?>
 
-    <body>
+    <body class="d-flex flex-column vh-100">
 
         <div class="login-container">
             <h3 class="mb-4 txt-azul-oscuro">Registrate</h3>
@@ -39,6 +39,7 @@
                 <p>¿Ya tienes una cuenta? Inicia sesion <a href="#" class="txt-azul-oscuro">aqui.</a></p>
             </div>
         </div>
+        <?php include_once("componentes/footer.php"); ?>
     </body>
 
 </html>
