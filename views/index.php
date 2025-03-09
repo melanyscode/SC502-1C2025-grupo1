@@ -35,6 +35,7 @@
                     <div class="col-2 bg-white text-center rounded-5 mt-3">
                     <img src="assets/paw-solid.svg" alt="" height="25px">
                     <p>Participa</p>
+                
                     </div>
             </div>
         </div>

@@ -10,7 +10,12 @@ a, h1, h2, h3, h4, h5, h6, p{
 .header-inicio{
     background-image: url("../assets/bg-2.png");
     background-repeat: no-repeat;
+ 
+    background-attachment: fixed;
+    width: auto;
+    height: auto;
 }
+
 /* colores de fondo */
 .bg-azul-oscuro{
     background-color: #176B87;
@@ -31,9 +36,7 @@ a, h1, h2, h3, h4, h5, h6, p{
 } 
 
 /* botones */
-.btn-celeste{
 
-}
 img{
     object-fit: cover;
     background-repeat: none;
@@ -95,4 +98,10 @@ img{
     border: solid #176B87 4px;
     text-align: center;
     
+}
+.table-img{
+    width: 150px;
+}
+.m-0auto{
+    margin: 0 auto;
 }
