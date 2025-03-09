@@ -1,7 +1,7 @@
 <footer class="mt-auto">
         <div class=" bg-celeste p-5 mt-3">
             <div class="container">
-                <ul class="d-flex m-0 justify-content-around">
+                <ul class="d-flex m-0 justify-content-around nav-list">
                     <li class="ms-2"><a href="calendario.php" class="txt-celeste ">Calendario</a></li>
                     <li class="ms-2"><a href="contacto.php" class="txt-celestek ">Contacto</a></li>
                     <li class="ms-2"><a href="blog.php" class="txt-celeste ">Blog</a></li>
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="container-fluid  bg-azul-oscuro">
-            <ul class="d-flex list-unstyled text-white justify-content-between p-2 m-0">
+            <ul class="d-flex list-unstyled text-white justify-content-between p-2 m-0 ">
                 <li class="d-none d-md-inline">PawFind</li>
                 <li class="d-none d-md-inline">PawFind</li>
                 <li class="d-none d-lg-inline">PawFind</li>

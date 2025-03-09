@@ -2,13 +2,14 @@
 a, h1, h2, h3, h4, h5, h6, p{
     font-family: "Poppins", sans-serif;
 }
-li{
+.nav-list li{
     list-style: none;
 }
 
 
-.header{
-    background-image: url("../assets/img.png");
+.header-inicio{
+    background-image: url("../assets/bg-2.png");
+    background-repeat: no-repeat;
 }
 /* colores de fondo */
 .bg-azul-oscuro{
@@ -28,6 +29,15 @@ li{
 .txt-celeste{
     color: #86B6F6;
 } 
+
+/* botones */
+.btn-celeste{
+
+}
+img{
+    object-fit: cover;
+    background-repeat: none;
+}
 
 /* nav bar*/
 
@@ -78,10 +88,11 @@ li{
 }
 .login-container {
     max-width: 600px;
-    margin: 50px auto;
+    margin: auto;
     padding: 30px;
     background: white;
     border-radius: 8px;
     border: solid #176B87 4px;
     text-align: center;
+    
 }

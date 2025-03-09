@@ -2,7 +2,7 @@
   <div class="container-fluid mx-sm-5 px-sm-5 d-flex justify-content-center justify-content-lg-between">
     <div class="links">
 
-      <ul class=" d-flex flex-row justify-content-around mb-0">
+      <ul class=" d-flex flex-row justify-content-around mb-0 nav-list">
         <li class="ms-2"><a href="index.php" class="txt-black ">Inicio</a></li>
         <li class="ms-2"><a href="nosotros.php" class="txt-black ">Nosotros</a></li>
         <li class="ms-2"><a href="contacto.php" class="txt-black ">Contacto</a></li>
