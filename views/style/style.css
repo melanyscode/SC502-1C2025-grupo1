@@ -35,6 +35,9 @@ p {
 .bg-celeste-oscuro{
     background-color: #86B6F6;
 }
+.bg-red{
+    background-color: rgb(219, 70, 70);
+}
 
 /* colores de de texto*/
 .txt-black {
@@ -138,8 +141,6 @@ img {
     min-width: 100%;
     min-height: 100%;
     object-fit: cover;
-
-  
 }
 .input-adopcion{
  
@@ -149,4 +150,18 @@ img {
     display: block;
     width: 100%;
    
+}
+.img-anuncio{
+    padding: 0;
+    width: 200px;
+    min-height: 200px;
+    overflow: hidden; 
+}
+.img-anuncio img{
+    padding: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+  object-position: center;
+  
 }

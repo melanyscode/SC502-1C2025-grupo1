@@ -25,7 +25,7 @@
             <a href="" class="my-5  py-2 px-4 bg-celeste rounded-pill">Agregar</a>
         </div>
         <div class="ms-4">
-            <?php include "componentes/tabla.php" ?>
+            
         </div>
     </div>
 

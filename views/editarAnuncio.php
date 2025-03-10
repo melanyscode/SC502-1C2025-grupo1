@@ -44,14 +44,11 @@
                             <label>Fecha de Publicacion</label>
                             <input type="text" class="input-adopcion bg-celeste">
                         </div>
-                        <div class="col mb-3">
-                            <label>Detalle</label>
-                            <input type="text" class="input-adopcion bg-celeste">
-                        </div>
+                        
                         </div>
                         <div class="mb-3">
-                            <label>Nombre</label>
-                            <input type="text" class="input-adopcion bg-celeste">
+                            <label>Detalle</label>
+                            <textarea type="text" class="input-adopcion bg-celeste"> </textarea>
                         </div>
 
                     </form>
