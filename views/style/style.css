@@ -34,6 +34,7 @@ a, h1, h2, h3, h4, h5, h6, p{
 .btn-celeste{
 
 }
+
 img{
     object-fit: cover;
     background-repeat: none;
@@ -95,4 +96,13 @@ img{
     border: solid #176B87 4px;
     text-align: center;
     
+}
+
+.blog-header {
+    background: url('../assets/bg-1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 100px 0;
+    text-align: center;
+    color: white;
 }
