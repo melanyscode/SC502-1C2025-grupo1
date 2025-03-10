@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto</title>
+    <title>Blog</title>
     <?php include "componentes/links.php"; ?>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -21,9 +21,9 @@
             </div>
         </div>
         <div class="container mt-4">
-            <nav class="blog-nav">
-                <button class="btn blog-tab active" data-bs-toggle="collapse" data-bs-target="#cuidadoMenu" aria-expanded="true">Cuidado</button>
-                <button class="btn blog-tab" data-bs-toggle="collapse" data-bs-target="#articulosMenu" aria-expanded="false">Artículos</button>
+            <nav class="blog-nav d-flex justify-content-center gap-5">
+                <button class="btn blog-tab border-0 active" data-bs-toggle="collapse" data-bs-target="#cuidadoMenu" aria-expanded="true">Cuidado</button>
+                <button class="btn blog-tab border-0" data-bs-toggle="collapse" data-bs-target="#articulosMenu" aria-expanded="false">Artículos</button>
             </nav>
 
             <div id="blogSecciones">
@@ -32,7 +32,7 @@
                     <h2 class="txt-azul-oscuro">Cuidado</h2>
                     <div class="card-container">
                         <div class="card">
-                            <img src="../assets/salud.jpg" class="card-img-top">
+                            <img src="assets/salud.jpg" class="card-img-top">
                             <div class="card-body">
                                 <h5 class="card-title">Salud y Bienestar</h5>
                                 <p class="card-text">Consejos sobre prevención de enfermedades, alimentación y vacunación.</p>
@@ -40,7 +40,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <img src="../assets/higiene.jpg" class="card-img-top">
+                            <img src="assets/higiene.jpg" class="card-img-top">
                             <div class="card-body">
                                 <h5 class="card-title">Higiene y Estética</h5>
                                 <p class="card-text">Todo sobre el baño, cepillado y cuidados estéticos de tu mascota.</p>
@@ -55,7 +55,7 @@
                     <h2 class="txt-celeste">Artículos</h2>
                     <div class="card-container">
                         <div class="card">
-                            <img src="../assets/perdidos.jpg" class="card-img-top">
+                            <img src="assets/perdidos.jpg" class="card-img-top">
                             <div class="card-body">
                                 <h5 class="card-title">Seguimiento: Mascotas Perdidas</h5>
                                 <p class="card-text">Guías sobre qué hacer cuando una mascota se pierde.</p>
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <img src="../assets/exito.jpg" class="card-img-top">
+                            <img src="assets/exito.jpg" class="card-img-top">
                             <div class="card-body">
                                 <h5 class="card-title">Historias de Éxito</h5>
                                 <p class="card-text">Casos de mascotas perdidas que fueron encontradas y adoptadas.</p>
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <img src="../assets/ayudar.jpg" class="card-img-top" alt="Cómo Ayudar">
+                            <img src="assets/ayudar.jpg" class="card-img-top" alt="Cómo Ayudar">
                             <div class="card-body">
                                 <h5 class="card-title">Cómo Ayudar</h5>
                                 <p class="card-text">Consejos sobre cómo puedes colaborar con la comunidad animal.</p>
