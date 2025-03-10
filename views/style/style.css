@@ -761,3 +761,13 @@ textarea.input-personalizado {
     width: 500px;
     height: auto;
 }
+
+.blog-header {
+    background: url('/assets/bg-1.png');
+    background-repeat: no-repeat;
+}
+
+.blog-tab a:hover {
+    color: #176B87;
+    font-weight: bold
+}
