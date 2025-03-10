@@ -17,12 +17,12 @@
     </div>
 
     <div class=" m-3 ms-1 p-4 bg-white rounded-5">
-        <h1 class=" text-center txt-azul-oscuro">Inicio</h1>
+        <h1 class=" text-center txt-azul-oscuro mt-5">Inicio</h1>
         <div class="ms-4">
             <?php include "componentes/buscar.php" ?>
         </div>
         <div class="ms-4 my-5">
-            <a href="" class="my-5  py-2 px-4 bg-celeste rounded-pill">Crear anuncio</a>
+            <a href="agregarAnuncio.php" class="my-5  py-2 px-4 bg-celeste rounded-pill">Crear anuncio</a>
         </div>
         <div class="ms-4">
 

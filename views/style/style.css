@@ -1,43 +1,57 @@
 /* Generales */
-a, h1, h2, h3, h4, h5, h6, p{
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
     font-family: "Poppins", sans-serif;
 }
-.nav-list li{
+
+.nav-list li {
     list-style: none;
 }
 
 
-.header-inicio{
+.header-inicio {
     background-image: url("../assets/bg-2.png");
     background-repeat: no-repeat;
- 
+    background-size: cover;
     background-attachment: fixed;
-    width: auto;
-    height: auto;
+    background-position: center;
+    height: 420px;
 }
 
 /* colores de fondo */
-.bg-azul-oscuro{
+.bg-azul-oscuro {
     background-color: #176B87;
 }
-.bg-celeste{
+
+.bg-celeste {
     background-color: #EEF5FF;
+}
+.bg-celeste-oscuro{
+    background-color: #86B6F6;
 }
 
 /* colores de de texto*/
-.txt-black{
+.txt-black {
     color: rgb(61, 61, 61) !important;
 }
-.txt-azul-oscuro{
+
+.txt-azul-oscuro {
     color: #176B87;
 }
-.txt-celeste{
+
+.txt-celeste {
     color: #86B6F6;
-} 
+}
 
 /* botones */
 
-img{
+img {
     object-fit: cover;
     background-repeat: none;
 }
@@ -51,7 +65,8 @@ img{
     font-weight: 600;
     padding: 0px;
 }
-.links a::after{
+
+.links a::after {
     content: "";
     position: absolute;
     background-color: #176B87;
@@ -63,32 +78,36 @@ img{
 
 }
 
-.links a:hover::after{
+.links a:hover::after {
     width: 100%;
 }
 
 /* estilos admin */
 
-.body-admin{
+.body-admin {
     display: grid;
     grid-template-columns: auto 1fr;
 }
-.side{
+
+.side {
     width: 250px;
     height: 100vh;
 }
-.admin-link a{
-    display: inline-block; 
+
+.admin-link a {
+    display: inline-block;
     transition: all 0.1s ease;
     transform-origin: left;
-  
+
 }
+
 .admin-link a:hover {
 
-        transform: scale(1.1) ;
-        color: #115c75;
-    
+    transform: scale(1.1);
+    color: #115c75;
+
 }
+
 .login-container {
     max-width: 600px;
     margin: auto;
@@ -97,11 +116,37 @@ img{
     border-radius: 8px;
     border: solid #176B87 4px;
     text-align: center;
-    
+
 }
-.table-img{
+
+.table-img {
     width: 150px;
 }
-.m-0auto{
-    margin: 0 auto;
+
+.img-preview {
+    width: 350px;
+    min-height: 200px;
+    border: 2px solid #176B87;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    overflow: hidden; 
+}
+
+.imgpreview{
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+
+  
+}
+.input-adopcion{
+ 
+    border: 0;
+    border-radius: 20px;
+    padding:  16px 10px ; 
+    display: block;
+    width: 100%;
+   
 }

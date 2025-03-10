@@ -8,7 +8,7 @@
     <nav class="admin-link mt-5 pt-5 ms-3 d-flex flex-column">
         <a href="admin.php" class="mt-4 text-decoration-none txt-azul-oscuro">Inicio</a>
         <a href="usuarios.php" class="mt-4 text-decoration-none txt-azul-oscuro">Usuario</a>
-        <a href="adopciones.php" class="mt-4 text-decoration-none txt-azul-oscuro">Adopciones</a>
-        <a href="blog.php" class="mt-4 text-decoration-none txt-azul-oscuro">Blog</a>
+        <a href="adopcionesAdmin.php" class="mt-4 text-decoration-none txt-azul-oscuro">Adopciones</a>
+        <a href="blogAdmin.php" class="mt-4 text-decoration-none txt-azul-oscuro">Blog</a>
     </nav>
 </aside>
