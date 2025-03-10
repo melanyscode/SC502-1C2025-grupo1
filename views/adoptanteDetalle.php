@@ -57,34 +57,34 @@
 
             <form class="adoption-form">
                 <div class="form-group-custom mb-4">
-                    <label>Nombre completo:</label>
+                    <label class="adoption-form">Nombre completo:</label>
                     <input type="text" class="form-control input-rounded" required>
                 </div>
                 <div class="form-group-custom mb-4">
-                    <label>Edad:</label>
+                    <label class="adoption-form">Edad:</label>
                     <input type="number" class="form-control input-rounded" required>
                 </div>
                 <div class="form-group-custom mb-4">
-                    <label>Dirección completa:</label>
+                    <label class="adoption-form">Dirección completa:</label>
                     <input type="text" class="form-control input-rounded" required>
                 </div>
                 <div class="form-group-custom mb-4">
-                    <label>Teléfono:</label>
+                    <label class="adoption-form">Teléfono:</label>
                     <input type="tel" class="form-control input-rounded" required>
                 </div>
                 <div class="form-group-custom mb-4">
-                    <label>Ocupación:</label>
+                    <label class="adoption-form">Ocupación:</label>
                     <input type="text" class="form-control input-rounded" required>
                 </div>
                 <div class="form-group-custom mb-4">
-                    <label>¿Vive solo/a o con familia?</label>
+                    <label class="adoption-form">¿Vive solo/a o con familia?</label>
                     <div class="btn-group" role="group">
                         <button type="button" class="btn form-btn-custom">Solo/a</button>
                         <button type="button" class="btn form-btn-custom">Con familia</button>
                     </div>
                 </div>
                 <div class="form-group-custom mb-4">
-                    <label>¿Todos en casa están de acuerdo con la adopción?</label>
+                    <label class="adoption-form">¿Todos en casa están de acuerdo con la adopción?</label>
                     <div class="btn-group" role="group">
                         <button type="button" class="btn form-btn-custom">Sí</button>
                         <button type="button" class="btn form-btn-custom">No</button>
@@ -95,11 +95,11 @@
                 <div class="form-group-custom mb-4">
 
                     <div class="form-group-custom mb-4">
-                        <label>Tipo de vivienda:</label>
+                        <label class="adoption-form">Tipo de vivienda:</label>
                         <input type="text" class="form-control input-rounded" required>
                     </div>
 
-                    <label>¿Vive en casa propia o alquilada?</label>
+                    <label class="adoption-form">¿Vive en casa propia o alquilada?</label>
                     <div class="btn-group" role="group">
                         <button type="button" class="btn form-btn-custom">Propia</button>
                         <button type="button" class="btn form-btn-custom">Alquilada</button>
@@ -107,7 +107,7 @@
                 </div>
 
                 <div class="form-group-custom mb-4">
-                    <label>¿Cuenta con un patio o jardín? ¿Está cercado?</label>
+                    <label class="adoption-form">¿Cuenta con un patio o jardín? ¿Está cercado?</label>
                     <div class="btn-group" role="group">
                         <button type="button" class="btn form-btn-custom">Sí</button>
                         <button type="button" class="btn form-btn-custom">No</button>
@@ -117,16 +117,16 @@
                 <h5 class="mb-3">Compromiso y Responsabilidad</h5>
 
                 <div class="form-group-custom mb-4">
-                    <label>¿Qué hará si tiene que mudarse a otro lugar?</label>
+                    <label class="adoption-form">¿Qué hará si tiene que mudarse a otro lugar?</label>
                     <input type="text" class="form-control input-rounded" required>
                 </div>
                 <div class="form-group-custom mb-4">
-                    <label>¿Qué haría si ya no puede cuidar de la mascota en el futuro?</label>
+                    <label class="adoption-form">¿Qué haría si ya no puede cuidar de la mascota en el futuro?</label>
                     <input type="text" class="form-control input-rounded" required>
                 </div>
 
                 <div class="form-group-custom mb-4">
-                    <label>¿Está dispuesto a asumir los gastos de alimentación, salud y bienestar de la mascota?</label>
+                    <label class="adoption-form">¿Está dispuesto a asumir los gastos de alimentación, salud y bienestar de la mascota?</label>
                     <div class="btn-group" role="group">
                         <button type="button" class="btn form-btn-custom">Sí</button>
                         <button type="button" class="btn form-btn-custom">No</button>
@@ -134,7 +134,7 @@
                 </div>
 
                 <div class="form-group-custom mb-4">
-                    <label>¿Está de acuerdo en realizar visitas de seguimiento post-adopción?</label>
+                    <label class="adoption-form">¿Está de acuerdo en realizar visitas de seguimiento post-adopción?</label>
                     <div class="btn-group" role="group">
                         <button type="button" class="btn form-btn-custom">Sí</button>
                         <button type="button" class="btn form-btn-custom">No</button>
