@@ -10,25 +10,30 @@ a, h1, h2, h3, h4, h5, h6, p{
 .header-inicio{
     background-image: url("../assets/bg-2.png");
     background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .header-encuentrame{
     background-image: url("../assets/bg-6.png");
     background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .header-adoptante {
     background-image: url("../assets/bg-8.png");
     background-repeat: no-repeat;
+    background-size: cover;
 }
 .header-calendario {
     background-image: url("../assets/bg-9.png");
     background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .header-perfil {
     background-image: url("../assets/bg-17.png");
     background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
@@ -38,6 +43,12 @@ a, h1, h2, h3, h4, h5, h6, p{
 }
 .bg-celeste{
     background-color: #EEF5FF;
+}
+.bg-celeste-oscuro{
+    background-color: #86B6F6;
+}
+.bg-red{
+    background-color: rgb(235, 80, 80);
 }
 
 /* colores de de texto*/
