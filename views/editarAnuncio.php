@@ -17,7 +17,7 @@
     </div>
 
     <div class=" m-3 ms-1 p-4 bg-white rounded-5">
-        <h1 class=" text-center txt-azul-oscuro mt-5">Agregar Anuncio</h1>
+        <h1 class=" text-center txt-azul-oscuro mt-5">Editar Anuncio</h1>
 
         <div class="container  mt-5 pt-5">
             <div class="row">
@@ -50,6 +50,9 @@
                             <label>Detalle</label>
                             <textarea type="text" class="input-adopcion bg-celeste"> </textarea>
                         </div>
+                        <div class="text-end">
+                       <button class="d-inline border-0 px-4 py-2 bg-azul-oscuro rounded-5 text-white fw-bold mt-2 text-end" type="submit">Guardar</button>
+                       </div>
 
                     </form>
                 </div>

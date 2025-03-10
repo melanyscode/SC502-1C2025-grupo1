@@ -53,7 +53,9 @@
                             <label>Nombre</label>
                             <input type="text" class="input-adopcion bg-celeste">
                         </div>
-
+                        <div class="text-end">
+                       <button class="d-inline border-0 px-4 py-2 bg-azul-oscuro rounded-5 text-white fw-bold mt-2 text-end" type="submit">Publicar</button>
+                       </div>
                     </form>
                 </div>
             </div>
