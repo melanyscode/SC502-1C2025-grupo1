@@ -28,10 +28,9 @@
                         <input type="password" class="form-control bg-celeste" id="password"
                             placeholder="Ingresa tu contraseña">
                     </div>
-                    <button type="submit" class="btn bg-azul-oscuro txt-celeste w-100">Iniciar Sesion</button>
-                </form>
+                    <button type="button" class="btn bg-azul-oscuro txt-celeste w-100" onclick="window.location.href='perfil.php'">Iniciar Sesión</button>
                 <div class="mt-3">
-                    <p>¿No tienes una cuenta aun? <a href="#" class="txt-azul-oscuro">Registrate aqui</a></p>
+                    <p>¿No tienes una cuenta aun? <a href="perfil.php" class="txt-azul-oscuro">Registrate aqui</a></p>
                     <p><a href="#" class="txt-azul-oscuro">¿Olvidaste tu contraseña?</a></p>
                 </div>
             </div>
