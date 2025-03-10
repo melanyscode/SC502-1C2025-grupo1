@@ -52,7 +52,7 @@
         </div>
     </div>
 
-    <div class="steps-container">
+    <div class="container steps-container">
         <div class="step-card">
             <h2 class="step-number">1</h2>
             <h4 class="step-title">Llenar el formulario</h4>
@@ -87,7 +87,7 @@
     </div>
 
 
-    <div class="home-content">
+    <div class="container home-content">
         <h3 class="home-titulo-pequeno">PawFind ama a los animales</h3>
         <h2 class="home-titulo-grande">Encontrarás</h2>
 
@@ -107,7 +107,7 @@
         </div>
     </div>
 
-    <div class="blog-container">
+    <div class="container blog-container">
     <div class="blog-left-column">
         <h1>Accede a nuestro blog</h1>
         <h4>Este sitio es ideal para ti porque contiene información sobre cuidado dental para tu mascota</h4>
