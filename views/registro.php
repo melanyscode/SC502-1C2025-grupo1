@@ -40,6 +40,7 @@
             </div>
         </div>
         <?php include_once("componentes/footer.php"); ?>
+        
     </body>
 
 </html>
