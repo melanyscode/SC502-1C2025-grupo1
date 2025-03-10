@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <title>Anuncio de Adopción</title>
     <?php include "componentes/links.php"; ?>
 
     </style>
@@ -25,7 +25,7 @@
             <a href="" class="my-5  py-2 px-4 bg-celeste rounded-pill">Agregar</a>
         </div>
         <div class="ms-4">
-            
+           
         </div>
     </div>
 
