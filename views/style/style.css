@@ -36,6 +36,12 @@ a, h1, h2, h3, h4, h5, h6, p{
     background-size: cover;
 }
 
+.blog-header {
+    background: url('../assets/bg-1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+}
 
 /* colores de fondo */
 .bg-azul-oscuro{
@@ -762,10 +768,7 @@ textarea.input-personalizado {
     height: auto;
 }
 
-.blog-header {
-    background: url('/assets/bg-1.png');
-    background-repeat: no-repeat;
-}
+
 
 .blog-tab a:hover {
     color: #176B87;
