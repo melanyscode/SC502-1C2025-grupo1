@@ -13,7 +13,7 @@
 <body class="d-flex flex-column min-vh-100">
     <?php include_once("componentes/navbar.php"); ?>
 
-    <div class=" blog-header">
+    <div class="blog-header">
         <div class=" container  d-flex flex-row align-items-center my-5">
             <div class="col-6">
                 <h2 class="my-5">Todo lo que necesitas saber</h2>
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img src="assets/ayudar.jpg" class="card-img-top" alt="Cómo Ayudar">
+                        <img src="assets/ayudar.jpg" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Cómo Ayudar</h5>
                             <p class="card-text">Consejos sobre cómo puedes colaborar con la comunidad animal.</p>
