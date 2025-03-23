@@ -8,8 +8,8 @@ function call($controller, $action)
         case 'inicio':
             $controller = new inicioController();
             break;
-        case 'nosotros':
-            $controller = new nosotrosController();
+        case 'landing':
+            $controller = new landingController();
             break;
 
         default:
@@ -21,8 +21,11 @@ function call($controller, $action)
     $controller->{$action}();
 }
 
+$controller = isset($_GET['controller']) ? $_GET['controller'] : 'inicio';
+$action = isset($_GET['action']) ? $_GET['action'] : 'inicio';
+
 $controllers = array('inicio' => ['inicio', 'error'],
-                    'nosotros' => ['nosotros']);
+                    'landing' => ['nosotros', 'contacto', 'encuentrame']);
 
 if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {
