@@ -8,36 +8,36 @@ a, h1, h2, h3, h4, h5, h6, p{
 
 
 .header-inicio{
-    background-image: url("../assets/bg-2.png");
+    background-image: url("../img/bg-2.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .header-encuentrame{
-    background-image: url("../assets/bg-6.png");
+    background-image: url("../img/bg-6.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .header-adoptante {
-    background-image: url("../assets/bg-8.png");
+    background-image: url("../img/bg-8.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 .header-calendario {
-    background-image: url("../assets/bg-9.png");
+    background-image: url("../img/bg-9.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .header-perfil {
-    background-image: url("../assets/bg-17.png");
+    background-image: url("../img/bg-17.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .blog-header {
-    background: url('../assets/bg-1.png');
+    background: url('../img/bg-1.png');
     background-repeat: no-repeat;
     background-size: cover;
     height: 400px;
