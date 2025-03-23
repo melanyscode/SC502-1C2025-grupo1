@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encuentrame</title>
-    <?php include "componentes/links.php"; ?>
-</head>
 
 <body class="d-flex flex-column min-vh-100">
-    <?php include_once("componentes/navbar.php"); ?>
+
 
     <div class="header-encuentrame pb-5">
 
@@ -42,14 +34,14 @@
         <div class="d-flex align-items-center border container-border-two rounded p-3 bg-white mt-2">
 
             <div class="d-flex flex-column align-items-start me-3">
-                <img src="assets/bg-7.jpg" alt="Mascota perdida" class="rounded me-3" style="width: 300px; height: 300px; object-fit: cover;">
+                <img src="assets/img/bg-7.jpg" alt="Mascota perdida" class="rounded me-3" style="width: 300px; height: 300px; object-fit: cover;">
                 <h5 class="fw-bold fs-4 txt-azul-oscuro mt-3">Estado: Encontrado</h5>
             </div>
 
             <div class="w-100">
                 <div class="p-3 rounded w-70 bg-celeste">
                     <div class="d-flex align-items-start mb-0">
-                        <img src="assets/bg-16.jpg" alt="Spike" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                        <img src="assets/img/bg-16.jpg" alt="Spike" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
                         <div class="d-flex flex-column">
                             <p class="mb-0">Rebecca Jimenez Alpizar</p>
                             <p class="mb-0">+506 8888 8888</p>
@@ -64,7 +56,6 @@
             </div>
         </div>
     </div>
-    <?php include "componentes/footer.php"; ?>
+
 </body>
 
-</html>

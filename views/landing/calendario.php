@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendario</title>
-    <?php include "componentes/links.php";?>  
-</head>
+
 <body class="d-flex flex-column min-vh-100">
-    <?php include_once("componentes/navbar.php"); ?>
+
      
     <div class="header-calendario pb-5 flex-grow-1">
         <div class="container d-flex align-items-center justify-content-center" style="min-height: 50vh;">
@@ -63,7 +56,7 @@
                                     <p class="txt-azul-oscuro mb-0">Acompáñanos</p>
                                 </div>
                             </div>
-                            <img src="assets/bg-12.jpg" alt="Imagen del evento" class="d-none d-sm-block" width="400px" height="280px">
+                            <img src="assets/img/bg-12.jpg" alt="Imagen del evento" class="d-none d-sm-block" width="400px" height="280px">
                         </div>
                     </div>
                 </div>
@@ -83,7 +76,7 @@
                                 <h5 class="event-title">Organizado por: Fundación Renacer Animal</h5>
                                 <p class="event-text">Únete a nuestra causa y ayuda a los animales sin hogar. Tu donación puede marcar la diferencia en la vida de un ser necesitado.</p>
                             </div>
-                            <img src="assets/bg-13.jpg" alt="Imagen del Evento" class="event-img">
+                            <img src="assets/img/bg-13.jpg" alt="Imagen del Evento" class="event-img">
                         </div>
                         <div class="event-card-footer">
                             12 de marzo, 10:00 AM | Plaza Mayor
@@ -101,7 +94,7 @@
                                 <h5 class="event-title">Organizado por: Savia</h5>
                                 <p class="event-text">Únete a nosotros en este evento de adopción, donde tendrás la oportunidad de conocer y adoptar a algunos de nuestros gatitos rescatados.</p>
                             </div>
-                            <img src="assets/bg-14.jpg" alt="Imagen del Evento" class="event-img">
+                            <img src="assets/img/bg-14.jpg" alt="Imagen del Evento" class="event-img">
                         </div>
                         <div class="event-card-footer">
                             15 de marzo, 2:00 PM | Auditorio Central
@@ -111,6 +104,6 @@
             </div>
         </div>
     </div>
-    <?php include "componentes/footer.php"; ?>
+
 </body>
-</html>
+

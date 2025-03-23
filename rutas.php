@@ -11,9 +11,15 @@ function call($controller, $action)
         case 'landing':
             $controller = new landingController();
             break;
+        case 'usuario':
+            $controller = new usuarioController();
+            break;
+        case 'admin':
+            $controller = new adminController();
+            break;
 
         default:
-           
+
             $action = 'error';
             break;
     }
@@ -24,8 +30,12 @@ function call($controller, $action)
 $controller = isset($_GET['controller']) ? $_GET['controller'] : 'inicio';
 $action = isset($_GET['action']) ? $_GET['action'] : 'inicio';
 
-$controllers = array('inicio' => ['inicio', 'error'],
-                    'landing' => ['nosotros', 'contacto', 'encuentrame']);
+$controllers = array(
+    'inicio' => ['inicio', 'error'],
+    'landing' => ['nosotros', 'contacto', 'encuentrame', 'blog', 'calendario', 'adopta', 'detalle'],
+    'usuario' => ['perfil', 'login', 'registro'],
+    'admin' => ['inicio', 'adopciones', 'articulo', 'agregarArticulo', 'editarArticulo', 'anuncio', 'agregarAnuncio', 'blog', 'solicitantes', 'usuario', 'agregarUsuario']
+);
 
 if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {

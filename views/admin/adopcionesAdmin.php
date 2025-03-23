@@ -1,25 +1,15 @@
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
-    <?php include "componentes/links.php"; ?>
-
-    </style>
-</head>
 
 <body class="body-admin bg-celeste">
 
     <div class=" bg-celeste">
-        <?php include "componentes/aside.php" ?>
+        <?php include "aside.php" ?>
     </div>
 
     <div class=" m-3 ms-1 p-4 bg-white rounded-5">
         <h1 class=" text-center txt-azul-oscuro mt-5">Adopciones</h1>
         <div class="ms-4">
-            <?php include "componentes/buscar.php" ?>
+            <?php include "buscar.php" ?>
         </div>
         <div class="ms-4 my-5">
             <a href="agregarAnuncio.php" class="my-5  py-2 px-4 bg-celeste rounded-pill text-decoration-none">Crear anuncio</a>
@@ -40,7 +30,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><img src="assets/cat-1.jpg" class="table-img text-center" alt=""> </td>
+                        <td><img src="assets/img/cat-1.jpg" class="table-img text-center" alt=""> </td>
                         <td style="width: 600px;">
                             <p>Tonet</p>
                             <p>
@@ -56,7 +46,7 @@
 
                     </tr>
                     <tr>
-                        <td><img src="assets/cat-1.jpg" class="table-img" alt=""> </td>
+                        <td><img src="assets/img/cat-1.jpg" class="table-img" alt=""> </td>
                         <td style="width: 600px;">
                             <p>Tonet</p>
                             <p>
