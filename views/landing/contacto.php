@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto</title>
-    <?php include "componentes/links.php"; ?>
-</head>
 
 <body class="d-flex flex-column min-vh-100">
-    <?php include_once("componentes/navbar.php"); ?>
+ 
 
     <div class="container">
         <h1></h1>
@@ -43,7 +35,7 @@
         </div>
         <div class="row my-5">
             <aside class="col-md-4 d-flex justify-content-md-center aside-img p-0">
-                <img src="assets/people-with-pets.jpg" alt="" class="text-md-start text-center">
+                <img src="assets/img/people-with-pets.jpg" alt="" class="text-md-start text-center">
             </aside>
             <div class="col-md-8 ms-4">
                 <h3 class="txt-azul-oscuro">¿Deseas ayudar a PawFind?</h3>
@@ -70,7 +62,7 @@
             </div>
         </div>
     </div>
-    <?php include "componentes/footer.php"; ?>
+
 </body>
 
 </html>

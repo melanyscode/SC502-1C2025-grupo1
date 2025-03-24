@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adoptantes</title>
-    <?php include "componentes/links.php"; ?>
-</head>
 
 <body class="d-flex flex-column min-vh-100">
-    <?php include_once("componentes/navbar.php"); ?>
 
     <div class="header-adoptante pb-5">
         <div class="container">
@@ -19,8 +10,11 @@
                     <p class="mt-5 mb-3">Adopta con amor, cuida con responsabilidad</p>
                 </div>
             </div>
+            </div>
+        </div>
+   
 
-            <div class="outside-container-two">
+            <div class=" container">
                 <nav aria-label="breadcrumb" class="mt-3">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.php" class="text-dark">Inicio</a></li>
@@ -29,7 +23,7 @@
                 </nav>
             </div>
 
-            <div class="outside-container d-flex align-items-center mt-4">
+            <div class="container outside-container d-flex align-items-center mt-4">
                 <i class="fa-solid fa-paw fs-3 text-primary"></i>
                 <p class="ms-2 fs-5 text-dark">Más de (24) mascotas disponibles</p>
             </div>
@@ -58,26 +52,26 @@
 
                             <div class="col-md-6 mb-4">
                                 <div class="card border-custom p-3 d-flex flex-column align-items-center" style="width: 330px; height: 340px;">
-                                    <img src="assets/bg-10.jpg" class="card-img-top" alt="Mascota" style="height: 150px; object-fit: cover; padding-top: 8px; padding-left: 8px; padding-right: 8px;">
+                                    <img src="assets/img/bg-10.jpg" class="card-img-top" alt="Mascota" style="height: 150px; object-fit: cover; padding-top: 8px; padding-left: 8px; padding-right: 8px;">
                                     <div class="card-body text-start p-3 d-flex flex-column justify-content-between" style="width: 100%; height: 100%;">
                                         <div>
                                             <h5 class="text-dark m-0 mb-2">Tonet</h5>
                                             <p class="card-text m-0 mb-3">Es una adorable mascota de 1 año y 2 meses de edad</p>
                                         </div>
-                                        <a href="adoptanteDetalle.php" class="btn btn-publicar w-auto py-2 px-4 rounded-pill mt-auto">Ver más</a>
+                                        <a href="index.php?controller=landing&action=detalle" class="btn btn-publicar w-auto py-2 px-4 rounded-pill mt-auto">Ver más</a>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-6 mb-4">
                                 <div class="card border-custom p-3 d-flex flex-column align-items-center" style="width: 330px; height: 340px;">
-                                    <img src="assets/bg-11.jpg" class="card-img-top" alt="Mascota" style="height: 150px; object-fit: cover; padding-top: 8px; padding-left: 8px; padding-right: 8px;">
+                                    <img src="assets/img/bg-11.jpg" class="card-img-top" alt="Mascota" style="height: 150px; object-fit: cover; padding-top: 8px; padding-left: 8px; padding-right: 8px;">
                                     <div class="card-body text-start p-3 d-flex flex-column justify-content-between" style="width: 100%; height: 100%;">
                                         <div>
                                             <h5 class="text-dark m-0 mb-2">Milo</h5>
                                             <p class="card-text m-0 mb-3">Un conejo juguetón de 8 meses, lleno de energía</p>
                                         </div>
-                                        <a href="adoptanteDetalle.php" class="btn btn-publicar w-auto py-2 px-4 rounded-pill mt-auto">Ver más</a>
+                                        <a href="index.php?controller=landing&action=detalle" class="btn btn-publicar w-auto py-2 px-4 rounded-pill mt-auto">Ver más</a>
                                     </div>
                                 </div>
                             </div>
@@ -87,10 +81,5 @@
                 </div>
             </div>
 
-        </div>
-    </div>
-
-    <?php include "componentes/footer.php"; ?>
+      
 </body>
-
-</html>

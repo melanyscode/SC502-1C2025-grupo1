@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PawFind</title>
-    <?php include "componentes/links.php"; ?>
-</head>
+
 
 <body class="d-flex flex-column min-vh-100">
-    <?php include_once("componentes/navbar.php"); ?>
+   
     <div class=" header-inicio py-3">
 
         <div class="container">
@@ -22,7 +15,7 @@
                         amor y cuidados</p>
 
                     <div class="mt-3 mb-5 ">
-                        <a href="adoptante.php" class=" py-2 px-4 bg-white rounded-pill text-decoration-none txt-azul-oscuro fw-semibold mt-2">Vamos a adoptar</a>
+                        <a href="index.php?controller=landing&action=adopta" class=" py-2 px-4 bg-white rounded-pill text-decoration-none txt-azul-oscuro fw-semibold mt-2">Vamos a adoptar</a>
                     </div>
                 </div>
             </div>
@@ -33,7 +26,7 @@
     <div class="container">
         <div class="row d-flex flex-colum justify-content-between mt-4">
             <div class="col-2 bg-white p-2 border-azul text-center rounded-5 mt-3">
-                <img src="assets/paw-solid.svg" alt="" class="mt-2" height="70px">
+                <img src="assets/img/paw-solid.svg" alt="" class="mt-2" height="70px">
                 <p class="mt-3">Adopta</p>
             </div>
             <div class="col-2 bg-white p-2  border-azul text-center rounded-5 mt-3">
@@ -93,15 +86,15 @@
 
         <div class="home-imagenes-container">
             <div class="home-imagen">
-                <img src="assets/bg-19.jpg" alt="Gato" class="home-imagen-circular">
+                <img src="assets/img/bg-19.jpg" alt="Gato" class="home-imagen-circular">
                 <p class="home-descripcion-imagen">Gatos</p>
             </div>
             <div class="home-imagen">
-                <img src="assets/bg-18.jpg" alt="Perro" class="home-imagen-circular">
+                <img src="assets/img/bg-18.jpg" alt="Perro" class="home-imagen-circular">
                 <p class="home-descripcion-imagen">Perros</p>
             </div>
             <div class="home-imagen">
-                <img src="assets/bg-20.jpg" alt="Conejo" class="home-imagen-circular">
+                <img src="assets/img/bg-20.jpg" alt="Conejo" class="home-imagen-circular">
                 <p class="home-descripcion-imagen">Conejos</p>
             </div>
         </div>
@@ -114,13 +107,12 @@
         <a href="blog.php" class="blog-btn-visit">Visitar artículo</a>
     </div>
     <div class="blog-right-column">
-        <img src="assets/bg-23.jpg" alt="Imagen del blog" class="blog-image">
+        <img src="assets/img/bg-23.jpg" alt="Imagen del blog" class="blog-image">
     </div>
 </div>
 
 
 
-    <?php include "componentes/footer.php"; ?>
+
 </body>
 
-</html>
