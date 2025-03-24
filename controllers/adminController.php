@@ -56,6 +56,14 @@
             require_once("views/admin/agregarAnuncio.php");
           
         }
+        public function agregarArticulo(){
+            $titulo = "Agregar Articulo";
+            require_once("views/head.php");
+            
+            require_once("views/admin/agregarArticulo.php");
+          
+        }
+
         public function error() {
             echo "error";
         }

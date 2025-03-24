@@ -10,6 +10,7 @@
         <li class="ms-2"><a href="index.php?controller=landing&action=blog" class="txt-black ">Blog</a></li>
         <li class="ms-2"><a href="index.php?controller=landing&action=encuentrame" class="txt-black ">Encuentrame</a></li>
         <li class="ms-2"><a href="index.php?controller=landing&action=calendario" class="txt-black ">Calendario</a></li>
+        <li class="ms-2"><a href="index.php?controller=admin&action=inicio" class="txt-black ">Admin</a></li>
       </ul>
       </div>
       <div class="">
