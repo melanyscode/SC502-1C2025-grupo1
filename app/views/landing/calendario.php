@@ -1,4 +1,4 @@
-
+<?php require_once __DIR__ .'/../navbar.php'; ?>
 <body class="d-flex flex-column min-vh-100">
 
      
@@ -33,7 +33,7 @@
                     <option>Adopciones</option>
                 </select>
                 <button>
-                <img src="assets/bg-search.png" alt="Buscar" style="width: 20px; height: 20px;">
+                <img src="public/bg-search.png" alt="Buscar" style="width: 20px; height: 20px;">
                 </button>
             </div>
         </div>
@@ -56,7 +56,7 @@
                                     <p class="txt-azul-oscuro mb-0">Acompáñanos</p>
                                 </div>
                             </div>
-                            <img src="assets/img/bg-12.jpg" alt="Imagen del evento" class="d-none d-sm-block" width="400px" height="280px">
+                            <img src="public/img/bg-12.jpg" alt="Imagen del evento" class="d-none d-sm-block" width="400px" height="280px">
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                                 <h5 class="event-title">Organizado por: Fundación Renacer Animal</h5>
                                 <p class="event-text">Únete a nuestra causa y ayuda a los animales sin hogar. Tu donación puede marcar la diferencia en la vida de un ser necesitado.</p>
                             </div>
-                            <img src="assets/img/bg-13.jpg" alt="Imagen del Evento" class="event-img">
+                            <img src="public/img/bg-13.jpg" alt="Imagen del Evento" class="event-img">
                         </div>
                         <div class="event-card-footer">
                             12 de marzo, 10:00 AM | Plaza Mayor
@@ -94,7 +94,7 @@
                                 <h5 class="event-title">Organizado por: Savia</h5>
                                 <p class="event-text">Únete a nosotros en este evento de adopción, donde tendrás la oportunidad de conocer y adoptar a algunos de nuestros gatitos rescatados.</p>
                             </div>
-                            <img src="assets/img/bg-14.jpg" alt="Imagen del Evento" class="event-img">
+                            <img src="public/img/bg-14.jpg" alt="Imagen del Evento" class="event-img">
                         </div>
                         <div class="event-card-footer">
                             15 de marzo, 2:00 PM | Auditorio Central
@@ -107,3 +107,5 @@
 
 </body>
 
+
+<?php require_once  __DIR__ .'/../footer.php'; ?>

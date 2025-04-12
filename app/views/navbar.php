@@ -5,12 +5,12 @@
       <ul class=" d-flex flex-row justify-content-around align-items-center mb-0 nav-list">
       <img src="assets/paw-solid.svg" alt="" class="" height="30px">
         <li class="ms-2"><a href="index.php" class="txt-black ">Inicio</a></li>
-        <li class="ms-2"><a href="index.php?controller=landing&action=nosotros" class="txt-black ">Nosotros</a></li>
-        <li class="ms-2"><a href="index.php?controller=landing&action=contacto" class="txt-black ">Contacto</a></li>
-        <li class="ms-2"><a href="index.php?controller=landing&action=blog" class="txt-black ">Blog</a></li>
-        <li class="ms-2"><a href="index.php?controller=landing&action=encuentrame" class="txt-black ">Encuentrame</a></li>
-        <li class="ms-2"><a href="index.php?controller=landing&action=calendario" class="txt-black ">Calendario</a></li>
-        <li class="ms-2"><a href="index.php?controller=admin&action=inicio" class="txt-black ">Admin</a></li>
+        <li class="ms-2"><a href="index.php?p=nosotros" class="txt-black ">Nosotros</a></li>
+        <li class="ms-2"><a href="index.php?p=contacto" class="txt-black ">Contacto</a></li>
+        <li class="ms-2"><a href="index.php?p=blog" class="txt-black ">Blog</a></li>
+        <li class="ms-2"><a href="index.php?p=encuentrame" class="txt-black ">Encuentrame</a></li>
+        <li class="ms-2"><a href="index.php?p=calendario" class="txt-black ">Calendario</a></li>
+        <li class="ms-2"><a href="index.php?p=admin" class="txt-black ">Admin</a></li>
       </ul>
       </div>
       <div class="">

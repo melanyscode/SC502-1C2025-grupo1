@@ -1,4 +1,4 @@
-
+<?php require_once __DIR__ .'/../navbar.php'; ?>
 
 <body class="d-flex flex-column min-vh-100">
 
@@ -52,7 +52,7 @@
 
                             <div class="col-md-6 mb-4">
                                 <div class="card border-custom p-3 d-flex flex-column align-items-center" style="width: 330px; height: 340px;">
-                                    <img src="assets/img/bg-10.jpg" class="card-img-top" alt="Mascota" style="height: 150px; object-fit: cover; padding-top: 8px; padding-left: 8px; padding-right: 8px;">
+                                    <img src="public/img/bg-10.jpg" class="card-img-top" alt="Mascota" style="height: 150px; object-fit: cover; padding-top: 8px; padding-left: 8px; padding-right: 8px;">
                                     <div class="card-body text-start p-3 d-flex flex-column justify-content-between" style="width: 100%; height: 100%;">
                                         <div>
                                             <h5 class="text-dark m-0 mb-2">Tonet</h5>
@@ -83,3 +83,5 @@
 
       
 </body>
+
+<?php require_once  __DIR__ .'/../footer.php'; ?>

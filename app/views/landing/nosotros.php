@@ -1,5 +1,4 @@
-
-
+<?php require_once __DIR__ .'/../navbar.php'; ?>
 <body class="d-flex flex-column min-vh-100">
 
 
@@ -44,9 +43,11 @@
                 
             </div>
             <div class="col-md-4 bg-white rounded-5">
-                <img src="assets/img/dog-1.jpg" class="card-img-top" alt="">
+                <img src="public/img/dog-1.jpg" class="card-img-top" alt="">
             </div>
         </div>
     </div>
 </body>
 
+
+<?php require_once  __DIR__ .'/../footer.php'; ?>

@@ -1,4 +1,4 @@
-
+<?php require_once __DIR__ .'/../navbar.php'; ?>
 
 <body class="d-flex flex-column min-vh-100">
  
@@ -35,7 +35,7 @@
         </div>
         <div class="row my-5">
             <aside class="col-md-4 d-flex justify-content-md-center aside-img p-0">
-                <img src="assets/img/people-with-pets.jpg" alt="" class="text-md-start text-center">
+                <img src="public/img/people-with-pets.jpg" alt="" class="text-md-start text-center">
             </aside>
             <div class="col-md-8 ms-4">
                 <h3 class="txt-azul-oscuro">¿Deseas ayudar a PawFind?</h3>
@@ -66,3 +66,5 @@
 </body>
 
 </html>
+
+<?php require_once  __DIR__ .'/../footer.php'; ?>
