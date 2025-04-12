@@ -29,6 +29,9 @@ switch ($pagina) {
     case 'editarusuario': 
         $view = './app/views/admin/editarUsuario.php';
         break;
+    case 'adopciones':
+        $view = './app/views/admin/adopcionesAdmin.php';
+        break;
     default:
         $view = './app/views/layout.php';
         break;

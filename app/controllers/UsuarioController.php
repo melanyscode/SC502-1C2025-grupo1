@@ -36,7 +36,7 @@ try {
 
             $resultado = Usuario::add($nombre, $apellido, $telefono, $correo, $estado, $rol, $rutaWeb);
             echo json_encode($resultado);
-        } elseif ($action === 'delete' && !empty($_POST['id'])) {
+        } elseif ($action === 'delete' && isset($_POST['id'])) {
             echo json_encode(Usuario::delete($_POST['id']));
         } elseif ($action === 'update' && isset($_POST['id'], $_POST['nombre'], $_POST['apellido'], $_POST['telefono'], $_POST['correo'], $_POST['estado'], $_POST['rol'])) {
             $id = $_POST['id'];

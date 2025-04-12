@@ -197,16 +197,27 @@ document.addEventListener("DOMContentLoaded", function () {
     // eliminar usuario
     document.addEventListener("click", function (e) {
         const btnEliminar = e.target.closest(".eliminarusuario");
+        console.log(btnEliminar);
         if (btnEliminar) {
             console.log(e.target.id)
             e.preventDefault();
+            const formData = new FormData();
             const id = btnEliminar.getAttribute("data-id");
+            formData.append('id', id);
+            formData.append('action', 'delete');
             confirmar("¿Seguro que deseas eliminar este usuario?")
                 .then(response => {
                     if (response) {
 
-                        sendRequest("delete", "UsuarioController", { id: id });
-                        loadUsers();
+                        sendRequest("app/controllers/UsuarioController.php", "POST", formData, function (data) {
+                            console.log(data);
+                            if (data == 1) {
+                                informativo("Se ha eliminado el usuario");
+                               loadUsers();
+                            } else {
+                                informativo("Error al eliminar el usuario");
+                            }
+                        })
                     }
                 });
         }
