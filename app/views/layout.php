@@ -18,4 +18,31 @@
     <link rel="website icon" href="assets/paw-solid.svg">
     <script src="public/javascript/script.js" defer></script>
 </head>
-<?php require_once $view; ?>
+<?php
+    if (isset($view) && file_exists($view)) {
+        include $view;
+    } else {
+        echo "<p>Error: vista no encontrada</p>";
+    }
+?>
+
+
+<div id="modal-confirmacion" class="modal-confirmacion">
+  <div class="contenido">
+    <p id="mensaje"></p>
+    <div class="botones">
+      <button id="confirmar" class="confirmar">Aceptar</button>
+      <button id="cancelar" class="cancelar">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<div id="modal-informacion" class="modal-confirmacion">
+  <div class="contenido">
+    <p id="mensaje-info"></p>
+    <div class="botones">
+      <button id="confirmar-info" class="confirmar">Aceptar</button>
+      
+    </div>
+  </div>
+</div>

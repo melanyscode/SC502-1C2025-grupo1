@@ -16,7 +16,7 @@ if (isset($_GET['id'])) {
     </div>
 
     <div class=" m-3 ms-1 p-4 bg-white rounded-5">
-        <h1 class=" text-center txt-azul-oscuro mt-5">Agregar Usuario</h1>
+        <h1 class=" text-center txt-azul-oscuro mt-5">Editar Usuario</h1>
 
         <div class="container  mt-5 pt-5">
             <form action="" method="POST"  enctype="multipart/form-data" class="mt-5">
@@ -25,7 +25,7 @@ if (isset($_GET['id'])) {
                     <div class="col">
                         <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                             <div class="img-preview m-5 ">
-                                <img src="" alt="Image preview" id="imgpreview" class="imgpreview text-center" data-preview>
+                                <img src="<?php echo $usuario['img_url'];?>" alt="Image preview" id="imgpreview" class="imgpreview text-center" data-preview>
                             </div>
                             <input type="file" multiple hidden id="editImagenUsuario" data-input>
                             <div class="text-center">
@@ -38,31 +38,31 @@ if (isset($_GET['id'])) {
 
                         <div class="row">
                             <div class="col mb-3">
-                                <input type="hidden" value= "<?php echo $usuario['id_usuario'] ?>" id="editIdUsuario">
+                                <input type="hidden" value="<?php echo $usuario['id_usuario']?>" id="editIdUsuario">
                                 <label>Nombre</label>
-                                <input type="text" class="input-adopcion bg-celeste" value=" <?php echo $usuario['nombre'] ?> " id="editNombreUsuario">
+                                <input type="text" class="input-adopcion bg-celeste" value="<?php echo $usuario['nombre'] ?>" id="editNombreUsuario">
                             </div>
                             <div class="col mb-3">
                                 <label>Apellido</label>
-                                <input type="text" class="input-adopcion bg-celeste" id="editApellidoUsuario" value=" <?php echo $usuario['apellido'] ?> ">
+                                <input type="text" class="input-adopcion bg-celeste" id="editApellidoUsuario" value="<?php echo $usuario['apellido']?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col mb-3">
                                 <label>Telefono</label>
-                                <input type="text" class="input-adopcion bg-celeste" id="editTelefonoUsuario" value=" <?php echo $usuario['telefono'] ?>">
+                                <input type="text" class="input-adopcion bg-celeste" id="editTelefonoUsuario" value="<?php echo $usuario['telefono']?>">
                             </div>
 
                         </div>
                         <div class=" col mb-3">
                                 <label>Correo</label>
-                                <input type="text" class="input-adopcion bg-celeste"id="editCorreoUsuario" value=" <?php echo $usuario['correo'] ?>">
+                                <input type="text" class="input-adopcion bg-celeste"id="editCorreoUsuario" value="<?php echo $usuario['correo']?>">
                         </div>
 
                         <div class=" row">
                                 <div class="col mb-3">
                                     <label>Estado</label>
-                                    <select name="rol" id="editEstadoUsuario" class="input-adopcion bg-celeste">
+                                    <select name="estado" id="editEstadoUsuario" class="input-adopcion bg-celeste">
                                         <option value="1" <?= ($usuario['estado'] == 1) ? 'selected' : '' ?>>Activo</option>
                                         <option value="0" <?= ($usuario['estado'] == 0) ? 'selected' : '' ?>>Inactivo</option>
                                        

@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="ms-4 my-5">
-            <a href="index.php?p=usuarioagregar" class="my-5  py-2 px-4 bg-celeste rounded-pill text-decoration-none">Agregar</a>
+            <a href="index.php?p=usuarioagregar"  class="my-5  py-2 px-4 bg-celeste rounded-pill text-decoration-none">Agregar</a>
         </div>
         <div class="ms-4">
 

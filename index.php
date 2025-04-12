@@ -1,13 +1,14 @@
 
 <?php
 
+
+
 $pagina = $_GET['p'] ?? 'inicio';
 
 switch ($pagina) {
     case 'inicio':
     case 'nosotros':
     case 'contacto':
-        
         $view = './app/views/landing/'.$pagina.'.php';
         break;
     case 'blog': 

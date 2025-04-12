@@ -21,38 +21,57 @@ class Usuario
             return ["error" => "Error al obtener usuarios: " . $e->getMessage()];
         }
     }
-    public static function add($title)
+    public static function add($nombre, $apellido, $telefono, $correo, $estado, $rol, $rutaImagen)
     {
         global $conn;
+        if ($rutaImagen) {
+            $stmt = $conn->prepare("INSERT INTO usuario (nombre, apellido, telefono, correo, estado, id_rol, img_url) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssssis", $nombre, $apellido, $telefono, $correo, $estado, $rol, $rutaImagen);
 
-        $sql = "INSERT INTO usuario (title) VALUES ('$title')";
-
-        if ($conn->query($sql) === TRUE) {
+        } else {
+          
+            $stmt = $conn->prepare("INSERT INTO usuario (nombre, apellido, telefono, correo, estado, id_rol) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssssii", $nombre, $apellido, $telefono, $correo, $estado, $rol);
+        }
+    
+        if ($stmt->execute()) {
+            $stmt->close();
             return 1;
         } else {
+            $stmt->close();
             return 0;
         }
+        
     }
 
     public static function delete($id)
     {
         global $conn;
+        $stmt = $conn->prepare("DELETE FROM usuario WHERE id_usuario = ?");
 
-        $sql = "DELETE FROM tasks WHERE id = $id";
+      $stmt->bind_param("i", $id);
 
-        if ($conn->query($sql) === TRUE) {
+        if ($stmt->execute()) {
+            $stmt->close();
             return 1;
         } else {
+            $stmt->close();
             return 0;
         }
     }
 
-    public static function update($id, $nombre, $apellido, $telefono, $correo, $estado, $rol)
+    public static function update($id, $nombre, $apellido, $telefono, $correo, $estado, $rol, $rutaImagen)
     {
         global $conn;
-        $stmt = $conn->prepare("UPDATE usuario SET nombre = ?, apellido = ?, telefono = ?, correo = ?, estado = ?, rol = ? WHERE id_usuario = ?");
-
-        $stmt->bind_param("ssssiii", $nombre, $apellido, $telefono, $correo, $estado, $rol, $id);
+        if ($rutaImagen) {
+            $stmt = $conn->prepare("UPDATE usuario SET nombre = ?, apellido = ?, telefono = ?, correo = ?, estado = ?, id_rol = ?, img_url = ? WHERE id_usuario = ?");
+            $stmt->bind_param("sssssssi", $nombre, $apellido, $telefono, $correo, $estado, $rol, $rutaImagen, $id);
+        } else {
+          
+            $stmt = $conn->prepare("UPDATE usuario SET nombre = ?, apellido = ?, telefono = ?, correo = ?, estado = ?, id_rol = ? WHERE id_usuario = ?");
+            $stmt->bind_param("ssssssi", $nombre, $apellido, $telefono, $correo, $estado, $rol, $id);
+        }
+    
         if ($stmt->execute()) {
             $stmt->close();
             return 1;

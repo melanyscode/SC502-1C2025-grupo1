@@ -9,9 +9,9 @@
 
     <nav class="admin-link mt-5 pt-5 ms-3 d-flex flex-column">
 
-        <a href="index.php?controller=admin&action=usuario" class="mt-4 text-decoration-none txt-azul-oscuro">Usuario</a>
-        <a href="index.php?controller=admin&action=adopciones" class="mt-4 text-decoration-none txt-azul-oscuro">Adopciones</a>
-        <a href="index.php?controller=admin&action=blog" class="mt-4 text-decoration-none txt-azul-oscuro">Blog</a>
-        <a href="index.php?controller=admin&action=solicitantes" class="mt-4 text-decoration-none txt-azul-oscuro">Aplicaciones de Adopcion</a>
+        <a href="index.php?p=admin" class="mt-4 text-decoration-none txt-azul-oscuro">Usuario</a>
+        <a href="index.php?p=adopciones" class="mt-4 text-decoration-none txt-azul-oscuro">Adopciones</a>
+        <a href="index.php?p=blogadmin" class="mt-4 text-decoration-none txt-azul-oscuro">Blog</a>
+        <a href="index.php?p=solicitantes" class="mt-4 text-decoration-none txt-azul-oscuro">Aplicaciones de Adopcion</a>
     </nav>
 </aside>
