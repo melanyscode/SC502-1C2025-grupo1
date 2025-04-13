@@ -1,5 +1,8 @@
 
-<?php require_once __DIR__ .'/../navbar.php'; ?>
+<?php require_once __DIR__ .'/../navbar.php';
+
+
+?>
 
 <body class="d-flex flex-column min-vh-100">
    

@@ -1,4 +1,23 @@
+<?php
+session_start();
 
+if (isset($_SESSION['user'])) {
+  $user = $_SESSION['user'];
+}
+var_dump($user);
+
+//imagen 
+$default = "app/uploads/default.jpg";
+$foto = !empty($user['img_url']) ? $user['img_url'] : $default;
+
+//direccion 
+$sinDireccion= "No tiene una dirección registrada";
+$direccion = !empty($user['direccion']) ? $user['direccion'] : $sinDireccion;
+
+//telefono
+$sinTelefono = "No tiene telefono registrado";
+$telefono = !empty($user['telefono']) ? $user['telefono'] : $sinTelefono;
+?>
 
 <body class="d-flex flex-column min-vh-100">
   
@@ -6,7 +25,7 @@
 
     <div class="header-perfil pb-5 flex-grow-1">
     <div class="container d-flex align-items-end justify-content-end" style="min-height: 20vh;">
-        <a href="formPerdida.php">
+        <a href="index.php?p=crearpost">
             <button class="btn btn-postear-anuncio mt-5" style="width: auto;">+ Postear Anuncio</button>
         </a>
     </div>
@@ -18,10 +37,10 @@
         <!-- Parte izquierda -->
 
         <div class="perfil-left">
-            <img src="assets/img/bg-16.jpg" alt="Imagen de perfil" class="perfil-img">
+            <img src="<?php echo $foto ?>" alt="Imagen de perfil" class="perfil-img">
 
-            <h4 class="perfil-nombre">Rebecca Jimenez Alpizar</h4>
-            <h5 class="perfil-usuario">Usuario</h5>
+            <h4 class="perfil-nombre"> <?php echo $user['nombre'] .' ' . $user['apellido'] ?> </h4>
+            
             <hr>
 
             <h3 class="perfil-num-adopciones">2</h3>
@@ -30,16 +49,19 @@
 
             <div class="perfil-contacto">
                 <div class="contacto-item">
-                    <img src="assets/img/bg-phone.png" alt="Teléfono" height="20px">
-                    <span> +506 8888-8888</span>
+                    <img src="public/img/bg-phone.png" alt="Teléfono" height="20px">
+                    <span> <?php echo $telefono; ?></span>
                 </div>
                 <div class="contacto-item">
-                    <img src="assets/img/bg-email.png" alt="Correo" height="20px">
-                    <span> rebe.alpizar@gmail.com</span>
+                    <img src="public/img/bg-email.png" alt="Correo" height="20px">
+                    <span> <?php echo $user['correo']; ?></span>
                 </div>
                 <div class="contacto-item">
-                    <img src="assets/img/bg-address.png" alt="Dirección" height="20px">
-                    <span> Alajuela, Grecia</span>
+                    <img src="public/img/bg-address.png" alt="Dirección" height="20px">
+                    <span> <?php echo $direccion; ?></span>
+                </div>
+                <div class="contacto-item">
+                <a href="index.php?p=logout" class="btn-blanco">Cerrar sesión</a>
                 </div>
             </div>
         </div>
@@ -51,7 +73,7 @@
                 <div class="row justify-content-end">
                     <div class="col-md-6">
                         <div class="perfil-card-right">
-                            <img src="assets/img/bg-7.jpg" class="card-img-top" alt="Mascota">
+                            <img src="public/img/bg-7.jpg" class="card-img-top" alt="Mascota">
                             <div class="card-body-right">
                                 <h5>Spike</h5>
                             </div>
@@ -60,7 +82,7 @@
 
                     <div class="col-md-6">
                         <div class="perfil-card-right">
-                            <img src="assets/img/dog-1.jpg" class="card-img-top" alt="Mascota">
+                            <img src="public/img/dog-1.jpg" class="card-img-top" alt="Mascota">
                             <div class="card-body-right">
                                 <h5>Ares</h5>
                             </div>

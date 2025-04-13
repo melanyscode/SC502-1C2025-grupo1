@@ -64,8 +64,11 @@ try {
         
     
             $resultado = Usuario::update($id, $nombre, $apellido, $telefono, $correo, $estado, $rol, $rutaWeb);
-        
-            echo json_encode($resultado);
+     
+            echo json_encode([
+                'resultado' => $resultado,
+                'rutaImagen' => $rutaWeb
+            ]);
         } elseif($action === 'login' && isset($_POST['correo'], $_POST['password'])){
             $correo = $_POST['correo'];
             $pass = $_POST['password'];
@@ -73,10 +76,10 @@ try {
             $usuario = Usuario::login($correo, $pass);
             if($usuario){
                 session_start();
-                $_SESSION['usuario'] = $usuario;
+                $_SESSION['user'] = $usuario;
                 echo json_encode($usuario);
             }else{
-                echo json_encode($usuario);
+                echo json_encode(['error' => 'Credenciales incorrectas']);
             }
         }elseif($action==='registrar' && isset($_POST['correo'], $_POST['nombre'], $_POST['apellido'], $_POST["password"])){
             $correo = $_POST['correo'];

@@ -64,12 +64,14 @@ class Usuario
         if ($rutaImagen) {
             $stmt = $conn->prepare("UPDATE usuario SET nombre = ?, apellido = ?, telefono = ?, correo = ?, estado = ?, id_rol = ?, img_url = ? WHERE id_usuario = ?");
             $stmt->bind_param("sssssssi", $nombre, $apellido, $telefono, $correo, $estado, $rol, $rutaImagen, $id);
+
+            
         } else {
 
             $stmt = $conn->prepare("UPDATE usuario SET nombre = ?, apellido = ?, telefono = ?, correo = ?, estado = ?, id_rol = ? WHERE id_usuario = ?");
             $stmt->bind_param("ssssssi", $nombre, $apellido, $telefono, $correo, $estado, $rol, $id);
         }
-
+       
         if ($stmt->execute()) {
             $stmt->close();
             return 1;
@@ -90,7 +92,7 @@ class Usuario
         return $usuario;
     }
 
-    public static function login($correo, $clave)
+    public static function login($correo, $password)
     {
         global $conn;
         $stmt = $conn->prepare("SELECT * FROM usuario WHERE correo = ?");
@@ -98,8 +100,9 @@ class Usuario
         $stmt->execute();
         $result = $stmt->get_result();
         if ($user = $result->fetch_assoc()) {
-            if (password_verify($clave, $user['password'])) {
+            if (password_verify($password, $user['password'])) {
                 return $user;
+                
             }
         } else {
             return 0;
@@ -119,4 +122,13 @@ class Usuario
             return 0;
         }
     }
+    public static function logout()
+{
+    session_start();
+    session_unset();
+    session_destroy();
+    setcookie(session_name(), '', time() - 3600, '/');
+    header("Location: index.php?p=inicio");
+    exit();
+}
 }

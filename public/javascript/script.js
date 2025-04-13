@@ -184,11 +184,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
             sendRequest("app/controllers/UsuarioController.php", "POST", formData, function (data) {
                 console.log(typeof (data));
-                if (data == 1) {
+                if (data.resultado) {
                     informativo("Se ha modificado el usuario satisfactoriamente");
-                    setTimeout(() => {
-                        window.location.href = "index.php?p=admin";
-                    }, 2000);
+                   
+                    fetch('app/session/getSesion.php')
+                        .then(res => res.json())
+                        .then(sesion => {
+
+                            console.log("Usuario en sesión:", sesion);
+                            const idUsuarioSesion = sesion.id_usuario;
+                            if (idUsuarioSesion == document.getElementById('editIdUsuario').value) {
+                                const formData = new FormData();
+                                formData.append('action', 'update');
+                                formData.append('id', document.getElementById('editIdUsuario').value);
+                                formData.append('nombre', document.getElementById('editNombreUsuario').value);
+                                formData.append('apellido', document.getElementById('editApellidoUsuario').value);
+                                formData.append('telefono', document.getElementById('editTelefonoUsuario').value);
+                                formData.append('correo', document.getElementById('editCorreoUsuario').value);
+                                formData.append('estado', document.getElementById('editEstadoUsuario').value);
+                                formData.append('rol', document.getElementById('editRolUsuario').value);
+                                if ( data.rutaImagen) {
+                                    console.log( data.rutaImagen);
+                                    formData.append('img_url', data.rutaImagen); 
+                                }
+                                sendRequest('app/session/updateSesion.php', "POST", formData, function(e){
+                                    if(e == 1){
+                                        console.log("exito");
+                                    }else{
+                                        console.log("fallo");
+                                    }
+                                })
+                            }
+                        });
+
                 } else {
                     informativo("Error al modificar el usuario");
                 }
@@ -230,21 +258,22 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("login").addEventListener("click", function (e) {
             e.preventDefault();
             const formData = new FormData();
-             const correo = document.getElementById("loginEmail").value.trim();
-             const password = document.getElementById('loginPassword').value.trim();
-             if(correo != '' && password != ''){
+            const correo = document.getElementById("loginEmail").value.trim();
+            const password = document.getElementById('loginPassword').value.trim();
+            if (correo != '' && password != '') {
                 formData.append('action', 'login');
                 formData.append('correo', correo);
                 formData.append('password', password);
-            sendRequest("app/controllers/UsuarioController.php", "POST", formData, function (data) {
-                console.log(data);
-                if (data == 1) {
-                    window.location.href = "index.php?p=perfil"
-                } else {
-                    informativo("Credenciales invalidas");
-                }
+                sendRequest("app/controllers/UsuarioController.php", "POST", formData, function (data) {
+                    console.log(data);
+                    if (data != 0) {
+                        window.location.href = "index.php?p=perfil"
+                    } else {
+                        informativo("Credenciales invalidas");
+                    }
 
-            })}else{
+                })
+            } else {
                 informativo("Todos los campos son obligatorios intente de nuevo");
             }
         })
@@ -275,12 +304,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log(data);
                     if (data == 1) {
                         informativo("Registro satisfactorio, ve a la pagina de login e inicia sesión");
-                       
+
                     } else {
                         informativo("Ocurrio un error en el registro en el sistema intente mas tarde");
                     }
                 })
-            }else{
+            } else {
                 informativo("Todos los campos son obligatorios intente de nuevo");
             }
         })

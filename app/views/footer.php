@@ -2,10 +2,10 @@
         <div class=" bg-celeste p-5 mt-3">
             <div class="container">
                 <ul class="d-flex m-0 justify-content-around nav-list">
-                    <li class="ms-2"><a href="calendario.php" class="txt-celeste ">Calendario</a></li>
-                    <li class="ms-2"><a href="contacto.php" class="txt-celestek ">Contacto</a></li>
-                    <li class="ms-2"><a href="blog.php" class="txt-celeste ">Blog</a></li>
-                    <li class="ms-2"><a href="blog.php" class="txt-celeste ">Terminos y condiciones</a></li>
+                    <li class="ms-2"><a href="index.php?p=calendario" class="txt-celeste ">Calendario</a></li>
+                    <li class="ms-2"><a href="index.php?p=contacto" class="txt-celestek ">Contacto</a></li>
+                    <li class="ms-2"><a href="index.php?p=blog" class="txt-celeste ">Blog</a></li>
+                    
                 </ul>
             </div>
             <div class="container d-flex justify-content-center mt-3">
