@@ -32,6 +32,15 @@ switch ($pagina) {
     case 'adopciones':
         $view = './app/views/admin/adopcionesAdmin.php';
         break;
+    case 'perfil':
+        $view = './app/views/usuario/perfil.php';
+        break;
+    case 'login':
+        $view = './app/views/usuario/login.php';
+        break;
+    case 'registrarse':
+        $view = './app/views/usuario/registro.php';
+        break;
     default:
         $view = './app/views/layout.php';
         break;

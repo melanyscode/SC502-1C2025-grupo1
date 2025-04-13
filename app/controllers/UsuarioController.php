@@ -66,8 +66,28 @@ try {
             $resultado = Usuario::update($id, $nombre, $apellido, $telefono, $correo, $estado, $rol, $rutaWeb);
         
             echo json_encode($resultado);
-        } else{
+        } elseif($action === 'login' && isset($_POST['correo'], $_POST['password'])){
+            $correo = $_POST['correo'];
+            $pass = $_POST['password'];
 
+            $usuario = Usuario::login($correo, $pass);
+            if($usuario){
+                session_start();
+                $_SESSION['usuario'] = $usuario;
+                echo json_encode($usuario);
+            }else{
+                echo json_encode($usuario);
+            }
+        }elseif($action==='registrar' && isset($_POST['correo'], $_POST['nombre'], $_POST['apellido'], $_POST["password"])){
+            $correo = $_POST['correo'];
+            $nombre = $_POST['nombre'];
+            $apellido = $_POST['apellido'];
+            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $estado = $_POST['estado'];
+            $rol = $_POST['rol'];
+            
+            $resultado = Usuario::registrar($correo, $nombre, $apellido, $password, $estado, $rol);
+            echo json_encode($resultado);
         }
     }
 } catch (Exception $e) {

@@ -27,13 +27,12 @@ class Usuario
         if ($rutaImagen) {
             $stmt = $conn->prepare("INSERT INTO usuario (nombre, apellido, telefono, correo, estado, id_rol, img_url) VALUES (?, ?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("sssssis", $nombre, $apellido, $telefono, $correo, $estado, $rol, $rutaImagen);
-
         } else {
-          
+
             $stmt = $conn->prepare("INSERT INTO usuario (nombre, apellido, telefono, correo, estado, id_rol) VALUES (?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("ssssii", $nombre, $apellido, $telefono, $correo, $estado, $rol);
         }
-    
+
         if ($stmt->execute()) {
             $stmt->close();
             return 1;
@@ -41,7 +40,6 @@ class Usuario
             $stmt->close();
             return 0;
         }
-        
     }
 
     public static function delete($id)
@@ -49,7 +47,7 @@ class Usuario
         global $conn;
         $stmt = $conn->prepare("DELETE FROM usuario WHERE id_usuario = ?");
 
-      $stmt->bind_param("i", $id);
+        $stmt->bind_param("i", $id);
 
         if ($stmt->execute()) {
             $stmt->close();
@@ -67,11 +65,11 @@ class Usuario
             $stmt = $conn->prepare("UPDATE usuario SET nombre = ?, apellido = ?, telefono = ?, correo = ?, estado = ?, id_rol = ?, img_url = ? WHERE id_usuario = ?");
             $stmt->bind_param("sssssssi", $nombre, $apellido, $telefono, $correo, $estado, $rol, $rutaImagen, $id);
         } else {
-          
+
             $stmt = $conn->prepare("UPDATE usuario SET nombre = ?, apellido = ?, telefono = ?, correo = ?, estado = ?, id_rol = ? WHERE id_usuario = ?");
             $stmt->bind_param("ssssssi", $nombre, $apellido, $telefono, $correo, $estado, $rol, $id);
         }
-    
+
         if ($stmt->execute()) {
             $stmt->close();
             return 1;
@@ -80,7 +78,8 @@ class Usuario
             return 0;
         }
     }
-    public static function buscarUsuario($id){
+    public static function buscarUsuario($id)
+    {
         global $conn;
         $stmt = $conn->prepare("SELECT * FROM usuario WHERE id_usuario = ?");
         $stmt->bind_param("i", $id);
@@ -89,5 +88,35 @@ class Usuario
         $usuario = $resultado->fetch_assoc();
         $stmt->close();
         return $usuario;
+    }
+
+    public static function login($correo, $clave)
+    {
+        global $conn;
+        $stmt = $conn->prepare("SELECT * FROM usuario WHERE correo = ?");
+        $stmt->bind_param("s", $correo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($user = $result->fetch_assoc()) {
+            if (password_verify($clave, $user['password'])) {
+                return $user;
+            }
+        } else {
+            return 0;
+        }
+    }
+
+    public static function registrar($correo, $nombre, $apellido, $password, $estado, $rol)
+    {
+        global $conn;
+        $stmt = $conn->prepare("INSERT INTO usuario (nombre, apellido,  correo, password, estado, id_rol) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssi", $nombre, $apellido, $correo, $password, $estado, $rol);
+
+
+        if ($stmt->execute()) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }

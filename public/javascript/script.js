@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+    //----------------------- GENERALES -------------------------
     //funcion para cargar imagenes en la parte de admin
     let buttons = document.querySelectorAll("[data-btn]");
     let inputs = document.querySelectorAll("[data-input]");
@@ -40,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function sendRequest(url, method, data, callback) {
         fetch(url, {
             method: method,
-            body: data, 
+            body: data,
         })
             .then(response => response.json())
             .then(callback)
@@ -82,9 +84,10 @@ document.addEventListener("DOMContentLoaded", function () {
             modalInformativo.style.display = "none";
         }
     }
+    //----------------------- FIN GENERALES -------------------------
 
 
-    //-------------------------- ADMIN USUARIO---------------------
+    //-------------------------- USUARIO PERFIL, ADMIN Y LOGIN---------------------
     //llamada de usuario admin
     function loadUsers() {
         fetch("app/controllers/UsuarioController.php")
@@ -124,8 +127,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     //agregar usuario
-    document.addEventListener('click', function(e){
-        if(e.target && e.target.id === "agregarUsuario"){
+    document.addEventListener('click', function (e) {
+        if (e.target && e.target.id === "agregarUsuario") {
             e.preventDefault();
             const formData = new FormData();
             formData.append('action', 'add');
@@ -137,11 +140,11 @@ document.addEventListener("DOMContentLoaded", function () {
             formData.append('rol', document.getElementById('addRolUsuario').value);
 
             const imageInput = document.getElementById('addImageUsuario')
-            if(imageInput.files.length > 0){
+            if (imageInput.files.length > 0) {
                 formData.append('addImageUsuario', imageInput.files[0]);
             }
             sendRequest("app/controllers/UsuarioController.php", "POST", formData, function (data) {
-                console.log(typeof(data));
+                console.log(typeof (data));
                 if (data == 1) {
                     informativo("Se ha agregadp el usuario satisfactoriamente");
                     setTimeout(() => {
@@ -180,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             sendRequest("app/controllers/UsuarioController.php", "POST", formData, function (data) {
-                console.log(typeof(data));
+                console.log(typeof (data));
                 if (data == 1) {
                     informativo("Se ha modificado el usuario satisfactoriamente");
                     setTimeout(() => {
@@ -213,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             console.log(data);
                             if (data == 1) {
                                 informativo("Se ha eliminado el usuario");
-                               loadUsers();
+                                loadUsers();
                             } else {
                                 informativo("Error al eliminar el usuario");
                             }
@@ -222,9 +225,70 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
         }
     })
+    //login
+    if (document.getElementById("login")) {
+        document.getElementById("login").addEventListener("click", function (e) {
+            e.preventDefault();
+            const formData = new FormData();
+             const correo = document.getElementById("loginEmail").value.trim();
+             const password = document.getElementById('loginPassword').value.trim();
+             if(correo != '' && password != ''){
+                formData.append('action', 'login');
+                formData.append('correo', correo);
+                formData.append('password', password);
+            sendRequest("app/controllers/UsuarioController.php", "POST", formData, function (data) {
+                console.log(data);
+                if (data == 1) {
+                    window.location.href = "index.php?p=perfil"
+                } else {
+                    informativo("Credenciales invalidas");
+                }
 
-    //-------------------------- FIN USUARIO---------------------
+            })}else{
+                informativo("Todos los campos son obligatorios intente de nuevo");
+            }
+        })
+    }
+
+    //registrarse
+    if (document.getElementById("registrarse")) {
+
+        document.getElementById("registrarse").addEventListener("click", function (e) {
+            e.preventDefault();
+            const formData = new FormData();
+            const nombre = document.getElementById("registrarNombre").value.trim();
+            const apellido = document.getElementById("registrarApellido").value.trim();
+            const correo = document.getElementById("registrarEmail").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const estado = document.getElementById("registrarEstado").value.trim();
+            const rol = document.getElementById("registrarRol").value.trim();
+
+            if (nombre != "" && apellido != "" && apellido != "" && correo != "" && password != "") {
+                formData.append('nombre', nombre);
+                formData.append('apellido', apellido);
+                formData.append('correo', correo);
+                formData.append('password', password);
+                formData.append('estado', estado);
+                formData.append('rol', rol);
+                formData.append('action', 'registrar');
+                sendRequest("app/controllers/UsuarioController.php", "POST", formData, function (data) {
+                    console.log(data);
+                    if (data == 1) {
+                        informativo("Registro satisfactorio, ve a la pagina de login e inicia sesión");
+                       
+                    } else {
+                        informativo("Ocurrio un error en el registro en el sistema intente mas tarde");
+                    }
+                })
+            }else{
+                informativo("Todos los campos son obligatorios intente de nuevo");
+            }
+        })
+    }
+
     loadUsers();
+    //-------------------------- FIN USUARIO---------------------
+
 
 
 });
