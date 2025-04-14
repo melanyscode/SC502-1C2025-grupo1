@@ -1,10 +1,10 @@
 <?php
-session_start();
+require_once __DIR__ .'/../navbar.php'; 
 
 if (isset($_SESSION['user'])) {
   $user = $_SESSION['user'];
 }
-var_dump($user);
+
 
 //imagen 
 $default = "app/uploads/default.jpg";

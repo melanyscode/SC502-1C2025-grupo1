@@ -315,9 +315,49 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     }
 
-    loadUsers();
+    if(document.getElementById("usuarios")){
+        loadUsers();
+    }
+  
     //-------------------------- FIN USUARIO---------------------
 
+    //-------------------------- ADOPCIONES ---------------------
 
+    // mostrar adopciones 
+    function mostrarAdopciones(){
+        fetch("app/controllers/MascotaAdopcionController.php")
+        .then(response => response.json())
+        .then(data => {
+            let contenido = "";
+            let contenidoAdmin = ""
+            const listAdopciones = document.getElementById("listAdopciones");
+            const listAdopcionesAdmin = document.getElementById("listAdopcionesAdmin");
 
+            if (data.length > 0) {
+                data.forEach(a => {
+                    console.log(a);
+                    contenido += ` <div class="col-md-6 mb-4">
+                                <div class="card border-custom p-3 d-flex flex-column align-items-center" style="width: 330px; height: 340px;">
+                                    <img src="${a.imagenes[0]}" class="card-img-top" alt="Mascota" style="height: 150px; object-fit: cover; padding-top: 8px; padding-left: 8px; padding-right: 8px;">
+                                    <div class="card-body text-start p-3 d-flex flex-column justify-content-between" style="width: 100%; height: 100%;">
+                                        <div>
+                                            <h5 class="text-dark m-0 mb-2">${a.nombre}</h5>
+                                            <p class="card-text m-0 mb-3">${a.edad}</p>
+                                        </div>
+                                        <a href="index.php?p=detalleadopcion&id=${a.id_mascota_adopcion}" class="btn btn-publicar w-auto py-2 px-4 rounded-pill mt-auto">Ver más</a>
+                                    </div>
+                                </div>
+                            </div>`
+                });
+            } else {
+                contenido = `<p class="text-center">No hay adopciones disponibles</p>`;
+                contenidoAdmin = `<p class="text-center">No hay adopciones disponibles</p>`;
+            }
+            listAdopciones.innerHTML = contenido;
+        })
+    }
+
+    if(document.getElementById("listAdopciones") || document.getElementById("listAdopcionesAdmin")){
+        mostrarAdopciones()
+    }
 });

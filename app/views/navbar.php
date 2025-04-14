@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_SESSION['user'])) {
   $user = $_SESSION['user'];
-  var_dump($_SESSION['user']);
+
 }?>
 <nav class="navbar m-0 py-3 text-center d-flex align-items-center justify-content-center">
   <div class="container-fluid mx-sm-5 px-sm-5 d-flex justify-content-center justify-content-lg-between">

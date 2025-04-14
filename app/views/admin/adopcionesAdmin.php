@@ -19,7 +19,7 @@
         </div>
         </div>
         <div class="ms-4 my-5">
-            <a href="index.php?controller=admin&action=agregarAnuncio" class="my-5  py-2 px-4 bg-celeste rounded-pill text-decoration-none">Crear anuncio</a>
+            <a href="index.php?p=agregaradopcion" class="my-5  py-2 px-4 bg-celeste rounded-pill text-decoration-none">Crear anuncio</a>
         </div>
         <div class="ms-4">
             <p></p>
@@ -35,7 +35,7 @@
 
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="listAdopcionesAdmin">
                     <tr>
                         <td><img src="assets/img/cat-1.jpg" class="table-img text-center" alt=""> </td>
                         <td style="width: 600px;">

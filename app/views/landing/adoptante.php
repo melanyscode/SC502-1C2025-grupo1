@@ -48,33 +48,10 @@
                     </aside>
 
                     <div class="col-md-9">
-                        <div class="row">
+                        <div class="row" id="listAdopciones">
 
-                            <div class="col-md-6 mb-4">
-                                <div class="card border-custom p-3 d-flex flex-column align-items-center" style="width: 330px; height: 340px;">
-                                    <img src="public/img/bg-10.jpg" class="card-img-top" alt="Mascota" style="height: 150px; object-fit: cover; padding-top: 8px; padding-left: 8px; padding-right: 8px;">
-                                    <div class="card-body text-start p-3 d-flex flex-column justify-content-between" style="width: 100%; height: 100%;">
-                                        <div>
-                                            <h5 class="text-dark m-0 mb-2">Tonet</h5>
-                                            <p class="card-text m-0 mb-3">Es una adorable mascota de 1 año y 2 meses de edad</p>
-                                        </div>
-                                        <a href="index.php?controller=landing&action=detalle" class="btn btn-publicar w-auto py-2 px-4 rounded-pill mt-auto">Ver más</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 mb-4">
-                                <div class="card border-custom p-3 d-flex flex-column align-items-center" style="width: 330px; height: 340px;">
-                                    <img src="assets/img/bg-11.jpg" class="card-img-top" alt="Mascota" style="height: 150px; object-fit: cover; padding-top: 8px; padding-left: 8px; padding-right: 8px;">
-                                    <div class="card-body text-start p-3 d-flex flex-column justify-content-between" style="width: 100%; height: 100%;">
-                                        <div>
-                                            <h5 class="text-dark m-0 mb-2">Milo</h5>
-                                            <p class="card-text m-0 mb-3">Un conejo juguetón de 8 meses, lleno de energía</p>
-                                        </div>
-                                        <a href="index.php?controller=landing&action=detalle" class="btn btn-publicar w-auto py-2 px-4 rounded-pill mt-auto">Ver más</a>
-                                    </div>
-                                </div>
-                            </div>
+                            
+             
 
                         </div>
                     </div>

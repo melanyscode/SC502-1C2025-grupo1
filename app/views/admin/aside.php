@@ -13,5 +13,6 @@
         <a href="index.php?p=adopciones" class="mt-4 text-decoration-none txt-azul-oscuro">Adopciones</a>
         <a href="index.php?p=blogadmin" class="mt-4 text-decoration-none txt-azul-oscuro">Blog</a>
         <a href="index.php?p=solicitantes" class="mt-4 text-decoration-none txt-azul-oscuro">Aplicaciones de Adopcion</a>
+        <a href="index.php?p=eventos" class="mt-4 text-decoration-none txt-azul-oscuro">Eventos</a>
     </nav>
 </aside>
