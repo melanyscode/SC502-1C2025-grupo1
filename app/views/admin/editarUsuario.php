@@ -74,7 +74,7 @@ if (isset($_GET['id'])) {
                                     <select name="rol" id="editRolUsuario" class="input-adopcion bg-celeste">
                                         <option value="1" <?= ($usuario['id_rol'] == 1) ? 'selected' : '' ?>>Administrador</option>
                                         <option value="2" <?= ($usuario['id_rol'] == 2) ? 'selected' : '' ?>>Usuario</option>
-                                        <option value="3" <?= ($usuario['id_rol'] == 3) ? 'selected' : '' ?>>Refugio</option>
+                                        
                                     </select>
                                 </div>
                             </div>

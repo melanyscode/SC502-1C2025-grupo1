@@ -64,7 +64,6 @@
                                 <select name="rol" id="addRolUsuario" class="input-adopcion bg-celeste">
                                     <option value="1">Administrador</option>
                                     <option value="2">Usuario</option>
-                                    <option value="3">Refugio</option>
                                 </select>
                             </div>
                         </div>
