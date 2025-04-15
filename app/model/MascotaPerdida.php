@@ -19,6 +19,7 @@ class MascotaPerdida
             }
         } catch (mysqli_sql_exception $e) {
             return ["error" => "Error al obtener usuarios: " . $e->getMessage()];
+            error_log("[" . date('Y-m-d H:i:s') . "] Error de conexión: " . $e->getMessage() . "\n", 3, __DIR__ . '/../errores.log');
         }
     }
     public static function add($title)

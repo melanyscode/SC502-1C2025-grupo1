@@ -39,7 +39,18 @@ class MascotaAdopcion{
             
 
         } catch (mysqli_sql_exception $e) {
-            return ["error" => "Error al obtener usuarios: " . $e->getMessage()];
-        }
+      
+                $mensaje = "[" . date('Y-m-d H:i:s') . "] ERROR en Metodo get all Mascota Adopcion\n";
+                $mensaje = "hostname". gethostname() . "\n";
+                $mensaje .= "Mensaje: " . $e->getMessage() . "\n";
+                $mensaje .= "Archivo: " . $e->getFile() . "\n";
+                $mensaje .= "Línea: " . $e->getLine() . "\n";
+                $mensaje .= "Traza:\n" . $e->getTraceAsString() . "\n\n";
+                error_log($mensaje, 3, __DIR__ . '/../../errores.log');
+            
+                return ["error" => "Error al obtener usuarios: " . $e->getMessage()];
+            }
+          
+        
     }
 }

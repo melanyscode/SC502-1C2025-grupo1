@@ -1,5 +1,6 @@
 <?php
 require_once '../model/MascotaPerdida.php';
+require_once __DIR__ . '/../../config/errores.php';
 
 header('Content-Type: application/json');
 

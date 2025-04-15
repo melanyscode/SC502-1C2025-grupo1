@@ -1,5 +1,6 @@
 <?php
 require_once '../model/Usuario.php';
+require_once __DIR__ . '/../../config/errores.php';
 
 header('Content-Type: application/json');
 
@@ -94,5 +95,6 @@ try {
         }
     }
 } catch (Exception $e) {
+    
     echo json_encode(["error" => $e->getMessage()]);
 }

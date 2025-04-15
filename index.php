@@ -2,7 +2,6 @@
 <?php
 
 
-
 $pagina = $_GET['p'] ?? 'inicio';
 
 switch ($pagina) {
