@@ -2,7 +2,7 @@
 
 function call($controller, $action)
 {
-    require_once('controllers/' . $controller . 'Controller.php');
+    require_once('app/controllers/' . $controller . 'Controller.php');
 
     switch ($controller) {
         case 'inicio':
@@ -16,6 +16,7 @@ function call($controller, $action)
             break;
         case 'admin':
             $controller = new adminController();
+            
             break;
 
         default:
@@ -27,14 +28,14 @@ function call($controller, $action)
     $controller->{$action}();
 }
 
-$controller = isset($_GET['controller']) ? $_GET['controller'] : 'inicio';
-$action = isset($_GET['action']) ? $_GET['action'] : 'inicio';
+$controller = isset($_GET['c']) ? $_GET['c'] : 'inicio';
+$action = isset($_GET['a']) ? $_GET['a'] : 'inicio';
 
 $controllers = array(
     'inicio' => ['inicio', 'error'],
     'landing' => ['nosotros', 'contacto', 'encuentrame', 'blog', 'calendario', 'adopta', 'detalle'],
     'usuario' => ['perfil', 'login', 'registro'],
-    'admin' => ['inicio', 'adopciones', 'articulo', 'agregarArticulo', 'editarArticulo', 'anuncio', 'agregarAnuncio', 'blog', 'solicitantes', 'usuario', 'agregarUsuario']
+    'admin' => ['inicio', 'adopciones', 'articulo', 'agregarArticulo', 'editarArticulo', 'anuncio', 'agregarAnuncio', 'blog', 'solicitantes', 'usuario', 'agregarUsuario', 'guardarUsuario', 'editarUsuario', 'eliminarUsuario']
 );
 
 if (array_key_exists($controller, $controllers)) {
@@ -43,9 +44,9 @@ if (array_key_exists($controller, $controllers)) {
         call($controller, $action);
     } else {
         //devolver un mensaje de error de que la action no existe
-        call($controller, 'error');
+        call($controller, 'error accion no existe');
     }
 } else {
     //devolver un mensaje que el controller no existe       
-    call('inicio', 'error');
+    call('inicio', 'error no existe');
 }

@@ -1,13 +1,14 @@
     <?php
-        if(isset($_GET['controller']) && isset($_GET['action']))
-        {
-            $controller = $_GET['controller'];
-            $action = $_GET['action'];
-        }else{
-            $controller = 'inicio';
-            $action = 'inicio';
-        }
+    require_once __DIR__ . '/config/database.php';
 
-        require_once("rutas.php");
+    if (isset($_GET['c']) && isset($_GET['a'])) {
+        $controller = $_GET['c'];
+        $action = $_GET['a'];
+    } else {
+        $controller = 'inicio';
+        $action = 'inicio';
+    }
+
+    require_once("rutas.php");
     ?>
 
