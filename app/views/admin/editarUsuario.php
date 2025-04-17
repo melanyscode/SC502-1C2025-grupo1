@@ -19,7 +19,7 @@ if (isset($_GET['id'])) {
         <h1 class=" text-center txt-azul-oscuro mt-5">Agregar Usuario</h1>
 
         <div class="container  mt-5 pt-5">
-            <form action="index.php?c=admin&a=guardarUsuario" method="POST" class="mt-5" enctype="multipart/form-data">
+            <form action="index.php?c=admin&a=guardarEditUsuario" method="POST" class="mt-5" enctype="multipart/form-data">
 
                 <div class="row">
                     <div class="col">
@@ -27,7 +27,7 @@ if (isset($_GET['id'])) {
                             <div class="img-preview m-5 ">
                                 <img src="<?php echo $usuario['img_url'];?>" alt="Image preview" id="imgpreview" class="imgpreview text-center" data-preview>
                             </div>
-                            <input type="file" multiple hidden name="addImageUsuario" id="inputAdopciones" data-input>
+                            <input type="file" multiple hidden name="editFotoUsuario" id="inputAdopciones" data-input>
                             <div class="text-center">
                                 <button class="d-inline border-0 px-4 py-2 bg-celeste-oscuro rounded-5 text-white fw-bold" id="btnImgAdopciones" data-btn>Subir Imagen</button>
                             </div>
@@ -38,7 +38,7 @@ if (isset($_GET['id'])) {
 
                         <div class="row">
                             <div class="col mb-3">
-                            <input type="hidden" value="<?php echo $usuario['id_usuario']?>" id="editIdUsuario">
+                            <input type="hidden" value="<?php echo $usuario['id_usuario']?>" name="id" id="editIdUsuario">
                                 <label>Nombre</label>
                                 <input type="text" name="nombreEdit" value="<?php echo $usuario['nombre'] ?>" class="input-adopcion bg-celeste">
                             </div>

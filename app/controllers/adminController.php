@@ -51,11 +51,12 @@ class adminController
                 }
         
                 move_uploaded_file($rutaTemporal, $rutaImagen);
-                header("Location: index.php?c=admin&a=usuario");
+               
             }
 
 
             Usuario::add($nombre, $apellido, $telefono, $correo, $estado, $rol, $rutaWeb);
+            header("Location: index.php?c=admin&a=usuario");
         }else{
             echo "No se pudo agregar el usuario";
         }    
@@ -67,16 +68,16 @@ class adminController
         require_once("app/views/admin/editarUsuario.php");
     }
     public function guardarEditUsuario(){
-        if(isset($_POST['id'], $_POST['nombre'], $_POST['apellido'], $_POST['telefono'], $_POST['correo'], $_POST['estado'], $_POST['rol'])){
+        if(isset($_POST['id'], $_POST['nombreEdit'], $_POST['apellidoEdit'], $_POST['telefonoEdit'], $_POST['correoEdit'], $_POST['estadoEdit'], $_POST['rolEdit'])){
             $id = $_POST['id'];
-            $nombre = $_POST['nombre'];
-            $apellido = $_POST['apellido'];
-            $telefono = $_POST['telefono'];
-            $correo = $_POST['correo'];
-            $estado = $_POST['estado'];
-            $rol = $_POST['rol'];
+            $nombre = $_POST['nombreEdit'];
+            $apellido = $_POST['apellidoEdit'];
+            $telefono = $_POST['telefonoEdit'];
+            $correo = $_POST['correoEdit'];
+            $estado = $_POST['estadoEdit'];
+            $rol = $_POST['rolEdit'];
         
-            $rutaWeb =null;
+            $rutaWeb ="";
             $rutaImagen = null;
             if (isset($_FILES['editFotoUsuario']) && $_FILES['editFotoUsuario']['error'] === 0) {
                 $rutaTemporal = $_FILES['editFotoUsuario']['tmp_name'];
@@ -92,7 +93,8 @@ class adminController
             }
         
     
-            $resultado = Usuario::update($id, $nombre, $apellido, $telefono, $correo, $estado, $rol, $rutaWeb);
+           Usuario::update($id, $nombre, $apellido, $telefono, $correo, $estado, $rol, $rutaWeb);
+           header("Location: index.php?c=admin&a=usuario");
         }else{
             echo "No se pudo agregar el usuario";
         }    
