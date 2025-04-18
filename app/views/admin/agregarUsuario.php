@@ -14,11 +14,14 @@
                     <div class="col">
                         <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                             <div class="img-preview m-5 ">
-                                <img src="" alt="Image preview" id="imgpreview" class="imgpreview text-center" data-preview>
+                                <img src="" alt="Image preview" id="imgpreview" class="imgpreview text-center"
+                                    data-preview>
                             </div>
                             <input type="file" multiple hidden name="addImageUsuario" id="inputAdopciones" data-input>
                             <div class="text-center">
-                                <button class="d-inline border-0 px-4 py-2 bg-celeste-oscuro rounded-5 text-white fw-bold" id="btnImgAdopciones" data-btn>Subir Imagen</button>
+                                <button
+                                    class="d-inline border-0 px-4 py-2 bg-celeste-oscuro rounded-5 text-white fw-bold"
+                                    id="btnImgAdopciones" data-btn>Subir Imagen</button>
                             </div>
                         </div>
                     </div>
@@ -65,7 +68,9 @@
                             </div>
                         </div>
                         <div class="text-end">
-                            <button class="d-inline border-0 px-4 py-2 bg-azul-oscuro rounded-5 text-white fw-bold mt-2 text-end" type="submit">Publicar</button>
+                            <button
+                                class="d-inline border-0 px-4 py-2 bg-azul-oscuro rounded-5 text-white fw-bold mt-2 text-end"
+                                type="submit">Publicar</button>
                         </div>
 
 

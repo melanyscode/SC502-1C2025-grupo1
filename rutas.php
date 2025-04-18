@@ -17,7 +17,7 @@ function call($controller, $action)
             break;
         case 'admin':
             $controller = new adminController();
-            
+
             break;
 
         default:
@@ -35,8 +35,10 @@ $action = isset($_GET['a']) ? $_GET['a'] : 'inicio';
 $controllers = array(
     'inicio' => ['inicio', 'error'],
     'landing' => ['nosotros', 'contacto', 'encuentrame', 'blog', 'calendario', 'adopta', 'detalle'],
-    'usuario' => ['perfil', 'login', 'registro', 'loginPost', 'registroPost'],
-    'admin' => ['inicio', 'adopciones', 'articulo', 'agregarArticulo', 'editarArticulo', 'anuncio', 'agregarAnuncio', 'blog', 'solicitantes', 'usuario', 'agregarUsuario', 'guardarUsuario', 'editarUsuario', 'eliminarUsuario', 'guardarEditUsuario', 'editarAnuncio', 'eliminarAdopcion']
+
+  'usuario' => ['perfil', 'login', 'registro', 'loginPost', 'registroPost'],
+    'admin' => ['inicio', 'adopciones', 'articulo', 'agregarArticulo', 'editarArticulo', 'anuncio', 'agregarAnuncio', 'blog', 'solicitantes', 'usuario', 'agregarUsuario', 'guardarUsuario', 'editarUsuario', 'eliminarUsuario', 'guardarEditUsuario', 'editarAnuncio',  'eliminarAdopcion','eliminarSolicitante', 'editarSolicitante', 'agregarSolicitante', 'guardarEditSolicitante', 'guardarSolicitante', 'solicitante']
+
 );
 
 if (array_key_exists($controller, $controllers)) {
