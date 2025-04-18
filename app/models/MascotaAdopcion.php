@@ -31,7 +31,7 @@ class MascotaAdopcion{
                     }
                 }
     
-                // Guardamos las imágenes en el array original
+           
                 $mascotas[$i]['imagenes'] = $imagenes;
             }
     
@@ -39,18 +39,26 @@ class MascotaAdopcion{
             
 
         } catch (mysqli_sql_exception $e) {
-      
-                $mensaje = "[" . date('Y-m-d H:i:s') . "] ERROR en Metodo get all Mascota Adopcion\n";
-                $mensaje = "hostname". gethostname() . "\n";
-                $mensaje .= "Mensaje: " . $e->getMessage() . "\n";
-                $mensaje .= "Archivo: " . $e->getFile() . "\n";
-                $mensaje .= "Línea: " . $e->getLine() . "\n";
-                $mensaje .= "Traza:\n" . $e->getTraceAsString() . "\n\n";
-                error_log($mensaje, 3, __DIR__ . '/../../errores.log');
-            
-                return ["error" => "Error al obtener usuarios: " . $e->getMessage()];
-            }
-          
-        
+            return ["error" => "Error al obtener mascotas: " . $e->getMessage()];
+        }
     }
+
+    public static function buscarMascota($id)
+    {
+        global $conn;
+        try {
+            $stmt = $conn->prepare("SELECT * FROM mascota_adopcion WHERE id_mascota_adopcion = ?");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $resultado = $stmt->get_result();
+            $mascota = $resultado->fetch_assoc();
+            $stmt->close();
+            return $mascota;
+        } catch (mysqli_sql_exception $e) {
+            return ["error" => "Error al obtener mascota: " . $e->getMessage()];
+        }
+    }
+
 }
+   
+
