@@ -16,7 +16,7 @@ function call($controller, $action)
             break;
         case 'admin':
             $controller = new adminController();
-            
+
             break;
 
         default:
@@ -35,7 +35,7 @@ $controllers = array(
     'inicio' => ['inicio', 'error'],
     'landing' => ['nosotros', 'contacto', 'encuentrame', 'blog', 'calendario', 'adopta', 'detalle'],
     'usuario' => ['perfil', 'login', 'registro'],
-    'admin' => ['inicio', 'adopciones', 'articulo', 'agregarArticulo', 'editarArticulo', 'anuncio', 'agregarAnuncio', 'blog', 'solicitantes', 'usuario', 'agregarUsuario', 'guardarUsuario', 'editarUsuario', 'eliminarUsuario', 'guardarEditUsuario', 'editarAnuncio']
+    'admin' => ['inicio', 'adopciones', 'articulo', 'agregarArticulo', 'editarArticulo', 'anuncio', 'agregarAnuncio', 'blog', 'solicitantes', 'usuario', 'agregarUsuario', 'guardarUsuario', 'editarUsuario', 'eliminarUsuario', 'guardarEditUsuario', 'editarAnuncio', 'eliminarSolicitante', 'editarSolicitante', 'agregarSolicitante', 'guardarEditSolicitante', 'guardarSolicitante', 'solicitante']
 );
 
 if (array_key_exists($controller, $controllers)) {

@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../models/Usuario.php';
 require_once __DIR__ . '/../models/MascotaAdopcion.php';
+require_once __DIR__ . '/../models/Solicitante.php';
 class adminController
 {
     public function inicio()
@@ -29,9 +30,10 @@ class adminController
         require_once("app/views/admin/agregarUsuario.php");
     }
     //guarda el usuario
-    public function guardarUsuario(){
-        if(isset($_POST['nombre'], $_POST['apellido'], $_POST['telefono'], $_POST['correo'], $_POST['estado'], $_POST['rol'])){
-            
+    public function guardarUsuario()
+    {
+        if (isset($_POST['nombre'], $_POST['apellido'], $_POST['telefono'], $_POST['correo'], $_POST['estado'], $_POST['rol'])) {
+
             $nombre = $_POST['nombre'];
             $apellido = $_POST['apellido'];
             $telefono = $_POST['telefono'];
@@ -39,7 +41,7 @@ class adminController
             $estado = $_POST['estado'];
             $rol = $_POST['rol'];
 
-            $rutaWeb =null;
+            $rutaWeb = null;
             $rutaImagen = null;
             if (isset($_FILES['addImageUsuario']) && $_FILES['addImageUsuario']['error'] === 0) {
                 $rutaTemporal = $_FILES['addImageUsuario']['tmp_name'];
@@ -50,26 +52,28 @@ class adminController
                 if (!is_dir($directorioDestino)) {
                     mkdir($directorioDestino, 0755, true);
                 }
-        
+
                 move_uploaded_file($rutaTemporal, $rutaImagen);
-               
+
             }
 
 
             Usuario::add($nombre, $apellido, $telefono, $correo, $estado, $rol, $rutaWeb);
             header("Location: index.php?c=admin&a=usuario");
-        }else{
+        } else {
             echo "No se pudo agregar el usuario";
-        }    
-       
+        }
+
     }
-    public function editarUsuario(){
+    public function editarUsuario()
+    {
         $titulo = "Editar Usuario";
         require_once("app/views/head.php");
         require_once("app/views/admin/editarUsuario.php");
     }
-    public function guardarEditUsuario(){
-        if(isset($_POST['id'], $_POST['nombreEdit'], $_POST['apellidoEdit'], $_POST['telefonoEdit'], $_POST['correoEdit'], $_POST['estadoEdit'], $_POST['rolEdit'])){
+    public function guardarEditUsuario()
+    {
+        if (isset($_POST['id'], $_POST['nombreEdit'], $_POST['apellidoEdit'], $_POST['telefonoEdit'], $_POST['correoEdit'], $_POST['estadoEdit'], $_POST['rolEdit'])) {
             $id = $_POST['id'];
             $nombre = $_POST['nombreEdit'];
             $apellido = $_POST['apellidoEdit'];
@@ -77,8 +81,8 @@ class adminController
             $correo = $_POST['correoEdit'];
             $estado = $_POST['estadoEdit'];
             $rol = $_POST['rolEdit'];
-        
-            $rutaWeb ="";
+
+            $rutaWeb = "";
             $rutaImagen = null;
             if (isset($_FILES['editFotoUsuario']) && $_FILES['editFotoUsuario']['error'] === 0) {
                 $rutaTemporal = $_FILES['editFotoUsuario']['tmp_name'];
@@ -89,19 +93,20 @@ class adminController
                 if (!is_dir($directorioDestino)) {
                     mkdir($directorioDestino, 0755, true);
                 }
-        
+
                 move_uploaded_file($rutaTemporal, $rutaImagen);
             }
-        
-    
-           Usuario::update($id, $nombre, $apellido, $telefono, $correo, $estado, $rol, $rutaWeb);
-           header("Location: index.php?c=admin&a=usuario");
-        }else{
+
+
+            Usuario::update($id, $nombre, $apellido, $telefono, $correo, $estado, $rol, $rutaWeb);
+            header("Location: index.php?c=admin&a=usuario");
+        } else {
             echo "No se pudo agregar el usuario";
-        }    
+        }
     }
-    public function eliminarUsuario(){
-        if(isset($_POST['id'])){
+    public function eliminarUsuario()
+    {
+        if (isset($_POST['id'])) {
             $id = $_POST['id'];
 
             if (Usuario::delete($id)) {
@@ -150,7 +155,7 @@ class adminController
 
         require_once("app/views/admin/blogAdmin.php");
     }
-    
+
     public function agregarArticulo()
     {
         $titulo = "Agregar Articulo";
@@ -165,14 +170,85 @@ class adminController
 
         require_once("app/views/admin/aditarArticulo.php");
     }
-   
+    //CRUD SOLICITANTES
     public function solicitantes()
     {
         $titulo = "Solicitantes";
+        $solicitantes = Solicitante::getAll();
         require_once("app/views/head.php");
 
         require_once("app/views/admin/solicitante.php");
     }
+
+    public function eliminarSolicitante()
+    {
+        if (isset($_POST['id'])) {
+            $id = $_POST['id'];
+
+            if (Solicitante::delete($id)) {
+                header('Location: index.php?c=admin&a=solicitantes');
+                exit;
+            } else {
+                echo "Error al eliminar el solicitante.";
+            }
+        } else {
+            echo "Acceso no permitido.";
+        }
+    }
+
+    public function agregarSolicitante()
+    {
+        $titulo = "Agregar Solicitante";
+        require_once("app/views/head.php");
+        require_once("app/views/admin/agregarSolicitante.php");
+    }
+    //guarda el Solicitante
+    public function guardarSolicitante()
+    {
+        //if (isset($_POST['acuerdo'], $_POST['tipo_vivienda'], $_POST['descripcion_vivienda'], $_POST['patio'], $_POST['mudanza'], $_POST['cuido'], $_POST['gastos'], $_POST['post_adopcion'])) {
+
+        $acuerdo = $_POST['acuerdo'];
+        $tipo_vivienda = $_POST['tipo_vivienda'];
+        $descripcion_vivienda = $_POST['descripcion_vivienda'];
+        $patio = $_POST['patio'];
+        $mudanza = $_POST['mudanza'];
+        $cuido = $_POST['cuido'];
+        $gasto = $_POST['gasto'];
+        $post_adopcion = $_POST['post_adopcion'];
+
+        Solicitante::add($acuerdo, $tipo_vivienda, $descripcion_vivienda, $patio, $mudanza, $cuido, $gasto, $post_adopcion);
+        header("Location: index.php?c=admin&a=solicitantes");
+        //} else {
+        echo "No se pudo agregar el Solicitante";
+        //}
+
+    }
+    public function editarSolicitante()
+    {
+        $titulo = "Editar Solicitante";
+        require_once("app/views/head.php");
+        require_once("app/views/admin/editarSolicitante.php");
+    }
+    public function guardarEditSolicitante()
+    {
+        //if (isset($_POST['id'], $_POST['acuerdo'], $_POST['tipo_vivienda'], $_POST['descripcion_vivienda'], $_POST['patio'], $_POST['mudanza'], $_POST['cuido'], $_POST['gastos'], $_POST['post_adopcion'])) {
+        $id = $_POST['id'];
+        $acuerdo = $_POST['acuerdo'];
+        $tipo_vivienda = $_POST['tipo_vivienda'];
+        $descripcion_vivienda = $_POST['descripcion_vivienda'];
+        $patio = $_POST['patio'];
+        $mudanza = $_POST['mudanza'];
+        $cuido = $_POST['cuido'];
+        $gasto = $_POST['gasto'];
+        $post_adopcion = $_POST['post_adopcion'];
+
+        Solicitante::update($id, $acuerdo, $tipo_vivienda, $descripcion_vivienda, $patio, $mudanza, $cuido, $gasto, $post_adopcion);
+        header("Location: index.php?c=admin&a=solicitantes");
+        //} else {
+        echo "No se pudo agregar el solicitante";
+        //}
+    }
+    //FIN CRUD SOLICITANTES
 
     public function error()
     {
