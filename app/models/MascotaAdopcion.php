@@ -59,6 +59,21 @@ class MascotaAdopcion{
         }
     }
 
+    public static function delete($id){
+        global $conn; 
+        try{
+            $stmt = $conn->prepare("DELETE FROM mascota_adopcion WHERE id_mascota_adopcion = ?");
+            $stmt->bind_param("i", $id);
+            if($stmt->execute()){
+                return true; 
+            } else {
+                return false;
+            }
+        }catch (mysqli_sql_exception $e) {
+            return false;
+        }
+    }
+
 }
    
 

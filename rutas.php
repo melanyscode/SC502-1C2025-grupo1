@@ -1,5 +1,6 @@
 <?php
 
+
 function call($controller, $action)
 {
     require_once('app/controllers/' . $controller . 'Controller.php');
@@ -34,8 +35,8 @@ $action = isset($_GET['a']) ? $_GET['a'] : 'inicio';
 $controllers = array(
     'inicio' => ['inicio', 'error'],
     'landing' => ['nosotros', 'contacto', 'encuentrame', 'blog', 'calendario', 'adopta', 'detalle'],
-    'usuario' => ['perfil', 'login', 'registro'],
-    'admin' => ['inicio', 'adopciones', 'articulo', 'agregarArticulo', 'editarArticulo', 'anuncio', 'agregarAnuncio', 'blog', 'solicitantes', 'usuario', 'agregarUsuario', 'guardarUsuario', 'editarUsuario', 'eliminarUsuario', 'guardarEditUsuario', 'editarAnuncio']
+    'usuario' => ['perfil', 'login', 'registro', 'loginPost', 'registroPost'],
+    'admin' => ['inicio', 'adopciones', 'articulo', 'agregarArticulo', 'editarArticulo', 'anuncio', 'agregarAnuncio', 'blog', 'solicitantes', 'usuario', 'agregarUsuario', 'guardarUsuario', 'editarUsuario', 'eliminarUsuario', 'guardarEditUsuario', 'editarAnuncio', 'eliminarAdopcion']
 );
 
 if (array_key_exists($controller, $controllers)) {

@@ -18,10 +18,10 @@
         <!-- Parte izquierda -->
 
         <div class="perfil-left">
-            <img src="assets/img/bg-16.jpg" alt="Imagen de perfil" class="perfil-img">
+            <img src="<?= $usuario['img_url'] != '' ? htmlspecialchars($usuario['img_url']) : 'app/uploads/default.jpg' ?>" alt="Imagen de perfil" class="perfil-img">
 
-            <h4 class="perfil-nombre">Rebecca Jimenez Alpizar</h4>
-            <h5 class="perfil-usuario">Usuario</h5>
+            <h4 class="perfil-nombre"><?php echo $usuario['nombre']?></h4>
+            
             <hr>
 
             <h3 class="perfil-num-adopciones">2</h3>
@@ -31,15 +31,15 @@
             <div class="perfil-contacto">
                 <div class="contacto-item">
                     <img src="assets/img/bg-phone.png" alt="Teléfono" height="20px">
-                    <span> +506 8888-8888</span>
+                    <span><?= $usuario['telefono'] != '' ? htmlspecialchars($usuario['telefono']) : 'No tiene teléfono guardado' ?></span>
                 </div>
                 <div class="contacto-item">
                     <img src="assets/img/bg-email.png" alt="Correo" height="20px">
-                    <span> rebe.alpizar@gmail.com</span>
+                    <span><?php echo $usuario['correo']?></span>
                 </div>
                 <div class="contacto-item">
                     <img src="assets/img/bg-address.png" alt="Dirección" height="20px">
-                    <span> Alajuela, Grecia</span>
+                    <span> <?= $usuario['direccion'] != '' ? htmlspecialchars($usuario['direccion']) : 'No tiene direccion guardada' ?></span>
                 </div>
             </div>
         </div>
