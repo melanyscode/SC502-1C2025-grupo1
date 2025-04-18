@@ -75,13 +75,7 @@ a, h1, h2, h3, h4, h5, h6, p{
 /* botones */
 .btn-celeste{
     color: #86B6F6;
-}
-.btn-blanco{
-    background-color: white;
-    color: #115c75;
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
-    text-decoration: none;
+
 }
 
 img{
@@ -780,7 +774,6 @@ textarea.input-personalizado {
     color: #176B87;
     font-weight: bold
 }
-
 /* modal */
 .modal-confirmacion {
     display: none; 
