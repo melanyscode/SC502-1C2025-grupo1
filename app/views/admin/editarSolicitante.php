@@ -73,7 +73,7 @@ if (isset($_GET['id'])) {
                     <div class="row">
                         <div class="col mb-3">
                             <label>Gastos</label>
-                            <select name="gasto" id="addEstadoUsuario" class="input-adopcion bg-celeste">
+                            <select name="gastos" id="addEstadoUsuario" class="input-adopcion bg-celeste">
                                 <option value="1" <?= ($solicitud['gastos'] == 1) ? 'selected' : '' ?>>Si</option>
                                 <option value="0" <?= ($solicitud['gastos'] == 0) ? 'selected' : '' ?>>No</option>
                             </select>

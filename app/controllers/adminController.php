@@ -54,7 +54,6 @@ class adminController
                 }
 
                 move_uploaded_file($rutaTemporal, $rutaImagen);
-
             }
 
 
@@ -63,7 +62,6 @@ class adminController
         } else {
             echo "No se pudo agregar el usuario";
         }
-
     }
     public function editarUsuario()
     {
@@ -205,7 +203,7 @@ class adminController
     //guarda el Solicitante
     public function guardarSolicitante()
     {
-        //if (isset($_POST['acuerdo'], $_POST['tipo_vivienda'], $_POST['descripcion_vivienda'], $_POST['patio'], $_POST['mudanza'], $_POST['cuido'], $_POST['gastos'], $_POST['post_adopcion'])) {
+    if (isset($_POST['acuerdo'], $_POST['tipo_vivienda'], $_POST['descripcion_vivienda'], $_POST['patio'], $_POST['mudanza'], $_POST['cuido'], $_POST['gastos'], $_POST['post_adopcion'])) {
 
         $acuerdo = $_POST['acuerdo'];
         $tipo_vivienda = $_POST['tipo_vivienda'];
@@ -213,15 +211,18 @@ class adminController
         $patio = $_POST['patio'];
         $mudanza = $_POST['mudanza'];
         $cuido = $_POST['cuido'];
-        $gasto = $_POST['gasto'];
+        $gasto = $_POST['gastos'];
         $post_adopcion = $_POST['post_adopcion'];
 
-        Solicitante::add($acuerdo, $tipo_vivienda, $descripcion_vivienda, $patio, $mudanza, $cuido, $gasto, $post_adopcion);
+       $resultado = Solicitante::add($acuerdo, $tipo_vivienda, $descripcion_vivienda, $patio, $mudanza, $cuido, $gasto, $post_adopcion);
+       var_dump($resultado);
+        /*
         header("Location: index.php?c=admin&a=solicitantes");
-        //} else {
+        } else {
         echo "No se pudo agregar el Solicitante";
-        //}
-
+        }
+        */
+    }
     }
     public function editarSolicitante()
     {
@@ -231,22 +232,28 @@ class adminController
     }
     public function guardarEditSolicitante()
     {
-        //if (isset($_POST['id'], $_POST['acuerdo'], $_POST['tipo_vivienda'], $_POST['descripcion_vivienda'], $_POST['patio'], $_POST['mudanza'], $_POST['cuido'], $_POST['gastos'], $_POST['post_adopcion'])) {
-        $id = $_POST['id'];
-        $acuerdo = $_POST['acuerdo'];
-        $tipo_vivienda = $_POST['tipo_vivienda'];
-        $descripcion_vivienda = $_POST['descripcion_vivienda'];
-        $patio = $_POST['patio'];
-        $mudanza = $_POST['mudanza'];
-        $cuido = $_POST['cuido'];
-        $gasto = $_POST['gasto'];
-        $post_adopcion = $_POST['post_adopcion'];
+        if (isset($_POST['id'], $_POST['acuerdo'], $_POST['tipo_vivienda'], $_POST['descripcion_vivienda'], $_POST['patio'], $_POST['mudanza'], $_POST['cuido'], $_POST['gastos'], $_POST['post_adopcion'])) {
+            $id = $_POST['id'];
+            $acuerdo = $_POST['acuerdo'];
+            $tipo_vivienda = $_POST['tipo_vivienda'];
+            $descripcion_vivienda = $_POST['descripcion_vivienda'];
+            $patio = $_POST['patio'];
+            $mudanza = $_POST['mudanza'];
+            $cuido = $_POST['cuido'];
+            $gasto = $_POST['gastos'];
+            $post_adopcion = $_POST['post_adopcion'];
+            $resultado = Solicitante::update($id, $acuerdo, $tipo_vivienda, $descripcion_vivienda, $patio, $mudanza, $cuido, $gasto, $post_adopcion);
 
-        Solicitante::update($id, $acuerdo, $tipo_vivienda, $descripcion_vivienda, $patio, $mudanza, $cuido, $gasto, $post_adopcion);
-        header("Location: index.php?c=admin&a=solicitantes");
-        //} else {
-        echo "No se pudo agregar el solicitante";
-        //}
+
+
+            if ($resultado) {
+                header("Location: index.php?c=admin&a=solicitantes");
+            } else {
+                echo "error en la base de datos";
+            }
+        } else {
+            echo "No se pudo agregar el solicitante";
+        }
     }
     //FIN CRUD SOLICITANTES
 

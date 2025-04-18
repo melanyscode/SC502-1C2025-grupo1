@@ -25,8 +25,8 @@ class Solicitante
     {
         global $conn;
         try {
-            $stmt = $conn->prepare("INSERT INTO solicitud (acuerdo, tipo_vivienda, descripcion_vivienda, patio, mudanza, cuido, gastos, post-adopción) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("ississii", $acuerdo, $tipo_vivienda, $descripcion_vivienda, $patio, $mudanza, $cuido, $gastos, $post_adopcion);
+            $stmt = $conn->prepare("INSERT INTO solicitud (acuerdo, tipo_vivienda, descripcion_vivienda, patio, mudanza, cuido, gastos, post_adopcion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssissii", $acuerdo, $tipo_vivienda, $descripcion_vivienda, $patio, $mudanza, $cuido, $gastos, $post_adopcion);
 
             if ($stmt->execute()) {
                 $stmt->close();
