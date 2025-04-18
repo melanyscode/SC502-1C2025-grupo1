@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         cargarImagen(input, previews[index], buttons[index]);
     });
 } else {
-    console.error("❌ No hay la misma cantidad de inputs, botones y previews en el HTML");
+    console.error("No hay la misma cantidad de inputs, botones y previews en el HTML");
 }
 
     //funciones
@@ -39,5 +39,49 @@ document.addEventListener("DOMContentLoaded", function () {
                 reader.readAsDataURL(file);
             }
         });
+    }
+    document.querySelectorAll('.form-eliminar').forEach(form => {
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault(); // Evita el envío inmediato
+    
+            const confirmacion = await confirmar("¿Estás seguro de eliminar este usuario?");
+            if (confirmacion) {
+                form.submit(); // Solo si confirma
+            }
+        })
+    });
+
+    //modal de confirmacion
+    function confirmar(mensaje) {
+        return new Promise((resolve) => {
+            document.getElementById('mensaje').textContent = mensaje;
+
+            const modal = document.getElementById('modal-confirmacion');
+            modal.style.display = 'flex';
+
+            const confirmar = document.getElementById('confirmar');
+            const cancelar = document.getElementById('cancelar');
+
+            confirmar.onclick = () => {
+                modal.style.display = 'none';
+                resolve(true);
+            };
+
+            cancelar.onclick = () => {
+                modal.style.display = 'none';
+                resolve(false);
+            };
+        });
+    }
+    //modal informativo
+    function informativo(mensaje) {
+        const modalInformativo = document.getElementById("modal-informacion");
+        const mensajeInfo = document.getElementById("mensaje-info");
+        const btnConfirmar = document.getElementById("confirmar-info");
+        mensajeInfo.textContent = mensaje;
+        modalInformativo.style.display = "flex";
+        btnConfirmar.onclick = () => {
+            modalInformativo.style.display = "none";
+        }
     }
 });

@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../models/Usuario.php';
+require_once __DIR__ . '/../models/MascotaAdopcion.php';
 class adminController
 {
     public function inicio()
@@ -114,12 +115,14 @@ class adminController
         }
     }
 
-    public function blog()
+    //CRUD ADOPCIONES
+    public function adopciones()
     {
-        $titulo = "Blog";
+        $titulo = "Adopciones";
+        $adopciones = MascotaAdopcion::getAll();
         require_once("app/views/head.php");
 
-        require_once("app/views/admin/blogAdmin.php");
+        require_once("app/views/admin/adopcionesAdmin.php");
     }
     public function editarAnuncio()
     {
@@ -128,13 +131,26 @@ class adminController
 
         require_once("app/views/admin/editarAnuncio.php");
     }
-    public function agregarAnuncio()
+    public function agregarAdopcion()
     {
         $titulo = "Agregar Anuncio";
         require_once("app/views/head.php");
 
         require_once("app/views/admin/agregarAnuncio.php");
     }
+
+    //FIN CRUD ADOPCIONES
+
+
+
+    public function blog()
+    {
+        $titulo = "Blog";
+        require_once("app/views/head.php");
+
+        require_once("app/views/admin/blogAdmin.php");
+    }
+    
     public function agregarArticulo()
     {
         $titulo = "Agregar Articulo";
@@ -149,13 +165,7 @@ class adminController
 
         require_once("app/views/admin/aditarArticulo.php");
     }
-    public function adopciones()
-    {
-        $titulo = "Adopciones";
-        require_once("app/views/head.php");
-
-        require_once("app/views/admin/adopcionesAdmin.php");
-    }
+   
     public function solicitantes()
     {
         $titulo = "Solicitantes";
