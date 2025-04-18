@@ -31,7 +31,7 @@ class MascotaAdopcion{
                     }
                 }
     
-                // Guardamos las imágenes en el array original
+           
                 $mascotas[$i]['imagenes'] = $imagenes;
             }
     
@@ -39,7 +39,26 @@ class MascotaAdopcion{
             
 
         } catch (mysqli_sql_exception $e) {
-            return ["error" => "Error al obtener usuarios: " . $e->getMessage()];
+            return ["error" => "Error al obtener mascotas: " . $e->getMessage()];
         }
     }
+
+    public static function buscarMascota($id)
+    {
+        global $conn;
+        try {
+            $stmt = $conn->prepare("SELECT * FROM mascota_adopcion WHERE id_mascota_adopcion = ?");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $resultado = $stmt->get_result();
+            $mascota = $resultado->fetch_assoc();
+            $stmt->close();
+            return $mascota;
+        } catch (mysqli_sql_exception $e) {
+            return ["error" => "Error al obtener mascota: " . $e->getMessage()];
+        }
+    }
+
 }
+   
+

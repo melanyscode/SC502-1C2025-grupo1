@@ -1,8 +1,5 @@
 
-<?php require_once __DIR__ .'/../navbar.php';
 
-
-?>
 
 <body class="d-flex flex-column min-vh-100">
    
@@ -18,7 +15,7 @@
                         amor y cuidados</p>
 
                     <div class="mt-3 mb-5 ">
-                        <a href="index.php?p=adopta" class=" py-2 px-4 bg-white rounded-pill text-decoration-none txt-azul-oscuro fw-semibold mt-2">Vamos a adoptar</a>
+                        <a href="index.php?controller=landing&action=adopta" class=" py-2 px-4 bg-white rounded-pill text-decoration-none txt-azul-oscuro fw-semibold mt-2">Vamos a adoptar</a>
                     </div>
                 </div>
             </div>
@@ -29,7 +26,7 @@
     <div class="container">
         <div class="row d-flex flex-colum justify-content-between mt-4">
             <div class="col-2 bg-white p-2 border-azul text-center rounded-5 mt-3">
-                <img src="public/img/paw-solid.svg" alt="" class="mt-2" height="70px">
+                <img src="assets/img/paw-solid.svg" alt="" class="mt-2" height="70px">
                 <p class="mt-3">Adopta</p>
             </div>
             <div class="col-2 bg-white p-2  border-azul text-center rounded-5 mt-3">
@@ -89,15 +86,15 @@
 
         <div class="home-imagenes-container">
             <div class="home-imagen">
-                <img src="public/img/bg-19.jpg" alt="Gato" class="home-imagen-circular">
+                <img src="assets/img/bg-19.jpg" alt="Gato" class="home-imagen-circular">
                 <p class="home-descripcion-imagen">Gatos</p>
             </div>
             <div class="home-imagen">
-                <img src="public/img/bg-18.jpg" alt="Perro" class="home-imagen-circular">
+                <img src="assets/img/bg-18.jpg" alt="Perro" class="home-imagen-circular">
                 <p class="home-descripcion-imagen">Perros</p>
             </div>
             <div class="home-imagen">
-                <img src="public/img/bg-20.jpg" alt="Conejo" class="home-imagen-circular">
+                <img src="assets/img/bg-20.jpg" alt="Conejo" class="home-imagen-circular">
                 <p class="home-descripcion-imagen">Conejos</p>
             </div>
         </div>
@@ -110,7 +107,7 @@
         <a href="blog.php" class="blog-btn-visit">Visitar artículo</a>
     </div>
     <div class="blog-right-column">
-        <img src="public/img/bg-23.jpg" alt="Imagen del blog" class="blog-image">
+        <img src="assets/img/bg-23.jpg" alt="Imagen del blog" class="blog-image">
     </div>
 </div>
 
@@ -119,4 +116,3 @@
 
 </body>
 
-<?php require_once  __DIR__ .'/../footer.php'; ?>

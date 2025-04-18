@@ -1,4 +1,5 @@
-<?php require_once __DIR__ .'/../navbar.php'; ?>
+
+
 <body class="d-flex flex-column min-vh-100">
 
 
@@ -14,13 +15,13 @@
         <div class="row align-items-center">
 
             <div class="col-md-4 pe-0">
-                <img src="public/img/bg-10.jpg" alt="Imagen de Tonet" class="img-fluid custom-img">
+                <img src="assets/img/bg-10.jpg" alt="Imagen de Tonet" class="img-fluid custom-img">
             </div>
 
             <div class="col-md-2 d-flex flex-column justify-content-start align-items-center mb-3 ps-0">
-                <img src="public/img/bg-10.jpg" alt="Imagen 1" class="rounded-circle mb-5" style="width: 100px; height: 100px; object-fit: cover;">
-                <img src="public/img/bg-10.jpg" alt="Imagen 2" class="rounded-circle mb-5" style="width: 100px; height: 100px; object-fit: cover;">
-                <img src="public/img/bg-10.jpg" alt="Imagen 3" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;">
+                <img src="assets/img/bg-10.jpg" alt="Imagen 1" class="rounded-circle mb-5" style="width: 100px; height: 100px; object-fit: cover;">
+                <img src="assets/img/bg-10.jpg" alt="Imagen 2" class="rounded-circle mb-5" style="width: 100px; height: 100px; object-fit: cover;">
+                <img src="assets/img/bg-10.jpg" alt="Imagen 3" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;">
             </div>
 
             <div class="col-md-4 ps-0">
@@ -141,5 +142,3 @@
 </body>
 
 </html>
-
-<?php require_once  __DIR__ .'/../footer.php'; ?>
