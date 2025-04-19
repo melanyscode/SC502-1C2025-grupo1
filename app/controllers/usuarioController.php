@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../models/Usuario.php';
+require_once __DIR__ . '/../models/MascotaPerdida.php';
 
 class usuarioController
 {
@@ -108,11 +109,57 @@ class usuarioController
     }
     public function perdido()
     {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (isset($_SESSION['user'])) {
+            $usuario = $_SESSION['user'];
+        }
         $titulo = "Form mascota perdida";
         require_once("app/views/head.php");
         require_once("app/views/navbar.php");
         require_once("app/views/usuario/formPerdida.php");
         require_once("app/views/footer.php");
+    }
+    public function mascotaPerdida()
+    {
+        echo '<pre>';
+        print_r($_POST);
+        echo '</pre>';
+        session_start();
+        $id = $_POST['id_usuario'];
+        $nombre = $_POST['nombreMascota'];
+        $raza = $_POST['razaPerdido'];
+        $fecha = $_POST['fechaPerdido'];
+        $descripcion = $_POST['descripcionPerdido'];
+        $ubicacionMascota = $_POST['ubicacionMascota'];
+        $estado = $_POST['estadoMascota'];
+        $tipo = $_POST['tipoPerdido'];
+        $comentario = $_POST['comentarioMascota'];
+        $direccion = $_POST['descripcionPerdido'];
+        $rutaWeb = "";
+        $rutaImagen = null;
+        if (isset($_FILES['imagenMascota']) && $_FILES['imagenMascota']['error'] === 0) {
+            $rutaTemporal = $_FILES['imagenMascota']['tmp_name'];
+            $nombreArchivo = uniqid() . "_" . basename($_FILES['imagenMascota']['name']);
+            $directorioDestino = '../uploads/';
+            $rutaImagen = $directorioDestino . $nombreArchivo;
+            $rutaWeb = 'app/uploads/' . $nombreArchivo;
+            if (!is_dir($directorioDestino)) {
+                mkdir($directorioDestino, 0755, true);
+            }
+
+            move_uploaded_file($rutaTemporal, $rutaImagen);
+        }
+        $exito = MascotaPerdida::add($id, $nombre, $raza, $tipo, $fecha, $descripcion, $ubicacionMascota, $estado, $comentario, $direccion, $rutaWeb);
+        if ($exito) {
+            header("Location: index.php?c=usuario&a=perfil");
+            exit();
+        } else {
+            echo "No sirvio";
+            exit();
+        }
     }
 
     public function editarPerfilPost()
@@ -165,4 +212,6 @@ class usuarioController
     {
         echo "error";
     }
+
+    public function guardarPerdido() {}
 }

@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . '/../models/MascotaAdopcion.php';
+require_once __DIR__ . '/../models/MascotaPerdida.php';
+require_once __DIR__ . '/../models/Usuario.php';
     class landingController{
         public function nosotros(){
             $titulo = "Nosotros";
@@ -17,6 +19,9 @@ require_once __DIR__ . '/../models/MascotaAdopcion.php';
         }
         public function encuentrame(){
             $titulo = "Encuentrame";
+            $cantidad = MascotaPerdida::cantidadMascotas();
+            $perdidas = MascotaPerdida::getAll();
+         
             require_once("app/views/head.php");
             require_once("app/views/navbar.php");
             require_once("app/views/landing/encuentrame.php");
@@ -51,16 +56,9 @@ require_once __DIR__ . '/../models/MascotaAdopcion.php';
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }
-            
-            file_put_contents('session_id_debug.txt', session_id());
-            var_dump($_SESSION);
     
             if (isset($_SESSION['user'])) {
                 $usuario = $_SESSION['user'];
-            } else {
-              
-                echo "no sirvio";
-                exit();
             }
             $titulo = "Detalle";
             require_once("app/views/head.php");
