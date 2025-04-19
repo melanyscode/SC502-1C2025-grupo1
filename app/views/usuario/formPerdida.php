@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publicar Mascota Perdida</title>
-    <link rel="stylesheet" href="styles/publicar_mascota.css">
-    <?php include "componentes/links.php"; ?>
-</head>
 
 <body class="d-flex flex-column min-vh-100">
-    <?php include_once("componentes/navbar.php"); ?>
+  
 
     <div class="contenedor-publicacion">
         <h1 class="titulo-publicacion">Publicar Mascota Perdida</h1>

@@ -79,6 +79,7 @@ class adminController
             $correo = $_POST['correoEdit'];
             $estado = $_POST['estadoEdit'];
             $rol = $_POST['rolEdit'];
+            $direccion = $_POST['direccionEdit'];
 
             $rutaWeb = "";
             $rutaImagen = null;
@@ -96,7 +97,7 @@ class adminController
             }
 
 
-            Usuario::update($id, $nombre, $apellido, $telefono, $correo, $estado, $rol, $rutaWeb);
+            Usuario::update($id, $nombre, $apellido, $telefono, $correo, $direccion, $estado, $rol, $rutaWeb);
             header("Location: index.php?c=admin&a=usuario");
         } else {
             echo "No se pudo agregar el usuario";
