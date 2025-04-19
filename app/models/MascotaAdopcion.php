@@ -53,9 +53,64 @@ class MascotaAdopcion{
             $resultado = $stmt->get_result();
             $mascota = $resultado->fetch_assoc();
             $stmt->close();
+            if (!$mascota) {
+                return null; 
+            }
+    
+            
+            $sqlImg = "SELECT url_uno, url_dos, url_tres, url_cuatro FROM imagen_adopcion WHERE id_mascota_adopcion = ?";
+            $stmtImg = $conn->prepare($sqlImg);
+            $stmtImg->bind_param("i", $id);
+            $stmtImg->execute();
+            $resImg = $stmtImg->get_result();
+    
+            $imagenes = [];
+            if ($row = $resImg->fetch_assoc()) {
+                foreach (['url_uno', 'url_dos', 'url_tres', 'url_cuatro'] as $campo) {
+                    if (!empty($row[$campo])) {
+                        $imagenes[] = $row[$campo];
+                    }
+                }
+            }
+            $stmtImg->close();
+    
+         
+            $mascota['imagenes'] = $imagenes;
             return $mascota;
         } catch (mysqli_sql_exception $e) {
             return ["error" => "Error al obtener mascota: " . $e->getMessage()];
+        }
+    }
+
+    public static function delete($id){
+        global $conn; 
+        try{
+            $stmt = $conn->prepare("DELETE FROM mascota_adopcion WHERE id_mascota_adopcion = ?");
+            $stmt->bind_param("i", $id);
+            if($stmt->execute()){
+                return true; 
+            } else {
+                return false;
+            }
+        }catch (mysqli_sql_exception $e) {
+            return false;
+        }
+    }
+    public static function cantidadMascotas(){
+        global $conn;
+        try{
+            $stmt = $conn->prepare("SELECT COUNT(*) FROM mascota_adopcion WHERE estado = 'Disponible'");
+            $stmt->execute();
+            $resultado = $stmt->get_result();
+            if($resultado){
+                $cantidad = $resultado->fetch_assoc();
+               
+                return $cantidad['COUNT(*)'];
+            }else{
+                return false;
+            }
+        }catch (mysqli_sql_exception $e) {
+            return false;
         }
     }
 

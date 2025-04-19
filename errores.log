@@ -1,0 +1,23 @@
+[15-Apr-2025 18:54:29 Europe/Berlin] PHP Warning:  Undefined variable $variable_inexistente in C:\xampp\htdocs\SC502-1C2025-grupo1\index.php on line 10
+[15-Apr-2025 18:54:31 Europe/Berlin] PHP Warning:  Undefined variable $variable_inexistente in C:\xampp\htdocs\SC502-1C2025-grupo1\index.php on line 10
+[15-Apr-2025 18:58:02 Europe/Berlin] PHP Warning:  Undefined variable $variable_inexistente in C:\xampp\htdocs\SC502-1C2025-grupo1\index.php on line 10
+[15-Apr-2025 18:58:03 Europe/Berlin] PHP Warning:  Undefined variable $variable_inexistente in C:\xampp\htdocs\SC502-1C2025-grupo1\index.php on line 10
+[2025-04-15 19:17:11] Error de conexión: Unknown column 'id_mascota_adopcion' in 'where clause'
+[15-Apr-2025 19:21:25 Europe/Berlin] PHP Warning:  error_log(C:\xampp\htdocs\SC502-1C2025-grupo1\app\model/../../logs/errores.log): Failed to open stream: No such file or directory in C:\xampp\htdocs\SC502-1C2025-grupo1\app\model\MascotaAdopcion.php on line 48
+[2025-04-15 19:22:19] ERROR en MascotaAdopcion::getAll()
+Mensaje: Unknown column 'id_mascota_adopcion' in 'where clause'
+Archivo: C:\xampp\htdocs\SC502-1C2025-grupo1\app\model\MascotaAdopcion.php
+Línea: 20
+Traza:
+#0 C:\xampp\htdocs\SC502-1C2025-grupo1\app\model\MascotaAdopcion.php(20): mysqli->prepare('SELECT url_uno,...')
+#1 C:\xampp\htdocs\SC502-1C2025-grupo1\app\controllers\MascotaAdopcionController.php(8): MascotaAdopcion::getAll()
+#2 {main}
+
+hostnameLAPTOP-V8POPOUNMensaje: Unknown column 'id_mascota_adopcion' in 'where clause'
+Archivo: C:\xampp\htdocs\SC502-1C2025-grupo1\app\model\MascotaAdopcion.php
+Línea: 20
+Traza:
+#0 C:\xampp\htdocs\SC502-1C2025-grupo1\app\model\MascotaAdopcion.php(20): mysqli->prepare('SELECT url_uno,...')
+#1 C:\xampp\htdocs\SC502-1C2025-grupo1\app\controllers\MascotaAdopcionController.php(8): MascotaAdopcion::getAll()
+#2 {main}
+

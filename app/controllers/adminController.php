@@ -79,6 +79,7 @@ class adminController
             $correo = $_POST['correoEdit'];
             $estado = $_POST['estadoEdit'];
             $rol = $_POST['rolEdit'];
+            $direccion = $_POST['direccionEdit'];
 
             $rutaWeb = "";
             $rutaImagen = null;
@@ -96,7 +97,7 @@ class adminController
             }
 
 
-            Usuario::update($id, $nombre, $apellido, $telefono, $correo, $estado, $rol, $rutaWeb);
+            Usuario::update($id, $nombre, $apellido, $telefono, $correo, $direccion, $estado, $rol, $rutaWeb);
             header("Location: index.php?c=admin&a=usuario");
         } else {
             echo "No se pudo agregar el usuario";
@@ -140,6 +141,21 @@ class adminController
         require_once("app/views/head.php");
 
         require_once("app/views/admin/agregarAnuncio.php");
+    }
+    public function eliminarAdopcion(){
+        if(isset($_POST['id'])){
+            $id = $_POST['id'];
+
+            if (MascotaAdopcion::delete($id)) {
+               
+                header('Location: index.php?c=admin&a=adopciones');
+                exit;
+            } else {
+                echo "Error al eliminar la publicacion de adopcion.";
+            }
+        } else {
+            echo "Acceso no permitido.";
+        }
     }
 
     //FIN CRUD ADOPCIONES
