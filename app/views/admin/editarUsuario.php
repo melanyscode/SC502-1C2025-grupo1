@@ -5,6 +5,8 @@ if (isset($_GET['id'])) {
     require_once  'app/models/Usuario.php';
 
     $usuario = Usuario::buscarUsuario($id);
+
+    
 }
 ?>
 
@@ -25,7 +27,7 @@ if (isset($_GET['id'])) {
                     <div class="col">
                         <div class="mb-3 d-flex flex-column justify-content-center align-items-center">
                             <div class="img-preview m-5 ">
-                                <img src="<?php echo $usuario['img_url'];?>" alt="Image preview" id="imgpreview" class="imgpreview text-center" data-preview>
+                                <img src="<?php echo $usuario['img_url'] ?>" alt="Image preview" id="imgpreview" class="imgpreview text-center" data-preview>
                             </div>
                             <input type="file" multiple hidden name="editFotoUsuario" id="inputAdopciones" data-input>
                             <div class="text-center">

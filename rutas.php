@@ -35,9 +35,8 @@ $action = isset($_GET['a']) ? $_GET['a'] : 'inicio';
 $controllers = array(
     'inicio' => ['inicio', 'error'],
     'landing' => ['nosotros', 'contacto', 'encuentrame', 'blog', 'calendario', 'adopta', 'detalle'],
-
-  'usuario' => ['perfil', 'login', 'registro', 'loginPost', 'registroPost', 'logout','perdido', 'editarPerfil', 'editarPerfilPost', 'mascotaPerdida'],
-    'admin' => ['inicio', 'adopciones', 'articulo', 'agregarArticulo', 'editarArticulo', 'anuncio', 'agregarAnuncio', 'blog', 'solicitantes', 'usuario', 'agregarUsuario', 'guardarUsuario', 'editarUsuario', 'eliminarUsuario', 'guardarEditUsuario', 'editarAnuncio',  'eliminarAdopcion','eliminarSolicitante', 'editarSolicitante', 'agregarSolicitante', 'guardarEditSolicitante', 'guardarSolicitante', 'solicitante']
+    'usuario' => ['perfil', 'login', 'registro', 'loginPost', 'registroPost', 'logout', 'perdido', 'editarPerfil', 'editarPerfilPost', 'mascotaPerdida', 'editarPerdido', 'editMascotaPerdida'],
+    'admin' => ['inicio', 'adopciones', 'articulo', 'agregarArticulo', 'editarArticulo', 'anuncio', 'agregarAnuncio', 'blog', 'solicitantes', 'usuario', 'agregarUsuario', 'guardarUsuario', 'editarUsuario', 'eliminarUsuario', 'guardarEditUsuario', 'editarAnuncio',  'eliminarAdopcion', 'eliminarSolicitante', 'editarSolicitante', 'agregarSolicitante', 'guardarEditSolicitante', 'guardarSolicitante', 'solicitante']
 
 );
 

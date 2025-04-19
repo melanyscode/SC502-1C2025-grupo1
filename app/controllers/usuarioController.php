@@ -161,6 +161,15 @@ class usuarioController
             exit();
         }
     }
+    public function editarPerdido(){
+        require_once("app/views/head.php");
+        require_once("app/views/navbar.php");
+        require_once("app/views/usuario/formPerdidaEdit.php");
+        require_once("app/views/footer.php");
+    }
+    public function editMascotaPerdida(){
+
+    }
 
     public function editarPerfilPost()
     {
@@ -178,7 +187,7 @@ class usuarioController
         if (isset($_FILES['editFotoUsuario']) && $_FILES['editFotoUsuario']['error'] === 0) {
             $rutaTemporal = $_FILES['editFotoUsuario']['tmp_name'];
             $nombreArchivo = uniqid() . "_" . basename($_FILES['editFotoUsuario']['name']);
-            $directorioDestino = '../uploads/';
+            $directorioDestino = 'app/uploads/';
             $rutaImagen = $directorioDestino . $nombreArchivo;
             $rutaWeb = 'app/uploads/' . $nombreArchivo;
             if (!is_dir($directorioDestino)) {

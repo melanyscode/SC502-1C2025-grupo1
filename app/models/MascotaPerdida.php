@@ -39,6 +39,22 @@ class MascotaPerdida
             return ["error" => "Error al obtener mascota: " . $e->getMessage()];
         }
     }
+    public static function buscarMascota($id){
+        global $conn;
+        try{
+
+            $stmt = $conn->prepare("SELECT * FROM mascota_perdida WHERE id_mascota_perdida = ?");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $resultado = $stmt->get_result();
+            $mascota = $resultado->fetch_assoc();
+            $stmt->close();
+            
+            return $mascota;
+        }catch (mysqli_sql_exception $e) {
+            return ["error" => "Error al obtener mascota: " . $e->getMessage()];
+        }
+    }
     public static function cantidadMascotas(){
         global $conn;
         try{

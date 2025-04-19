@@ -34,10 +34,10 @@
 
                         <label>Teléfono</label>
 
-                        <input type="text" class="input-personalizado" name="telefonoEditPerfil" value="" placeholder="<?= $_SESSION['user']['telefono'] != '' ? htmlspecialchars($_SESSION['user']['telefono']) : 'No tiene teléfono guardado' ?>"> 
+                        <input type="text" class="input-personalizado" name="telefonoEditPerfil" value=" <?= $_SESSION['user']['telefono'] != '' ? htmlspecialchars($_SESSION['user']['telefono']) : 'No tiene telefono guardado' ?>" > 
 
                         <label>Dirección</label>
-                        <input type="text" class="input-personalizado" name="direccionEditPerfil" value="" placeholder="<?= $_SESSION['user']['direccion'] != '' ? htmlspecialchars($_SESSION['user']['direccion']) : 'No tiene direccion guardada' ?>">
+                        <input type="text" class="input-personalizado" name="direccionEditPerfil" value="<?= $_SESSION['user']['direccion'] != 'No tiene direccion guardada' ? htmlspecialchars($_SESSION['user']['direccion']) : '' ?>" placeholder="<?= $_SESSION['user']['direccion'] != '' ? htmlspecialchars($_SESSION['user']['direccion']) : 'No tiene direccion guardada' ?>">
 
 
                     </div>
