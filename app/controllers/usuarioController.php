@@ -5,24 +5,15 @@ require_once __DIR__ . '/../models/MascotaPerdida.php';
 class usuarioController
 {
 
-
-
     public function perfil()
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
 
-        file_put_contents('session_id_debug.txt', session_id());
-        var_dump($_SESSION);
-
         if (isset($_SESSION['user'])) {
             $usuario = $_SESSION['user'];
-        } else {
-
-            echo "no sirvio";
-            exit();
-        }
+        } 
         $titulo = "Pefil de Usuario";
         require_once("app/views/head.php");
         require_once("app/views/navbar.php");
@@ -137,7 +128,7 @@ class usuarioController
         $estado = $_POST['estadoMascota'];
         $tipo = $_POST['tipoPerdido'];
         $comentario = $_POST['comentarioMascota'];
-        $direccion = $_POST['descripcionPerdido'];
+        $direccion = $_POST['direccionEditPerfil'];
         $rutaWeb = "";
         $rutaImagen = null;
         if (isset($_FILES['imagenMascota']) && $_FILES['imagenMascota']['error'] === 0) {
@@ -184,9 +175,9 @@ class usuarioController
         $direccion = $_POST['direccionEditPerfil'];
         $rutaWeb = "";
         $rutaImagen = null;
-        if (isset($_FILES['editFotoUsuario']) && $_FILES['editFotoUsuario']['error'] === 0) {
-            $rutaTemporal = $_FILES['editFotoUsuario']['tmp_name'];
-            $nombreArchivo = uniqid() . "_" . basename($_FILES['editFotoUsuario']['name']);
+        if (isset($_FILES['inputEditPerfil']) && $_FILES['inputEditPerfil']['error'] === 0) {
+            $rutaTemporal = $_FILES['inputEditPerfil']['tmp_name'];
+            $nombreArchivo = uniqid() . "_" . basename($_FILES['inputEditPerfil']['name']);
             $directorioDestino = 'app/uploads/';
             $rutaImagen = $directorioDestino . $nombreArchivo;
             $rutaWeb = 'app/uploads/' . $nombreArchivo;
@@ -205,6 +196,7 @@ class usuarioController
             $_SESSION['user']['telefono'] = $telefono;
             $_SESSION['user']['estado'] = $estado;
             $_SESSION['user']['id_rol'] = (int)$rol;
+            $_SESSION['user']['direccion'] = $direccion;
 
             if ($rutaImagen) {
                 $_SESSION['user']['img_url'] = $rutaWeb;

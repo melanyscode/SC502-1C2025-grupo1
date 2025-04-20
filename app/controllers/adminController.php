@@ -111,7 +111,7 @@ class adminController
                 }
                 header("Location: index.php?c=admin&a=usuario");
             } else {
-                echo "No se pudo agregar el usuario";
+                header("Location: index.php?c=admin&a=usuario");
             }
         }
     }

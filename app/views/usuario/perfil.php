@@ -4,7 +4,7 @@ require_once 'app/models/MascotaPerdida.php';
 $user = $_SESSION['user']['id_usuario'];
 
 $mascotas = MascotaPerdida::buscarMascotaPerdida($user);
-var_dump($mascotas);
+
 
 ?>
 

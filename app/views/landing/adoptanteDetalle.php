@@ -58,26 +58,7 @@ if (isset($_GET['id'])) {
                     <h6 class="mb-4">Si estás interesado en darle un hogar a Tonet, por favor completa el siguiente formulario y nos pondremos en contacto contigo:</h6>
 
                     <form class="adoption-form">
-                        <div class="form-group-custom mb-4">
-                            <label class="adoption-form">Nombre completo:</label>
-                            <input type="text" class="form-control input-rounded" required>
-                        </div>
-                        <div class="form-group-custom mb-4">
-                            <label class="adoption-form">Edad:</label>
-                            <input type="number" class="form-control input-rounded" required>
-                        </div>
-                        <div class="form-group-custom mb-4">
-                            <label class="adoption-form">Dirección completa:</label>
-                            <input type="text" class="form-control input-rounded" required>
-                        </div>
-                        <div class="form-group-custom mb-4">
-                            <label class="adoption-form">Teléfono:</label>
-                            <input type="tel" class="form-control input-rounded" required>
-                        </div>
-                        <div class="form-group-custom mb-4">
-                            <label class="adoption-form">Ocupación:</label>
-                            <input type="text" class="form-control input-rounded" required>
-                        </div>
+                        
                         <div class="form-group-custom mb-4">
                             <label class="adoption-form">¿Vive solo/a o con familia?</label>
                             <div class="btn-group" role="group">

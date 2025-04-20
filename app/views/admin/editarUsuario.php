@@ -57,11 +57,11 @@ if (isset($_GET['id'])) {
 
                         </div>
                         <div class="col mb-3">
-                            <label>Direccion</label>
+                            <label>Correo</label>
                             <input type="email" name="correoEdit" value="<?php echo $usuario['correo']?>" class="input-adopcion bg-celeste">
                         </div>
                         <div class="col mb-3">
-                            <label>Correo</label>
+                            <label>Direccion</label>
                             <input type="text" name="direccionEdit" value="<?php echo $usuario['direccion']?>" class="input-adopcion bg-celeste">
                         </div>
                         <div class="row">
