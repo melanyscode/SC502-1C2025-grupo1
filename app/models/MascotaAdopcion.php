@@ -76,6 +76,7 @@ class MascotaAdopcion{
     
          
             $mascota['imagenes'] = $imagenes;
+          
             return $mascota;
         } catch (mysqli_sql_exception $e) {
             return ["error" => "Error al obtener mascota: " . $e->getMessage()];
@@ -92,6 +93,7 @@ class MascotaAdopcion{
             } else {
                 return false;
             }
+            $stmt->close();
         }catch (mysqli_sql_exception $e) {
             return false;
         }
@@ -109,6 +111,7 @@ class MascotaAdopcion{
             }else{
                 return false;
             }
+            $stmt->close();
         }catch (mysqli_sql_exception $e) {
             return false;
         }

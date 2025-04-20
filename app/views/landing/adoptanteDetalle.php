@@ -1,12 +1,14 @@
 <?php
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+    $id = (int)$_GET['id']; 
 
     require_once  'app/models/MascotaAdopcion.php';
     require_once  'app/models/Solicitante.php';
     $mascota = MascotaAdopcion::buscarMascota($id);
+
     if (isset($_SESSION['user'])) {
-    $envio = Solicitante::envioSolicitud($id, $_SESSION['user']['id_usuario']);
+        $idUsuario = (int)$_SESSION['user']['id_usuario'];
+        $envio = Solicitante::envioSolicitud($idUsuario, $id);
     }
 }
 ?>

@@ -17,6 +17,7 @@ class Solicitante
             } else {
                 return [];
             }
+            $stmt->close();
         } catch (mysqli_sql_exception $e) {
             return ["error" => "Error al obtener solicitantes: " . $e->getMessage()];
         }
@@ -35,6 +36,7 @@ class Solicitante
                 $stmt->close();
                 return 0;
             }
+            $stmt->close();
         } catch (mysqli_sql_exception $e) {
             return ["error" => "Error al obtener solicitantes: " . $e->getMessage()];
         }
@@ -55,6 +57,7 @@ class Solicitante
                 $stmt->close();
                 return 0;
             }
+            $stmt->close();
         } catch (mysqli_sql_exception $e) {
             return ["error" => "Error al obtener solicitud: " . $e->getMessage()];
         }
@@ -74,6 +77,7 @@ class Solicitante
                 $stmt->close();
                 return 0;
             }
+            $stmt->close();
         } catch (mysqli_sql_exception $e) {
             return ["error" => "Error al obtener solicitud: " . $e->getMessage()];
         }
@@ -89,6 +93,7 @@ class Solicitante
             $usuario = $resultado->fetch_assoc();
             $stmt->close();
             return $usuario;
+         
         } catch (mysqli_sql_exception $e) {
             return ["error" => "Error al obtener usuarios: " . $e->getMessage()];
         }
@@ -97,15 +102,18 @@ class Solicitante
 
         global $conn; 
         try{
-            $stmt = $conn->prepare("SELECT * FROM solicitud WHERE id_usuario = ? AND id_mascota_adopcion = ?");
+            $stmt = $conn->prepare("SELECT id_solicitud FROM solicitud WHERE id_usuario = ? AND id_mascota_adopcion = ?");
             $stmt->bind_param("ii", $idUsuario, $idMascotaAdopcion);
-            $resultado = $stmt->get_result();
-            if ($resultado->num_rows > 0) {
-                $usuario = $resultado->fetch_assoc();
-                return true; 
-            } else {
-                return false; 
-            }
+            $stmt->execute();
+            $stmt->store_result();
+    
+            // Importante: necesitas esto para que num_rows funcione bien
+            $stmt->bind_result($idSolicitud);
+    
+            $haySolicitud = $stmt->num_rows > 0;
+    
+            $stmt->close();
+            return $haySolicitud;
         }catch (mysqli_sql_exception $e) {
             return ["error" => "Error al obtener usuarios: " . $e->getMessage()];
         }

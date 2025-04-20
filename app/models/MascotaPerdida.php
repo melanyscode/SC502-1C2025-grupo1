@@ -68,6 +68,7 @@ class MascotaPerdida
             }else{
                 return false;
             }
+            $stmt->close();
         }catch (mysqli_sql_exception $e) {
             return false;
         }
@@ -88,6 +89,7 @@ class MascotaPerdida
                 return 0;
             }
 
+            $stmt->close();
         }catch (mysqli_sql_exception $e) {
             echo  "Error al guardar mascota perdida " . $e->getMessage();
         }
