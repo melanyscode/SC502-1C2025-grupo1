@@ -19,7 +19,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Acuerdo</th>
-                        <th scope="col">Tipo vivienda</th>
+                        <th scope="col">Vivienda</th>
                         <th scope="col">Descripcion</th>
                         <th scope="col">Patio</th>
                         <th scope="col">Mudanza</th>
