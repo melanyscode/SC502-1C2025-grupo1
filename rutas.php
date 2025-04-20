@@ -33,7 +33,7 @@ $action = isset($_GET['a']) ? $_GET['a'] : 'inicio';
 
 $controllers = array(
     'inicio' => ['inicio', 'error'],
-    'landing' => ['nosotros', 'contacto', 'encuentrame', 'blog', 'calendario', 'adopta', 'detalle','eventos' ],
+    'landing' => ['nosotros', 'contacto', 'encuentrame', 'blog', 'calendario', 'adopta', 'detalle','eventos' , 'calendarioBusqueda' ],
     'usuario' => ['perfil', 'login', 'registro'],
     'admin' => ['inicio', 'adopciones', 'eventos', 'eliminarEvento', 'agregarEvento', 'editarEvento', 'guardarEvento', 'guardarEditEvento', 'articulo', 'agregarArticulo', 'editarArticulo', 'anuncio', 'agregarAnuncio', 'blog', 'solicitantes', 'usuario', 'agregarUsuario', 'guardarUsuario', 'editarUsuario', 'eliminarUsuario', 'guardarEditUsuario', 'editarAnuncio', 'eliminarSolicitante', 'editarSolicitante', 'agregarSolicitante', 'guardarEditSolicitante', 'guardarSolicitante', 'solicitante']
 );

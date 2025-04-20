@@ -81,6 +81,34 @@ class landingController
     require_once("app/views/landing/calendario.php");
     require_once("app/views/footer.php");
 }
+public function calendarioBusqueda()
+{
+    $titulo = "Eventos";
+    $busqueda = isset($_GET['busqueda']) ? trim($_GET['busqueda']) : '';
+    $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
+
+    if (!empty($busqueda) || !is_null($categoria)) {
+        $eventos = Evento::buscarEventos($busqueda, $categoria); 
+    } else {
+    
+        $eventos = Evento::getAll(); 
+    }
+    if (is_null($eventos)) {
+        $eventos = []; 
+    }
+
+  
+
+    foreach ($eventos as &$evento) {
+        $usuario = Usuario::buscarUsuario($evento['id_usuario']);
+        $evento['nombre_organizador'] = $usuario ? $usuario['nombre'] . ' ' . $usuario['apellido'] : 'Desconocido';
+    }
+    $resultados = Evento::buscarEventos($busqueda, $categoria);
+    require_once("app/views/head.php");
+    require_once("app/views/navbar.php");
+    require_once("app/views/landing/calendario.php");
+    require_once("app/views/footer.php");
+}
 
 
 
