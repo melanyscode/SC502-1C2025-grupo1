@@ -244,8 +244,8 @@ class adminController
             $gasto = $_POST['gastos'];
             $post_adopcion = $_POST['post_adopcion'];
 
-            $resultado = Solicitante::add($acuerdo, $tipo_vivienda, $descripcion_vivienda, $patio, $mudanza, $cuido, $gasto, $post_adopcion);
-            var_dump($resultado);
+           // $resultado = Solicitante::add($acuerdo, $tipo_vivienda, $descripcion_vivienda, $patio, $mudanza, $cuido, $gasto, $post_adopcion);
+            //var_dump($resultado);
             /*
         header("Location: index.php?c=admin&a=solicitantes");
         } else {
