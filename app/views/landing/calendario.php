@@ -30,7 +30,7 @@
 
             <!-- Botón de Búsqueda -->
             <button type="submit" class="btn btn-primary" style="flex: 0 0 auto; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/bg-search.png" alt="Buscar" style="width: 20px; height: 20px;">
+                <img src="assets/img/bg-search.png" alt="Buscar" style="width: 20px; height: 20px;">
             </button>
         </div>
     </div>
