@@ -36,7 +36,7 @@ $controllers = array(
     'inicio' => ['inicio', 'error'],
     'landing' => ['nosotros', 'contacto', 'encuentrame', 'blog', 'calendario', 'adopta', 'detalle', 'solicitud'],
     'usuario' => ['perfil', 'login', 'registro', 'loginPost', 'registroPost', 'logout', 'perdido', 'editarPerfil', 'editarPerfilPost', 'mascotaPerdida', 'editarPerdido', 'editMascotaPerdida'],
-    'admin' => ['inicio', 'adopciones', 'articulo', 'agregarArticulo', 'editarArticulo', 'anuncio', 'agregarAnuncio', 'blog', 'solicitantes', 'usuario', 'agregarUsuario', 'guardarUsuario', 'editarUsuario', 'eliminarUsuario', 'guardarEditUsuario', 'editarAnuncio',  'eliminarAdopcion', 'eliminarSolicitante', 'editarSolicitante', 'agregarSolicitante', 'guardarEditSolicitante', 'guardarSolicitante', 'solicitante']
+    'admin' => ['inicio', 'adopciones', 'articulo', 'agregarArticulo', 'editarArticulo', 'anuncio', 'agregarAnuncio', 'blog', 'solicitantes', 'usuario', 'agregarUsuario', 'guardarUsuario', 'editarUsuario', 'eliminarUsuario', 'guardarEditUsuario', 'editarAnuncio',  'eliminarAdopcion', 'eliminarSolicitante', 'editarSolicitante', 'agregarSolicitante', 'guardarEditSolicitante', 'guardarSolicitante', 'solicitante', 'guardarAnuncio', 'guardarEditAnuncio']
 
 );
 
