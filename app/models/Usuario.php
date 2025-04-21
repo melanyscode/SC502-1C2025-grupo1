@@ -129,20 +129,19 @@ class Usuario
     public static function registrar($correo, $nombre, $apellido, $password, $estado, $rol)
     {
         global $conn;
-       try{
-        $stmt = $conn->prepare("INSERT INTO usuario (nombre, apellido,  correo, password, estado, id_rol) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssi", $nombre, $apellido, $correo, $password, $estado, $rol);
+        try {
+            $stmt = $conn->prepare("INSERT INTO usuario (nombre, apellido,  correo, password, estado, id_rol) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssssi", $nombre, $apellido, $correo, $password, $estado, $rol);
 
 
-        if ($stmt->execute()) {
-            return 1;
-        } else {
-            return 0;
+            if ($stmt->execute()) {
+                return 1;
+            } else {
+                return 0;
+            }
+        } catch (mysqli_sql_exception $e) {
+            return ["error" => "Error al obtener usuarios: " . $e->getMessage()];
         }
-       }catch (mysqli_sql_exception $e) {
-        return ["error" => "Error al obtener usuarios: " . $e->getMessage()];
-    }
-
     }
     public static function logout()
     {
@@ -152,5 +151,22 @@ class Usuario
         setcookie(session_name(), '', time() - 3600, '/');
         header("Location: index.php?p=inicio");
         exit();
+    }
+
+    public static function getAdmins(): array
+    {
+        global $conn;
+        try {
+            $sql = "SELECT * FROM usuario WHERE id_rol = 1";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                return $result->fetch_all(MYSQLI_ASSOC);
+            } else {
+                return [];
+            }
+        } catch (mysqli_sql_exception $e) {
+            return ["error" => "Error al obtener administradores: " . $e->getMessage()];
+        }
     }
 }

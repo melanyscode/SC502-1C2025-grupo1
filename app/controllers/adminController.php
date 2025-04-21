@@ -2,6 +2,8 @@
 require_once __DIR__ . '/../models/Usuario.php';
 require_once __DIR__ . '/../models/MascotaAdopcion.php';
 require_once __DIR__ . '/../models/Solicitante.php';
+require_once __DIR__ . '/../models/Articulo.php';
+require_once __DIR__ . '/../models/CategoriaArticulo.php';
 class adminController
 {
     public function inicio()
@@ -146,28 +148,123 @@ class adminController
 
 
 
+    // CRUD BLOG
     public function blog()
     {
         $titulo = "Blog";
+        $articulos = Articulo::getAll();
         require_once("app/views/head.php");
-
         require_once("app/views/admin/blogAdmin.php");
     }
 
     public function agregarArticulo()
     {
-        $titulo = "Agregar Articulo";
+        $titulo = "Agregar Artículo";
+        $categorias = CategoriaArticulo::getAll();
         require_once("app/views/head.php");
-
         require_once("app/views/admin/agregarArticulo.php");
     }
+
+    public function guardarArticulo()
+    {
+        if (isset($_POST['titulo'], $_POST['contenido'], $_POST['fecha'], $_POST['id_categoria'], $_POST['id_usuario'])) {
+
+            $titulo = $_POST['titulo'];
+            $contenido = $_POST['contenido'];
+            $fecha = $_POST['fecha'];
+            $id_categoria = $_POST['id_categoria'];
+            $id_usuario = $_POST['id_usuario'];
+
+            $rutaWeb = null;
+
+            if (isset($_FILES['imagenArticulo']) && $_FILES['imagenArticulo']['error'] === 0) {
+                $rutaTemporal = $_FILES['imagenArticulo']['tmp_name'];
+                $nombreArchivo = uniqid() . "_" . basename($_FILES['imagenArticulo']['name']);
+                $directorioDestino = 'app/uploads/';
+                $rutaImagen = $directorioDestino . $nombreArchivo;
+                $rutaWeb = 'app/uploads/' . $nombreArchivo;
+
+                if (!is_dir($directorioDestino)) {
+                    mkdir($directorioDestino, 0755, true);
+                }
+
+                move_uploaded_file($rutaTemporal, $rutaImagen);
+            }
+
+            Articulo::add($id_categoria, $id_usuario, $titulo, $contenido, $fecha, $rutaWeb);
+            header("Location: index.php?c=admin&a=blog");
+        } else {
+            echo "No se pudo agregar el artículo.";
+        }
+    }
+
     public function editarArticulo()
     {
-        $titulo = "Agregar Articulo";
-        require_once("app/views/head.php");
+        $titulo = "Editar Artículo";
 
-        require_once("app/views/admin/aditarArticulo.php");
+        if (isset($_GET['id'])) {
+            $articulo = Articulo::buscarArticulo($_GET['id']);
+            $categorias = CategoriaArticulo::getAll();
+            require_once("app/models/Usuario.php");
+            $usuariosAdmin = Usuario::getAdmins();
+            require_once("app/views/head.php");
+            require_once("app/views/admin/editarArticulo.php");
+        } else {
+            echo "ID de artículo no especificado.";
+        }
     }
+
+    public function guardarEditArticulo()
+    {
+        if (isset($_POST['id_articulo'], $_POST['titulo'], $_POST['contenido'], $_POST['fecha'], $_POST['id_categoria'], $_POST['id_usuario'])) {
+
+            $id_articulo = $_POST['id_articulo'];
+            $titulo = $_POST['titulo'];
+            $contenido = $_POST['contenido'];
+            $fecha = $_POST['fecha'];
+            $id_categoria = $_POST['id_categoria'];
+            $id_usuario = $_POST['id_usuario'];
+
+            $rutaWeb = $_POST['imagen_actual'] ?? null;
+
+            if (isset($_FILES['imagenArticulo']) && $_FILES['imagenArticulo']['error'] === 0) {
+                $rutaTemporal = $_FILES['imagenArticulo']['tmp_name'];
+                $nombreArchivo = uniqid() . "_" . basename($_FILES['imagenArticulo']['name']);
+                $directorioDestino = 'app/uploads/';
+                $rutaImagen = $directorioDestino . $nombreArchivo;
+                $rutaWeb = 'app/uploads/' . $nombreArchivo;
+
+                if (!is_dir($directorioDestino)) {
+                    mkdir($directorioDestino, 0755, true);
+                }
+
+                move_uploaded_file($rutaTemporal, $rutaImagen);
+            }
+
+            Articulo::update($id_articulo, $id_categoria, $id_usuario, $titulo, $contenido, $fecha, $rutaWeb);
+            header("Location: index.php?c=admin&a=blog");
+        } else {
+            echo "No se pudo editar el artículo.";
+        }
+    }
+
+    public function eliminarArticulo()
+    {
+        if (isset($_POST['id'])) {
+            $id = $_POST['id'];
+
+            if (Articulo::delete($id)) {
+                header("Location: index.php?c=admin&a=blog");
+                exit;
+            } else {
+                echo "Error al eliminar el artículo.";
+            }
+        } else {
+            echo "Acceso no permitido.";
+        }
+    }
+
+
     //CRUD SOLICITANTES
     public function solicitantes()
     {
@@ -203,26 +300,26 @@ class adminController
     //guarda el Solicitante
     public function guardarSolicitante()
     {
-    if (isset($_POST['acuerdo'], $_POST['tipo_vivienda'], $_POST['descripcion_vivienda'], $_POST['patio'], $_POST['mudanza'], $_POST['cuido'], $_POST['gastos'], $_POST['post_adopcion'])) {
+        if (isset($_POST['acuerdo'], $_POST['tipo_vivienda'], $_POST['descripcion_vivienda'], $_POST['patio'], $_POST['mudanza'], $_POST['cuido'], $_POST['gastos'], $_POST['post_adopcion'])) {
 
-        $acuerdo = $_POST['acuerdo'];
-        $tipo_vivienda = $_POST['tipo_vivienda'];
-        $descripcion_vivienda = $_POST['descripcion_vivienda'];
-        $patio = $_POST['patio'];
-        $mudanza = $_POST['mudanza'];
-        $cuido = $_POST['cuido'];
-        $gasto = $_POST['gastos'];
-        $post_adopcion = $_POST['post_adopcion'];
+            $acuerdo = $_POST['acuerdo'];
+            $tipo_vivienda = $_POST['tipo_vivienda'];
+            $descripcion_vivienda = $_POST['descripcion_vivienda'];
+            $patio = $_POST['patio'];
+            $mudanza = $_POST['mudanza'];
+            $cuido = $_POST['cuido'];
+            $gasto = $_POST['gastos'];
+            $post_adopcion = $_POST['post_adopcion'];
 
-       $resultado = Solicitante::add($acuerdo, $tipo_vivienda, $descripcion_vivienda, $patio, $mudanza, $cuido, $gasto, $post_adopcion);
-       var_dump($resultado);
-        /*
+            $resultado = Solicitante::add($acuerdo, $tipo_vivienda, $descripcion_vivienda, $patio, $mudanza, $cuido, $gasto, $post_adopcion);
+            var_dump($resultado);
+            /*
         header("Location: index.php?c=admin&a=solicitantes");
         } else {
         echo "No se pudo agregar el Solicitante";
         }
         */
-    }
+        }
     }
     public function editarSolicitante()
     {
