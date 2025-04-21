@@ -8,10 +8,7 @@
         <h1 class=" text-center txt-azul-oscuro mt-5">Aplicaciones de Adopcion</h1>
 
         <div class="row">
-            <div class="ms-4 my-5">
-                <a href="index.php?c=admin&a=agregarSolicitante"
-                    class="my-5  py-2 px-4 bg-celeste rounded-pill text-decoration-none">Agregar</a>
-            </div>
+           
         </div>
         <div class="ms-4 mt-5">
             <table class="table">
