@@ -1,5 +1,9 @@
 <?php
 require_once __DIR__ . '/../models/MascotaAdopcion.php';
+require_once __DIR__ . '/../models/MascotaAdopcion.php';
+require_once __DIR__ . '/../models/MascotaPerdida.php';
+require_once __DIR__ . '/../models/Usuario.php';
+require_once __DIR__ . '/../models/Solicitante.php';
     class landingController{
         public function nosotros(){
             $titulo = "Nosotros";
@@ -17,6 +21,9 @@ require_once __DIR__ . '/../models/MascotaAdopcion.php';
         }
         public function encuentrame(){
             $titulo = "Encuentrame";
+            $titulo = "Encuentrame";
+            $cantidad = MascotaPerdida::cantidadMascotas();
+            $perdidas = MascotaPerdida::getAll();
             require_once("app/views/head.php");
             require_once("app/views/navbar.php");
             require_once("app/views/landing/encuentrame.php");
@@ -70,6 +77,29 @@ require_once __DIR__ . '/../models/MascotaAdopcion.php';
         }
         public function error() {
             echo "error";
+        }
+        public function solicitud()
+        {
+            $idMascota = $_POST['id'];
+            $idUsuario = $_POST['idUsuario'];
+            $acuerdo = $_POST['acuerdoAdopcion'];
+            $tipo_vivienda = $_POST['tipoVivienda'];
+            $descripcion_vivienda = $_POST['descripcionVivienda'];
+            $patio = $_POST['patio'];
+            $mudanza = $_POST['mudanza'];
+            $cuido = $_POST['cuido'];
+            $gastos = $_POST['costo'];
+            $post_adopcion = $_POST['seguimiento'];
+    
+            $solicitud = Solicitante::add($idUsuario, $idMascota, $acuerdo, $tipo_vivienda, $descripcion_vivienda, $patio, $mudanza, $cuido, $gastos, $post_adopcion);
+            if($solicitud != false){
+                header("Location: index.php?c=landing&a=detalle&id=" . $idMascota . "&mensaje=Solicitud enviada");
+                exit;
+            }else{
+                header("Location: index.php?c=landing&a=detalle&id=" . $idMascota . "&mensaje=error");
+                exit;
+            }
+    
         }
     }
     
