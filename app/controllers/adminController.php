@@ -2,6 +2,8 @@
 require_once __DIR__ . '/../models/Usuario.php';
 require_once __DIR__ . '/../models/MascotaAdopcion.php';
 require_once __DIR__ . '/../models/Solicitante.php';
+require_once __DIR__ . '/../models/Articulo.php';
+require_once __DIR__ . '/../models/CategoriaArticulo.php';
 class adminController
 {
     public function inicio()
