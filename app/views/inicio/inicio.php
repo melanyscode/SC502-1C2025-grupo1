@@ -15,7 +15,7 @@
                         amor y cuidados</p>
 
                     <div class="mt-3 mb-5 ">
-                        <a href="index.php?controller=landing&action=adopta" class=" py-2 px-4 bg-white rounded-pill text-decoration-none txt-azul-oscuro fw-semibold mt-2">Vamos a adoptar</a>
+                        <a href="index.php?c=landing&a=adopta" class=" py-2 px-4 bg-white rounded-pill text-decoration-none txt-azul-oscuro fw-semibold mt-2">Vamos a adoptar</a>
                     </div>
                 </div>
             </div>
