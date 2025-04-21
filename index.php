@@ -1,4 +1,9 @@
-    <?php
+    <?php   
+    if (isset($_SESSION['usuario'])) {
+        $usuario = $_SESSION['usuario'];
+        var_dump($usuario);
+    }
+
     require_once __DIR__ . '/config/database.php';
 
     if (isset($_GET['c']) && isset($_GET['a'])) {
@@ -12,4 +17,3 @@
     require_once("rutas.php");
     ?>
 
- 

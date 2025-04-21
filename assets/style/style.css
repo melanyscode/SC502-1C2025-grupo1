@@ -848,6 +848,7 @@ textarea.input-personalizado {
 .cancelar {
     background-color: #f77067;
     color: #fff;
+
 }
 
 .mu-swiper-multimedia {
@@ -872,3 +873,13 @@ textarea.input-personalizado {
     justify-content: center;
     align-items: center;
 }
+
+
+  .btn-blanco{
+    background-color: white;
+    color: #115c75;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    text-decoration: none;
+}
+  

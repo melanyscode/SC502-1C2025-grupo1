@@ -1,5 +1,6 @@
 <?php
 
+
 function call($controller, $action)
 {
     require_once('app/controllers/' . $controller . 'Controller.php');
@@ -33,9 +34,11 @@ $action = isset($_GET['a']) ? $_GET['a'] : 'inicio';
 
 $controllers = array(
     'inicio' => ['inicio', 'error'],
-    'landing' => ['nosotros', 'contacto', 'encuentrame', 'blog', 'calendario', 'adopta', 'detalle','eventos' , 'calendarioBusqueda' ],
-    'usuario' => ['perfil', 'login', 'registro'],
-    'admin' => ['inicio', 'adopciones', 'eventos', 'eliminarEvento', 'agregarEvento', 'editarEvento', 'guardarEvento', 'guardarEditEvento', 'articulo', 'agregarArticulo', 'editarArticulo', 'anuncio', 'agregarAnuncio', 'blog', 'solicitantes', 'usuario', 'agregarUsuario', 'guardarUsuario', 'editarUsuario', 'eliminarUsuario', 'guardarEditUsuario', 'editarAnuncio', 'eliminarSolicitante', 'editarSolicitante', 'agregarSolicitante', 'guardarEditSolicitante', 'guardarSolicitante', 'solicitante']
+
+
+    'landing' => ['nosotros', 'contacto', 'encuentrame', 'blog', 'calendario', 'adopta', 'detalle', 'solicitud', 'articulo', 'eventos'],
+    'usuario' => ['perfil', 'login', 'registro', 'loginPost', 'registroPost', 'logout', 'perdido', 'editarPerfil', 'editarPerfilPost', 'mascotaPerdida', 'editarPerdido', 'editMascotaPerdida'],
+    'admin' => ['inicio', 'adopciones', 'articulo', 'eventos', 'eliminarEvento', 'agregarEvento', 'editarEvento', 'guardarEvento', 'guardarEditEvento', 'agregarArticulo', 'editarArticulo', 'anuncio', 'agregarAnuncio', 'blog', 'solicitantes', 'usuario', 'agregarUsuario', 'guardarUsuario', 'editarUsuario', 'eliminarUsuario', 'guardarEditUsuario', 'editarAnuncio',  'eliminarAdopcion', 'eliminarSolicitante', 'editarSolicitante', 'agregarSolicitante', 'guardarEditSolicitante', 'guardarSolicitante', 'solicitante', 'guardarAnuncio', 'guardarEditAnuncio',  'guardarArticulo', 'guardarEditArticulo', 'eliminarArticulo']
 );
 
 if (array_key_exists($controller, $controllers)) {
