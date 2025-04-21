@@ -279,8 +279,7 @@ class adminController
             echo "Acceso no permitido.";
         }
     }
-
-
+    
     //CRUD SOLICITANTES
     public function solicitantes()
     {
