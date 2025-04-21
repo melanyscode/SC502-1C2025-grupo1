@@ -35,7 +35,8 @@ $controllers = array(
     'inicio' => ['inicio', 'error'],
     'landing' => ['nosotros', 'contacto', 'encuentrame', 'blog', 'calendario', 'adopta', 'detalle'],
     'usuario' => ['perfil', 'login', 'registro'],
-    'admin' => ['inicio', 'adopciones', 'articulo', 'agregarArticulo', 'guardarArticulo', 'editarArticulo', 'anuncio', 'agregarAnuncio', 'blog', 'solicitantes', 'usuario', 'agregarUsuario', 'guardarUsuario', 'editarUsuario', 'eliminarUsuario', 'guardarEditUsuario', 'editarAnuncio', 'eliminarSolicitante', 'editarSolicitante', 'agregarSolicitante', 'guardarEditSolicitante', 'guardarSolicitante', 'solicitante', 'agregarArticulo', 'guardarArticulo', 'editarArticulo', 'guardarEditArticulo', 'eliminarArticulo']
+    'admin' => ['inicio', 'adopciones', 'articulo', 'agregarArticulo', 'guardarArticulo', 'editarArticulo', 'anuncio', 'agregarAnuncio', 'blog', 'solicitantes', 'usuario', 'agregarUsuario', 'guardarUsuario', 'editarUsuario', 'eliminarUsuario', 'guardarEditUsuario', 'editarAnuncio', 'eliminarSolicitante', 'editarSolicitante', 'agregarSolicitante', 'guardarEditSolicitante', 'guardarSolicitante', 'solicitante', 
+    'agregarArticulo', 'guardarArticulo', 'editarArticulo', 'guardarEditArticulo', 'eliminarArticulo']
 );
 
 if (array_key_exists($controller, $controllers)) {
