@@ -37,7 +37,7 @@ $controllers = array(
     'landing' => ['nosotros', 'contacto', 'encuentrame', 'blog', 'calendario', 'adopta', 'detalle'],
   'usuario' => ['perfil', 'login', 'registro', 'loginPost', 'registroPost', 'logout','perdido', 'editarPerfil', 'editarPerfilPost'],
     'admin' => ['inicio', 'adopciones', 'articulo', 'agregarArticulo', 'editarArticulo', 'anuncio', 'agregarAnuncio', 'blog', 'solicitantes', 'usuario', 'agregarUsuario', 'guardarUsuario', 'editarUsuario', 'eliminarUsuario', 'guardarEditUsuario', 'editarAnuncio',  'eliminarAdopcion','eliminarSolicitante', 'editarSolicitante', 'agregarSolicitante', 'guardarEditSolicitante', 'guardarSolicitante', 'solicitante',
-               'guardarArticulo', 'guardarEditArticulo', 'eliminarArticulo']]
+               'guardarArticulo', 'guardarEditArticulo', 'eliminarArticulo']
 );
 
 if (array_key_exists($controller, $controllers)) {
