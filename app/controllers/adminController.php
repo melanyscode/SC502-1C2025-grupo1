@@ -4,6 +4,7 @@ require_once __DIR__ . '/../models/MascotaAdopcion.php';
 require_once __DIR__ . '/../models/Solicitante.php';
 require_once __DIR__ . '/../models/Articulo.php';
 require_once __DIR__ . '/../models/CategoriaArticulo.php';
+require_once __DIR__ . '/../models/SubcategoriaArticulo.php';
 class adminController
 {
     public function inicio()
@@ -275,18 +276,21 @@ class adminController
     {
         $titulo = "Agregar Artículo";
         $categorias = CategoriaArticulo::getAll();
+        $subcategorias = SubcategoriaArticulo::getAll();
+        $usuariosAdmin = Usuario::getAdmins();
         require_once("app/views/head.php");
         require_once("app/views/admin/agregarArticulo.php");
     }
 
     public function guardarArticulo()
     {
-        if (isset($_POST['titulo'], $_POST['contenido'], $_POST['fecha'], $_POST['id_categoria'], $_POST['id_usuario'])) {
+        if (isset($_POST['titulo'], $_POST['contenido'], $_POST['fecha'], $_POST['id_categoria'], $_POST['id_subcategoria'], $_POST['id_usuario'])) {
 
             $titulo = $_POST['titulo'];
             $contenido = $_POST['contenido'];
             $fecha = $_POST['fecha'];
             $id_categoria = $_POST['id_categoria'];
+            $id_subcategoria = $_POST['id_subcategoria'];
             $id_usuario = $_POST['id_usuario'];
 
             $rutaWeb = null;
@@ -305,7 +309,7 @@ class adminController
                 move_uploaded_file($rutaTemporal, $rutaImagen);
             }
 
-            Articulo::add($id_categoria, $id_usuario, $titulo, $contenido, $fecha, $rutaWeb);
+            Articulo::add($id_categoria, $id_subcategoria, $id_usuario, $titulo, $contenido, $fecha, $rutaWeb);
             header("Location: index.php?c=admin&a=blog");
         } else {
             echo "No se pudo agregar el artículo.";
@@ -319,6 +323,7 @@ class adminController
         if (isset($_GET['id'])) {
             $articulo = Articulo::buscarArticulo($_GET['id']);
             $categorias = CategoriaArticulo::getAll();
+            $subcategorias = SubcategoriaArticulo::getAll();
             require_once("app/models/Usuario.php");
             $usuariosAdmin = Usuario::getAdmins();
             require_once("app/views/head.php");
@@ -330,13 +335,14 @@ class adminController
 
     public function guardarEditArticulo()
     {
-        if (isset($_POST['id_articulo'], $_POST['titulo'], $_POST['contenido'], $_POST['fecha'], $_POST['id_categoria'], $_POST['id_usuario'])) {
+        if (isset($_POST['id_articulo'], $_POST['titulo'], $_POST['contenido'], $_POST['fecha'], $_POST['id_categoria'], $_POST['id_subcategoria'], $_POST['id_usuario'])) {
 
             $id_articulo = $_POST['id_articulo'];
             $titulo = $_POST['titulo'];
             $contenido = $_POST['contenido'];
             $fecha = $_POST['fecha'];
             $id_categoria = $_POST['id_categoria'];
+            $id_subcategoria = $_POST['id_subcategoria'];
             $id_usuario = $_POST['id_usuario'];
 
             $rutaWeb = $_POST['imagen_actual'] ?? null;
@@ -355,7 +361,7 @@ class adminController
                 move_uploaded_file($rutaTemporal, $rutaImagen);
             }
 
-            Articulo::update($id_articulo, $id_categoria, $id_usuario, $titulo, $contenido, $fecha, $rutaWeb);
+            Articulo::update($id_articulo, $id_categoria, $id_subcategoria, $id_usuario, $titulo, $contenido, $fecha, $rutaWeb);
             header("Location: index.php?c=admin&a=blog");
         } else {
             echo "No se pudo editar el artículo.";

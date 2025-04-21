@@ -1,4 +1,3 @@
-
 <body class="body-admin bg-celeste">
     <div class="bg-celeste">
         <?php include "aside.php" ?>
@@ -37,8 +36,8 @@
                         </div>
                         <div class="row">
                             <div class="col mb-3">
-                                <label>Categoría</label>
-                                <select name="id_categoria" class="input-adopcion bg-celeste">
+                                <label for="categoria">Categoría</label>
+                                <select name="id_categoria" id="categoria" class="input-adopcion bg-celeste w-100">
                                     <?php foreach ($categorias as $categoria): ?>
                                         <option value="<?= $categoria['id_categoria'] ?>" <?= $articulo['id_categoria'] == $categoria['id_categoria'] ? 'selected' : '' ?>>
                                             <?= htmlspecialchars($categoria['nombre']) ?>
@@ -46,16 +45,29 @@
                                     <?php endforeach; ?>
                                 </select>
                             </div>
+
                             <div class="col mb-3">
-                                <label>Usuario</label>
-                                <select name="id_usuario" class="input-adopcion bg-celeste">
-                                    <?php foreach ($usuariosAdmin as $usuario): ?>
-                                        <option value="<?= $usuario['id_usuario'] ?>" <?= $articulo['id_usuario'] == $usuario['id_usuario'] ? 'selected' : '' ?>>
-                                            <?= htmlspecialchars($usuario['nombre']) . ' ' . htmlspecialchars($usuario['apellido']) ?>
+                                <label for="subcategoria">Subcategoría</label>
+                                <select name="id_subcategoria" id="subcategoria" class="input-adopcion bg-celeste w-100">
+                                    <?php foreach ($subcategorias as $sub): ?>
+                                        <option value="<?= $sub['id_subcategoria'] ?>"
+                                            data-categoria="<?= $sub['id_categoria'] ?>"
+                                            <?= $sub['id_subcategoria'] == $articulo['id_subcategoria'] ? 'selected' : '' ?>>
+                                            <?= htmlspecialchars($sub['nombre']) ?>
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
+                        </div>
+                        <div class="col mb-3">
+                            <label>Usuario</label>
+                            <select name="id_usuario" class="input-adopcion bg-celeste">
+                                <?php foreach ($usuariosAdmin as $usuario): ?>
+                                    <option value="<?= $usuario['id_usuario'] ?>" <?= $articulo['id_usuario'] == $usuario['id_usuario'] ? 'selected' : '' ?>>
+                                        <?= htmlspecialchars($usuario['nombre']) . ' ' . htmlspecialchars($usuario['apellido']) ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                     </div>
 
@@ -73,4 +85,5 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/javascript/script.js"></script>
 </body>

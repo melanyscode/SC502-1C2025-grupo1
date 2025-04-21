@@ -1,4 +1,3 @@
-
 <body class="body-admin bg-celeste">
     <div class="bg-celeste">
         <?php include "aside.php" ?>
@@ -35,7 +34,7 @@
                         <div class="row">
                             <div class="col mb-3">
                                 <label>Categoría</label>
-                                <select name="id_categoria" class="input-adopcion bg-celeste">
+                                <select name="id_categoria" id="categoria" class="input-adopcion bg-celeste">
                                     <?php foreach ($categorias as $categoria): ?>
                                         <option value="<?= $categoria['id_categoria'] ?>"><?= htmlspecialchars($categoria['nombre']) ?></option>
                                     <?php endforeach; ?>
@@ -43,12 +42,25 @@
                             </div>
                             <div class="col mb-3">
                                 <label>Subcategoría</label>
-                                <select name="subcategoria" class="input-adopcion bg-celeste">
-                                    <option value="Historias de Éxito">Historias de Éxito</option>
-                                    <option value="Como ayudar">Como ayudar</option>
-                                    <option value="Seguimiento de M">Seguimiento de M</option>
+                                <select name="id_subcategoria" id="subcategoria" class="input-adopcion bg-celeste">
+                                    <?php foreach ($subcategorias as $sub): ?>
+                                        <option value="<?= $sub['id_subcategoria'] ?>" data-categoria="<?= $sub['id_categoria'] ?>">
+                                            <?= htmlspecialchars($sub['nombre']) ?>
+                                        </option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
+                        </div>
+                        <div class="mb-3">
+                            <label>Administrador que publica</label>
+                            <select name="id_usuario" class="input-adopcion bg-celeste" required>
+                                <option value="" disabled selected>Seleccione un administrador</option>
+                                <?php foreach ($usuariosAdmin as $usuario): ?>
+                                    <option value="<?= $usuario['id_usuario'] ?>">
+                                        <?= htmlspecialchars($usuario['nombre']) . ' ' . htmlspecialchars($usuario['apellido']) ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                     </div>
 
@@ -58,8 +70,6 @@
                     </div>
                 </div>
 
-                <input type="hidden" name="id_usuario" value="<?= $_SESSION['usuario']['id_usuario'] ?>">
-
                 <div class="text-end">
                     <button class="d-inline border-0 px-4 py-2 bg-azul-oscuro rounded-5 text-white fw-bold mt-2 text-end" type="submit">Publicar</button>
                 </div>
@@ -68,4 +78,5 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/javascript/script.js"></script>
 </body>
