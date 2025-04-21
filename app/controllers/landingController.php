@@ -40,23 +40,25 @@ class landingController
     public function calendario()
 { 
     $titulo = "Eventos";
+
+  
     $busqueda = isset($_GET['busqueda']) ? trim($_GET['busqueda']) : '';
     $id_categoria = isset($_GET['categoria']) ? (int)$_GET['categoria'] : null; 
 
-    $eventos = Evento::getAll();
-    echo "<pre>";
-    var_dump($busqueda, $id_categoria);
-    echo "</pre>";
+   
 
- 
+
     if (!empty($busqueda) || !is_null($id_categoria)) {
         $eventos = Evento::buscarEventos($busqueda, $id_categoria); 
+    } else {
       
+        $eventos = Evento::getAll(); 
     }
-   
+
     if (is_null($eventos)) {
         $eventos = []; 
     }
+
     $eventosCarrusel = Evento::getProximosEventos(3);
 
     foreach ($eventos as &$evento) {
@@ -74,6 +76,35 @@ class landingController
     require_once("app/views/landing/calendario.php");
     require_once("app/views/footer.php");
 }
+public function calendarioBusqueda()
+{
+    $titulo = "Eventos";
+    $busqueda = isset($_GET['busqueda']) ? trim($_GET['busqueda']) : '';
+    $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
+
+    if (!empty($busqueda) || ($categoria !== '' && $categoria !== null)) {
+        $eventos = Evento::buscarEventos($busqueda, $categoria); 
+    } else {
+    
+        $eventos = Evento::getAll(); 
+    }
+    if (is_null($eventos)) {
+        $eventos = []; 
+    }
+
+  
+
+    foreach ($eventos as &$evento) {
+        $usuario = Usuario::buscarUsuario($evento['id_usuario']);
+        $evento['nombre_organizador'] = $usuario ? $usuario['nombre'] . ' ' . $usuario['apellido'] : 'Desconocido';
+    }
+    $resultados = Evento::buscarEventos($busqueda, $categoria);
+    require_once("app/views/head.php");
+    require_once("app/views/navbar.php");
+    require_once("app/views/landing/calendario.php");
+    require_once("app/views/footer.php");
+}
+
 
     //ADOPCIONES
     public function adopta()

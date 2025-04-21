@@ -486,6 +486,7 @@ class adminController
 
     public function agregarEvento()
     {
+        session_start();
         $titulo = "Agregar Evento";
         require_once("app/views/head.php");
         require_once("app/views/admin/agregarEvento.php");

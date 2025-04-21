@@ -10,7 +10,7 @@
         <div class="container mt-5 pt-5">
             <form action="index.php?c=admin&a=guardarEvento" method="POST" class="mt-5" enctype="multipart/form-data">
 
-                <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['user']['id_usuario']; ?>">
+                <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['user']['id_usuario'];  ?>">
 
                 <div class="row">
                     <div class="col">

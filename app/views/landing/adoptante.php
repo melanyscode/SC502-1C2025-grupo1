@@ -30,19 +30,13 @@
         <div class="row">
 
             <aside class="col-md-3 bg-white p-3">
-                <h5 class="txt-azul-oscuro">Categorías</h5>
+                <h5 class="txt-azul-oscuro">Categorías de mascotas que tenemos disponibles</h5>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gatos">
-                    <label class="form-check-label" for="gatos">Gatos</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="perros">
-                    <label class="form-check-label" for="perros">Perros</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="conejos">
-                    <label class="form-check-label" for="conejos">Conejos</label>
-                </div>
+                    
+              <p>Gatos</p>
+                                  
+              <p>Perros</p>
+              
             </aside>
 
             <div class="col-md-9">

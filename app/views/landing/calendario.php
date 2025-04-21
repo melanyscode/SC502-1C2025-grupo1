@@ -11,7 +11,9 @@
         </div>
     </div>
 
-    <form method="GET" action="index.php?c=landing&a=calendario">
+    <form method="GET" action="index.php?c=landing&a=calendarioBusqueda">
+    <input type="hidden" name="c" value="landing">
+    <input type="hidden" name="a" value="calendarioBusqueda">
     <div class="container d-flex justify-content-center pt-5">
         <div class="search-box p-3 rounded d-flex align-items-center justify-content-between w-100">
             <!-- Búsqueda por Nombre de Evento -->
@@ -28,7 +30,7 @@
 
             <!-- Botón de Búsqueda -->
             <button type="submit" class="btn btn-primary" style="flex: 0 0 auto; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/bg-search.png" alt="Buscar" style="width: 20px; height: 20px;">
+                <img src="assets/img/bg-search.png" alt="Buscar" style="width: 20px; height: 20px;">
             </button>
         </div>
     </div>
@@ -38,7 +40,8 @@
 
     <div id="carouselExampleIndicators" class="carousel slide my-5" data-ride="carousel" style="width: 1000px; margin: 0 auto;">
         <ol class="carousel-indicators">
-            <?php foreach ($eventosCarrusel as $index => $evento): ?>
+            
+            <?php if(isset($eventosCarrusel) ){foreach ($eventosCarrusel as $index => $evento): ?>
                 <li data-target="#carouselExampleIndicators" data-slide-to="<?= $index ?>" class="<?= $index === 0 ? 'active' : '' ?>"></li>
             <?php endforeach; ?>
         </ol>
@@ -55,7 +58,7 @@
                         <p><?= date("d/m/Y g:i a", strtotime($evento['fecha'] . ', ' . $evento['hora'])) ?></p>
                     </div>
                 </div>
-            <?php endforeach; ?>
+            <?php endforeach; }?>
         </div>
 
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
