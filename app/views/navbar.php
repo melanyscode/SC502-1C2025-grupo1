@@ -3,8 +3,8 @@ if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
 
-
-
+file_put_contents('session_id_debug.txt', session_id());
+var_dump($_SESSION);
 ?>
 
 <nav class="navbar m-0 py-3 text-center d-flex align-items-center justify-content-center">
@@ -21,7 +21,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <li class="ms-2"><a href="index.php?c=landing&a=adopta" class="txt-black ">Adopta</a></li>
         <li class="ms-2"><a href="index.php?c=landing&a=calendario" class="txt-black ">Calendario</a></li>
        <?php if (isset($_SESSION['user']) && $_SESSION['user']['id_rol'] == 1) { ?>
-        <li class="ms-2"><a href="index.php?c=admin&a=usuario" class="txt-black ">Admin</a></li>
+        <li class="ms-2"><a href="index.php?c=admin&a=inicio" class="txt-black ">Admin</a></li>
         <?php }?>
       </ul>
       </div>

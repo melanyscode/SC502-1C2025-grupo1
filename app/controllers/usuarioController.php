@@ -1,9 +1,10 @@
 <?php
 require_once __DIR__ . '/../models/Usuario.php';
-require_once __DIR__ . '/../models/MascotaPerdida.php';
 
 class usuarioController
 {
+
+
 
     public function perfil()
     {
@@ -11,9 +12,16 @@ class usuarioController
             session_start();
         }
 
+        file_put_contents('session_id_debug.txt', session_id());
+        var_dump($_SESSION);
+
         if (isset($_SESSION['user'])) {
             $usuario = $_SESSION['user'];
-        } 
+        } else {
+
+            echo "no sirvio";
+            exit();
+        }
         $titulo = "Pefil de Usuario";
         require_once("app/views/head.php");
         require_once("app/views/navbar.php");
@@ -100,66 +108,11 @@ class usuarioController
     }
     public function perdido()
     {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-
-        if (isset($_SESSION['user'])) {
-            $usuario = $_SESSION['user'];
-        }
         $titulo = "Form mascota perdida";
         require_once("app/views/head.php");
         require_once("app/views/navbar.php");
         require_once("app/views/usuario/formPerdida.php");
         require_once("app/views/footer.php");
-    }
-    public function mascotaPerdida()
-    {
-        echo '<pre>';
-        print_r($_POST);
-        echo '</pre>';
-        session_start();
-        $id = $_POST['id_usuario'];
-        $nombre = $_POST['nombreMascota'];
-        $raza = $_POST['razaPerdido'];
-        $fecha = $_POST['fechaPerdido'];
-        $descripcion = $_POST['descripcionPerdido'];
-        $ubicacionMascota = $_POST['ubicacionMascota'];
-        $estado = $_POST['estadoMascota'];
-        $tipo = $_POST['tipoPerdido'];
-        $comentario = $_POST['comentarioMascota'];
-        $direccion = $_POST['direccionEditPerfil'];
-        $rutaWeb = "";
-        $rutaImagen = null;
-        if (isset($_FILES['imagenMascota']) && $_FILES['imagenMascota']['error'] === 0) {
-            $rutaTemporal = $_FILES['imagenMascota']['tmp_name'];
-            $nombreArchivo = uniqid() . "_" . basename($_FILES['imagenMascota']['name']);
-            $directorioDestino = '../uploads/';
-            $rutaImagen = $directorioDestino . $nombreArchivo;
-            $rutaWeb = 'app/uploads/' . $nombreArchivo;
-            if (!is_dir($directorioDestino)) {
-                mkdir($directorioDestino, 0755, true);
-            }
-
-            move_uploaded_file($rutaTemporal, $rutaImagen);
-        }
-        $exito = MascotaPerdida::add($id, $nombre, $raza, $tipo, $fecha, $descripcion, $ubicacionMascota, $estado, $comentario, $direccion, $rutaWeb);
-        if ($exito) {
-            header("Location: index.php?c=usuario&a=perfil");
-            exit();
-        } else {
-            echo "No sirvio";
-            exit();
-        }
-    }
-    public function editarPerdido(){
-        require_once("app/views/head.php");
-        require_once("app/views/navbar.php");
-        require_once("app/views/usuario/formPerdidaEdit.php");
-        require_once("app/views/footer.php");
-    }
-    public function editMascotaPerdida(){
-
     }
 
     public function editarPerfilPost()
@@ -175,10 +128,10 @@ class usuarioController
         $direccion = $_POST['direccionEditPerfil'];
         $rutaWeb = "";
         $rutaImagen = null;
-        if (isset($_FILES['inputEditPerfil']) && $_FILES['inputEditPerfil']['error'] === 0) {
-            $rutaTemporal = $_FILES['inputEditPerfil']['tmp_name'];
-            $nombreArchivo = uniqid() . "_" . basename($_FILES['inputEditPerfil']['name']);
-            $directorioDestino = 'app/uploads/';
+        if (isset($_FILES['editFotoUsuario']) && $_FILES['editFotoUsuario']['error'] === 0) {
+            $rutaTemporal = $_FILES['editFotoUsuario']['tmp_name'];
+            $nombreArchivo = uniqid() . "_" . basename($_FILES['editFotoUsuario']['name']);
+            $directorioDestino = '../uploads/';
             $rutaImagen = $directorioDestino . $nombreArchivo;
             $rutaWeb = 'app/uploads/' . $nombreArchivo;
             if (!is_dir($directorioDestino)) {
@@ -196,7 +149,6 @@ class usuarioController
             $_SESSION['user']['telefono'] = $telefono;
             $_SESSION['user']['estado'] = $estado;
             $_SESSION['user']['id_rol'] = (int)$rol;
-            $_SESSION['user']['direccion'] = $direccion;
 
             if ($rutaImagen) {
                 $_SESSION['user']['img_url'] = $rutaWeb;
@@ -213,6 +165,4 @@ class usuarioController
     {
         echo "error";
     }
-
-    public function guardarPerdido() {}
 }

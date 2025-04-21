@@ -71,7 +71,7 @@ class Usuario
         global $conn;
         try {
             if ($rutaImagen) {
-                $stmt = $conn->prepare("UPDATE usuario SET nombre = ?, apellido = ?, telefono = ?, correo = ?,  direccion = ?, estado = ?, id_rol = ?, img_url = ? WHERE id_usuario = ?");
+                $stmt = $conn->prepare("UPDATE usuario SET nombre = ?, apellido = ?, telefono = ?, correo = ?, estado = ?, id_rol = ?, img_url = ? WHERE id_usuario = ?");
                 $stmt->bind_param("ssssssssi", $nombre, $apellido, $telefono, $correo, $direccion, $estado, $rol, $rutaImagen, $id);
             } else {
 

@@ -84,17 +84,4 @@ document.addEventListener("DOMContentLoaded", function () {
             modalInformativo.style.display = "none";
         }
     }
-
-    function getParametroUrl(nombre) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(nombre);
-    }
-
-   
-    const mensaje = getParametroUrl("mensaje");
-    if (mensaje) {
-        informativo(decodeURIComponent(mensaje));
-        const urlSinMensaje = window.location.href.replace(/([&?])mensaje=.*?(&|$)/, (match, p1, p2) => p1 === '?' && !p2 ? '' : p2 ? p1 : '');
-        window.history.replaceState({}, document.title, urlSinMensaje);
-    }
 });

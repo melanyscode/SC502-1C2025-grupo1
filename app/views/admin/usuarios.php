@@ -9,7 +9,7 @@
     <div class=" m-3 ms-1 p-4 bg-white rounded-5">
         <h1 class=" text-center txt-azul-oscuro mt-5">Usuarios</h1>
         <div class="ms-4">
-      
+            <?php include "buscar.php" ?>
         </div>
         <div class="ms-4 my-5">
             <a href="index.php?c=admin&a=agregarUsuario" class="my-5  py-2 px-4 bg-celeste rounded-pill text-decoration-none">Agregar</a>
@@ -39,7 +39,7 @@
                             <td><?= htmlspecialchars($u['correo']) ?></td>
                             <td><?= htmlspecialchars($u['telefono']) ?></td>
                             <td><?= $u['estado'] == 1 ? 'Activo' : 'Inactivo' ?></td>
-                            <td><?= htmlspecialchars($u['id_rol']) == 1 ? 'Administrador' : 'Usuario' ?></td>
+                            <td><?= isset($roles[$u['id_rol']]) ? $roles[$u['id_rol']] : 'Desconocido' ?></td>
                             <td class="text-center">
                                 <a href="index.php?c=admin&a=editarUsuario&id=<?= $u['id_usuario'] ?>" data-id="<?= $u['id_usuario'] ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="20px">
