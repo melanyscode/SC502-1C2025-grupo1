@@ -3,6 +3,8 @@ require_once __DIR__ . '/../models/MascotaAdopcion.php';
 require_once __DIR__ . '/../models/CategoriaArticulo.php';
 require_once __DIR__ . '/../models/SubcategoriaArticulo.php';
 require_once __DIR__ . '/../models/Articulo.php';
+require_once __DIR__ . '/../models/Solicitante.php';
+require_once __DIR__ . '/../models/MascotaPerdida.php';
 class landingController
 {
     public function nosotros()
@@ -59,8 +61,7 @@ class landingController
             session_start();
         }
 
-        file_put_contents('session_id_debug.txt', session_id());
-        var_dump($_SESSION);
+        
 
         if (isset($_SESSION['user'])) {
             $usuario = $_SESSION['user'];

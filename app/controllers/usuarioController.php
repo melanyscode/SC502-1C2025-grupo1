@@ -146,7 +146,7 @@ class usuarioController
         $exito = MascotaPerdida::add($id, $nombre, $raza, $tipo, $fecha, $descripcion, $ubicacionMascota, $estado, $comentario, $direccion, $rutaWeb);
         if ($exito) {
             header("Location: index.php?c=usuario&a=perfil");
-            exit();
+           
         } else {
             echo "No sirvio";
             exit();
@@ -159,7 +159,39 @@ class usuarioController
         require_once("app/views/footer.php");
     }
     public function editMascotaPerdida(){
+        session_start();
+        $id = $_POST['id_usuario'];
+        $nombre = $_POST['nombreMascota'];
+        $raza = $_POST['razaPerdido'];
+        $fecha = $_POST['fechaPerdido'];
+        $descripcion = $_POST['descripcionPerdido'];
+        $ubicacionMascota = $_POST['ubicacionMascota'];
+        $estado = $_POST['estadoMascota'];
+        $tipo = $_POST['tipoPerdido'];
+        $comentario = $_POST['comentarioMascota'];
+      
+        $rutaWeb = "";
+        $rutaImagen = null;
+        if (isset($_FILES['imagenMascota']) && $_FILES['imagenMascota']['error'] === 0) {
+            $rutaTemporal = $_FILES['imagenMascota']['tmp_name'];
+            $nombreArchivo = uniqid() . "_" . basename($_FILES['imagenMascota']['name']);
+            $directorioDestino = '../uploads/';
+            $rutaImagen = $directorioDestino . $nombreArchivo;
+            $rutaWeb = 'app/uploads/' . $nombreArchivo;
+            if (!is_dir($directorioDestino)) {
+                mkdir($directorioDestino, 0755, true);
+            }
 
+            move_uploaded_file($rutaTemporal, $rutaImagen);
+        }
+        $exito = MascotaPerdida::update($id, $nombre, $raza, $tipo, $fecha, $descripcion, $ubicacionMascota, $estado, $comentario, $rutaWeb);
+        if ($exito) {
+            header("Location: index.php?c=usuario&a=perfil");
+           
+        } else {
+            echo "No sirvio";
+            exit();
+        }
     }
 
     public function editarPerfilPost()

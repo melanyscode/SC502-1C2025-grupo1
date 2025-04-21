@@ -5,6 +5,7 @@ $user = $_SESSION['user']['id_usuario'];
 
 $mascotas = MascotaPerdida::buscarMascotaPerdida($user);
 
+
 ?>
 
 <body class="d-flex flex-column min-vh-100">
@@ -62,24 +63,22 @@ $mascotas = MascotaPerdida::buscarMascotaPerdida($user);
         <?php
             if ($mascotas != null) { ?>
             <h2>Mis compañeros</h2>
-            <?php foreach ($mascotas as $a): ?>
+            <?php foreach ($mascotas as $m): ?>
             <div class="perfil-mascotas-right">
-                <div class="row justify-content-end">
+                <div class="row">
                     <div class="col-md-6">
                         <div class="perfil-card-right">
-                            <img src="assets/img/bg-7.jpg" class="card-img-top" alt="Mascota">
-                            <div class="card-body-right">
-                                <h5><?= htmlspecialchars($a['nombre']) ?></h5>
+                            <img src="<?= htmlspecialchars($m['imagen_url']) ?>" class="card-img-top" alt="Mascota">
+                            <div class="card-body-right d-flex justify-content-around">
+                                <h5><?= htmlspecialchars($m['nombre']) ?></h5> <a href="index.php?c=usuario&a=editarPerdido&id=<?= htmlspecialchars($m['id_mascota_perdida']) ?>">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="20px">
+                        <path fill="#176B87" d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" />
+                    </svg>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="perfil-card-right">
-                            <img src="assets/img/dog-1.jpg" class="card-img-top" alt="Mascota">
-                            <div class="card-body-right">
-                                <h5>Ares</h5>
-                            </div>
+                            <div class="text-end">
+                
+                </a>
+            </div>
                         </div>
                     </div>
 
