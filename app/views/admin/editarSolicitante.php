@@ -28,7 +28,7 @@ if (isset($_GET['id'])) {
                             <input type="hidden" value="<?php echo $solicitud['id_solicitud'] ?>" name="id"
                                 id="editIdSolicitante">
                             <label>Acuerdo</label>
-                            <select name="acuerdo" id="addAcuerdoSolicitante" class="input-adopcion bg-celeste">
+                            <select name="acuerdo" id="addAcuerdoSolicitante" class="input-adopcion bg-celeste" >
                                 <option value="1" <?= ($solicitud['acuerdo'] == 1) ? 'selected' : '' ?>>Activo</option>
                                 <option value="0" <?= ($solicitud['acuerdo'] == 0) ? 'selected' : '' ?>>Inactivo</option>
                             </select>
@@ -36,20 +36,20 @@ if (isset($_GET['id'])) {
                         <div class="col mb-3">
                             <label>Tipo vivienda</label>
                             <input type="text" name="tipo_vivienda" class="input-adopcion bg-celeste"
-                                value="<?php echo $solicitud['tipo_vivienda'] ?>">
+                                value="<?php echo $solicitud['tipo_vivienda'] ?>" readonly>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col mb-3">
                             <label>Descripcion vivienda</label>
                             <input type="text" name="descripcion_vivienda" class="input-adopcion bg-celeste"
-                                value="<?php echo $solicitud['descripcion_vivienda'] ?>">
+                                value="<?php echo $solicitud['descripcion_vivienda'] ?>" readonly>
                         </div>
 
                     </div>
                     <div class="col mb-3">
                         <label>patio</label>
-                        <select name="patio" id="addEstadoUsuario" class="input-adopcion bg-celeste">
+                        <select name="patio" id="addEstadoUsuario" class="input-adopcion bg-celeste" readonly>
                             <option value="1" <?= ($solicitud['patio'] == 1) ? 'selected' : '' ?>>Si</option>
                             <option value="0" <?= ($solicitud['patio'] == 0) ? 'selected' : '' ?>>No</option>
 
@@ -60,20 +60,20 @@ if (isset($_GET['id'])) {
                         <div class="col mb-3">
                             <label>Mudanza</label>
                             <input type="text" name="mudanza" class="input-adopcion bg-celeste"
-                                value="<?php echo $solicitud['mudanza'] ?>">
+                                value="<?php echo $solicitud['mudanza'] ?>" readonly>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col mb-3">
                             <label>Cuido</label>
                             <input type="text" name="cuido" class="input-adopcion bg-celeste"
-                                value="<?php echo $solicitud['cuido'] ?>">
+                                value="<?php echo $solicitud['cuido'] ?>" readonly>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col mb-3">
                             <label>Gastos</label>
-                            <select name="gastos" id="addEstadoUsuario" class="input-adopcion bg-celeste">
+                            <select name="gastos" id="addEstadoUsuario" class="input-adopcion bg-celeste" readonly>
                                 <option value="1" <?= ($solicitud['gastos'] == 1) ? 'selected' : '' ?>>Si</option>
                                 <option value="0" <?= ($solicitud['gastos'] == 0) ? 'selected' : '' ?>>No</option>
                             </select>
@@ -81,9 +81,9 @@ if (isset($_GET['id'])) {
                         </div>
                         <div class="col mb-3">
                             <label>Post-adopción</label>
-                            <select name="post_adopcion" id="addEstadoUsuario" class="input-adopcion bg-celeste">
-                                <option value="1" <?= ($solicitud['post-adopción'] == 1) ? 'selected' : '' ?>>Si</option>
-                                <option value="0" <?= ($solicitud['post-adopción'] == 0) ? 'selected' : '' ?>>No</option>
+                            <select name="post_adopcion" id="addEstadoUsuario" class="input-adopcion bg-celeste" readonly>
+                                <option value="1" <?= ($solicitud['post_adopcion'] == 1) ? 'selected' : '' ?>>Si</option>
+                                <option value="0" <?= ($solicitud['post_adopcion'] == 0) ? 'selected' : '' ?>>No</option>
                             </select>
 
                         </div>
@@ -91,7 +91,7 @@ if (isset($_GET['id'])) {
                     <div class="text-end">
                         <button
                             class="d-inline border-0 px-4 py-2 bg-azul-oscuro rounded-5 text-white fw-bold mt-2 text-end"
-                            type="submit">Publicar</button>
+                            type="submit">Guardar</button>
                     </div>
 
 
