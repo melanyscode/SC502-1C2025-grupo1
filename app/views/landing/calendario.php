@@ -1,9 +1,7 @@
-
 <body class="d-flex flex-column min-vh-100">
 
-     
     <div class="header-calendario pb-5 flex-grow-1">
-        <div class="container d-flex align-items-center justify-content-center" style="min-height: 50vh;">
+        <div class="container d-flex align-items-center justify-content-center" style="min-height: 30vh;">
             <div class="row text-center">
                 <div class="col-12">
                     <h1 class="my-3 display-1 txt-azul-oscuro">Eventos 2025</h1>
@@ -11,99 +9,110 @@
                 </div>
             </div>
         </div>
-        </div>
-        
+    </div>
 
-        <div class="container d-flex justify-content-center pt-5">
-            <div class="search-box p-3 rounded d-flex align-items-center justify-content-between w-100">
-                <input type="text" class="form-control me-2" placeholder="Buscar..." style="flex: 2;">
-                <select class="form-select select-custom me-2" style="flex: 1;">
-                    <option selected disabled>Ubicación</option>
-                    <option>San José</option>
-                    <option>Alajuela</option>
-                    <option>Cartago</option>
-                    <option>Heredia</option>
-                    <option>Puntarenas</option>
-                    <option>Guanacaste</option>
-                    <option>Limón</option>
-                </select>
-                <select class="form-select select-custom me-2" style="flex: 1;">
-                    <option selected disabled>Categoría</option>
-                    <option>Charla</option>
-                    <option>Adopciones</option>
-                </select>
-                <button>
+    <form method="GET" action="index.php?c=landing&a=calendario">
+    <div class="container d-flex justify-content-center pt-5">
+        <div class="search-box p-3 rounded d-flex align-items-center justify-content-between w-100">
+            <!-- Búsqueda por Nombre de Evento -->
+            <input type="text" name="busqueda" class="form-control me-2" placeholder="Buscar por evento..." style="flex: 2;" value="<?= isset($_GET['busqueda']) ? htmlspecialchars($_GET['busqueda']) : '' ?>">
+
+            <!-- Selección de Categoría -->
+            <select name="categoria" class="form-select select-custom me-2" style="flex: 1;">
+                <option value="" <?= !isset($_GET['categoria']) || $_GET['categoria'] == '' ? 'selected' : '' ?> disabled>Seleccionar Categoría</option>
+                <option value="1" <?= isset($_GET['categoria']) && $_GET['categoria'] === '1' ? 'selected' : '' ?>>Jornadas de Adopción</option>
+                <option value="2" <?= isset($_GET['categoria']) && $_GET['categoria'] === '2' ? 'selected' : '' ?>>Charlas Educativas</option>
+                <option value="3" <?= isset($_GET['categoria']) && $_GET['categoria'] === '3' ? 'selected' : '' ?>>Campañas de Vacunación</option>
+                <option value="4" <?= isset($_GET['categoria']) && $_GET['categoria'] === '4' ? 'selected' : '' ?>>Voluntariado</option>
+            </select>
+
+            <!-- Botón de Búsqueda -->
+            <button type="submit" class="btn btn-primary" style="flex: 0 0 auto; display: flex; align-items: center; justify-content: center;">
                 <img src="assets/bg-search.png" alt="Buscar" style="width: 20px; height: 20px;">
-                </button>
-            </div>
+            </button>
+        </div>
+    </div>
+</form>
+
+
+
+    <div id="carouselExampleIndicators" class="carousel slide my-5" data-ride="carousel" style="width: 1000px; margin: 0 auto;">
+        <ol class="carousel-indicators">
+            <?php foreach ($eventosCarrusel as $index => $evento): ?>
+                <li data-target="#carouselExampleIndicators" data-slide-to="<?= $index ?>" class="<?= $index === 0 ? 'active' : '' ?>"></li>
+            <?php endforeach; ?>
+        </ol>
+
+        <div class="carousel-inner">
+            <?php foreach ($eventosCarrusel as $index => $evento): ?>
+                <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
+                    <img class="d-block mx-auto"
+                        src="<?= htmlspecialchars($evento['imagen_url']) ?>"
+                        alt="Imagen del evento"
+                        style="width: 1000px; height: 400px; object-fit: cover; border-radius: 10px;">
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded px-3 py-2">
+                        <h5><?= htmlspecialchars($evento['nombre']) ?></h5>
+                        <p><?= date("d/m/Y g:i a", strtotime($evento['fecha'] . ', ' . $evento['hora'])) ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
 
-        <div class="mu-swiper-multimedia-outer-wrapper">
-            <div class="swiper-button-prev"></div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+    </div>
 
-            <div class="swiper-container mu-swiper-multimedia">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="d-flex justify-content-between align-items-left p-3 " style="background-color: #EEF5FF; max-width: 900px; margin: 0 auto; border-radius: 8px;">
-                            <div class="event-info">
-                                <h2 class="txt-azul-oscuro mt-3 mb-3">Coffee day con mascotas</h2>
-                                <h4 class="txt-azul-oscuro mt-2 mb-3">Organizado por</h4>
-                                <h5 class="txt-black mt-2 mb-2">Animales de Asís</h5>
-                                <div class="d-flex align-items-left">
-                                    <p class="txt-black mt-2 mb-2">Martes 11 de marzo, 3:30pm</p>
+
+
+    <div class="container mt-4">
+        <div class="row">
+            <?php if (!empty($eventos)): ?>
+                <?php foreach ($eventos as $evento): ?>
+                    <div class="col-md-6 mb-4">
+                        <div class="event-card shadow-sm h-100">
+                            <div class="event-card-header">
+                                <?= htmlspecialchars($evento['nombre']) ?>
+                            </div>
+                            <div class="event-card-body d-flex">
+                                <div class="event-description">
+                                    <h5 class="event-title">Organizado por: <?= htmlspecialchars($evento['nombre_organizador']) ?></h5>
+                                    <p class="event-text"><?= htmlspecialchars($evento['descripcion']) ?></p>
                                 </div>
-                                <div class="small-box d-inline-block p-2">
-                                    <p class="txt-azul-oscuro mb-0">Acompáñanos</p>
-                                </div>
+                                <?php if (!empty($evento['imagen_url'])): ?>
+                                    <img src="<?= $evento['imagen_url'] ?>" alt="Imagen del Evento" class="event-img">
+                                <?php endif; ?>
                             </div>
-                            <img src="assets/img/bg-12.jpg" alt="Imagen del evento" class="d-none d-sm-block" width="400px" height="280px">
+                            <div class="event-card-footer">
+                                <?= htmlspecialchars($evento['fecha']) ?>, <?= htmlspecialchars($evento['hora']) ?> | <?= htmlspecialchars($evento['ubicacion']) ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="swiper-button-next"></div>
-        </div>
-
-        <div class="container mt-5 pb-5">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="event-card">
-                        <div class="event-card-header">
-                            Dona Amor
-                        </div>
-                        <div class="event-card-body d-flex">
-                            <div class="event-description">
-                                <h5 class="event-title">Organizado por: Fundación Renacer Animal</h5>
-                                <p class="event-text">Únete a nuestra causa y ayuda a los animales sin hogar. Tu donación puede marcar la diferencia en la vida de un ser necesitado.</p>
-                            </div>
-                            <img src="assets/img/bg-13.jpg" alt="Imagen del Evento" class="event-img">
-                        </div>
-                        <div class="event-card-footer">
-                            12 de marzo, 10:00 AM | Plaza Mayor
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="event-card">
-                        <div class="event-card-header">
-                            Día de Encuentro
-                        </div>
-                        <div class="event-card-body d-flex">
-                            <div class="event-description">
-                                <h5 class="event-title">Organizado por: Savia</h5>
-                                <p class="event-text">Únete a nosotros en este evento de adopción, donde tendrás la oportunidad de conocer y adoptar a algunos de nuestros gatitos rescatados.</p>
-                            </div>
-                            <img src="assets/img/bg-14.jpg" alt="Imagen del Evento" class="event-img">
-                        </div>
-                        <div class="event-card-footer">
-                            15 de marzo, 2:00 PM | Auditorio Central
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p class="text-center">No hay eventos disponibles en este momento.</p>
+            <?php endif; ?>
         </div>
     </div>
 
-</body>
 
+    <script>
+        $(document).ready(function() {
+            $('#carouselExampleIndicators').carousel();
+        });
+    </script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+</body>

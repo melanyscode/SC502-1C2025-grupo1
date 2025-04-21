@@ -26,19 +26,15 @@ class Solicitante
     {
         global $conn;
         try {
-            $stmt = $conn->prepare("INSERT INTO solicitud (id_usuario, id_mascota_adopcion, acuerdo, tipo_vivienda, descripcion_vivienda, patio, mudanza, cuido, gastos, post_adopcion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO solicitud (id_usuario, id_mascota_adopcion, acuerdo, tipo_vivienda, descripcion_vivienda, patio, mudanza, cuido, gastos, post_adopcion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("iisssissii", $id, $idMascota, $acuerdo, $tipo_vivienda, $descripcion_vivienda, $patio, $mudanza, $cuido, $gastos, $post_adopcion);
 
             if ($stmt->execute()) {
                 $stmt->close();
-                return 1;
-            } else {
-                $stmt->close();
-                return 0;
+                return true;
             }
-            $stmt->close();
         } catch (mysqli_sql_exception $e) {
-            return ["error" => "Error al obtener solicitantes: " . $e->getMessage()];
+            die("Error al insertar solicitud: " . $e->getMessage());
         }
     }
 
@@ -93,31 +89,32 @@ class Solicitante
             $usuario = $resultado->fetch_assoc();
             $stmt->close();
             return $usuario;
-         
         } catch (mysqli_sql_exception $e) {
             return ["error" => "Error al obtener usuarios: " . $e->getMessage()];
         }
     }
-    public static function envioSolicitud($idUsuario, $idMascotaAdopcion){
+    public static function envioSolicitud($idUsuario, $idMascotaAdopcion)
+    {
 
-        global $conn; 
-        try{
+        global $conn;
+        try {
             $stmt = $conn->prepare("SELECT id_solicitud FROM solicitud WHERE id_usuario = ? AND id_mascota_adopcion = ?");
             $stmt->bind_param("ii", $idUsuario, $idMascotaAdopcion);
             $stmt->execute();
+
             $stmt->store_result();
-    
-            // Importante: necesitas esto para que num_rows funcione bien
             $stmt->bind_result($idSolicitud);
-    
-            $haySolicitud = $stmt->num_rows > 0;
-    
-            $stmt->close();
-            return $haySolicitud;
-        }catch (mysqli_sql_exception $e) {
+
+            if ($stmt->num_rows > 0) {
+                $stmt->fetch();
+                $stmt->close();
+                return true;
+            } else {
+                $stmt->close();
+                return false;
+            }
+        } catch (mysqli_sql_exception $e) {
             return ["error" => "Error al obtener usuarios: " . $e->getMessage()];
         }
     }
-
-
 }

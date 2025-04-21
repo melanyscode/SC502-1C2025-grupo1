@@ -61,6 +61,7 @@ class MascotaPerdida
             $stmt = $conn->prepare("SELECT COUNT(*) FROM mascota_perdida WHERE estado = 'Perdido'");
             $stmt->execute();
             $resultado = $stmt->get_result();
+            $stmt->close();
             if($resultado){
                 $cantidad = $resultado->fetch_assoc();
                
@@ -68,7 +69,7 @@ class MascotaPerdida
             }else{
                 return false;
             }
-            $stmt->close();
+         
         }catch (mysqli_sql_exception $e) {
             return false;
         }

@@ -5,6 +5,8 @@ require_once __DIR__ . '/../models/SubcategoriaArticulo.php';
 require_once __DIR__ . '/../models/Articulo.php';
 require_once __DIR__ . '/../models/Solicitante.php';
 require_once __DIR__ . '/../models/MascotaPerdida.php';
+require_once __DIR__ . '/../models/Evento.php';
+require_once __DIR__ . '/../models/Usuario.php';
 class landingController
 {
     public function nosotros()
@@ -36,13 +38,43 @@ class landingController
         require_once("app/views/footer.php");
     }
     public function calendario()
-    {
-        $titulo = "Calendario";
-        require_once("app/views/head.php");
-        require_once("app/views/navbar.php");
-        require_once("app/views/landing/calendario.php");
-        require_once("app/views/footer.php");
+{ 
+    $titulo = "Eventos";
+    $busqueda = isset($_GET['busqueda']) ? trim($_GET['busqueda']) : '';
+    $id_categoria = isset($_GET['categoria']) ? (int)$_GET['categoria'] : null; 
+
+    $eventos = Evento::getAll();
+    echo "<pre>";
+    var_dump($busqueda, $id_categoria);
+    echo "</pre>";
+
+ 
+    if (!empty($busqueda) || !is_null($id_categoria)) {
+        $eventos = Evento::buscarEventos($busqueda, $id_categoria); 
+      
     }
+   
+    if (is_null($eventos)) {
+        $eventos = []; 
+    }
+    $eventosCarrusel = Evento::getProximosEventos(3);
+
+    foreach ($eventos as &$evento) {
+        $usuario = Usuario::buscarUsuario($evento['id_usuario']);
+        $evento['nombre_organizador'] = $usuario ? $usuario['nombre'] . ' ' . $usuario['apellido'] : 'Desconocido';
+    }
+
+    foreach ($eventosCarrusel as &$evento) {
+        $usuario = Usuario::buscarUsuario($evento['id_usuario']);
+        $evento['nombre_organizador'] = $usuario ? $usuario['nombre'] . ' ' . $usuario['apellido'] : 'Desconocido';
+    }
+
+    require_once("app/views/head.php");
+    require_once("app/views/navbar.php");
+    require_once("app/views/landing/calendario.php");
+    require_once("app/views/footer.php");
+}
+
     //ADOPCIONES
     public function adopta()
     {
@@ -61,15 +93,9 @@ class landingController
             session_start();
         }
 
-        
-
         if (isset($_SESSION['user'])) {
             $usuario = $_SESSION['user'];
-        } else {
-
-            echo "no sirvio";
-            exit();
-        }
+        } 
         $titulo = "Detalle";
         require_once("app/views/head.php");
         require_once("app/views/navbar.php");
@@ -125,7 +151,7 @@ class landingController
         $post_adopcion = $_POST['seguimiento'];
 
         $solicitud = Solicitante::add($idUsuario, $idMascota, $acuerdo, $tipo_vivienda, $descripcion_vivienda, $patio, $mudanza, $cuido, $gastos, $post_adopcion);
-        if ($solicitud != false) {
+        if ($solicitud = false) {
             header("Location: index.php?c=landing&a=detalle&id=" . $idMascota . "&mensaje=Solicitud enviada");
             exit;
         } else {

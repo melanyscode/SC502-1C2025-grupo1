@@ -82,8 +82,8 @@ if (isset($_GET['id'])) {
                         <div class="col mb-3">
                             <label>Post-adopción</label>
                             <select name="post_adopcion" id="addEstadoUsuario" class="input-adopcion bg-celeste">
-                                <option value="1" <?= ($solicitud['post-adopción'] == 1) ? 'selected' : '' ?>>Si</option>
-                                <option value="0" <?= ($solicitud['post-adopción'] == 0) ? 'selected' : '' ?>>No</option>
+                                <option value="1" <?= ($solicitud['post_adopcion'] == 1) ? 'selected' : '' ?>>Si</option>
+                                <option value="0" <?= ($solicitud['post_adopcion'] == 0) ? 'selected' : '' ?>>No</option>
                             </select>
 
                         </div>

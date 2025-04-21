@@ -38,7 +38,7 @@ class MascotaAdopcion{
 
             return $mascotas;
         } catch (mysqli_sql_exception $e) {
-            return ["error" => "Error al obtener mascotas: " . $e->getMessage()];
+            die("Error al insertar solicitud: " . $e->getMessage());
         }
     }
     public static function add($idUsuario, $nombre, $raza, $edad, $peso, $tipo, $descripcion, $estado, $atencion, $enfermedad)
@@ -73,7 +73,7 @@ class MascotaAdopcion{
 
             return $stmt->execute();
         } catch (mysqli_sql_exception $e) {
-            return ["error" => "Error al agregar imágenes: " . $e->getMessage()];
+            die("Error al insertar solicitud: " . $e->getMessage());
         }
     }
     public static function update($idMascota, $nombre, $raza, $edad, $peso, $tipo, $descripcion, $estado, $atencion, $enfermedad)
@@ -87,14 +87,15 @@ class MascotaAdopcion{
             $stmt->bind_param("sssssssssi", $nombre, $raza, $edad, $peso, $tipo, $descripcion, $estado, $atencion, $enfermedad, $idMascota);
 
             if ($stmt->execute()) {
-                $stmt->close();
+              
                 return true;
             } else {
-                $stmt->close();
+             
                 return false;
             }
+            $stmt->close();
         } catch (mysqli_sql_exception $e) {
-            return ["error" => "Error al actualizar mascota: " . $e->getMessage()];
+            die("Error al insertar solicitud: " . $e->getMessage());
         }
     }
     public static function actualizarImagenes($idMascota, $url1, $url2, $url3, $url4)
@@ -125,7 +126,9 @@ class MascotaAdopcion{
             $mascota = $resultado->fetch_assoc();
             $stmt->close();
             if (!$mascota) {
+              
                 return null;
+                $stmt->close();
             }
 
 
@@ -150,7 +153,7 @@ class MascotaAdopcion{
 
             return $mascota;
         } catch (mysqli_sql_exception $e) {
-            return ["error" => "Error al obtener mascota: " . $e->getMessage()];
+            die("Error al insertar solicitud: " . $e->getMessage());
         }
     }
 
@@ -186,7 +189,7 @@ class MascotaAdopcion{
             }
             $stmt->close();
         } catch (mysqli_sql_exception $e) {
-            return false;
+            die("Error al insertar solicitud: " . $e->getMessage());
         }
     }
 

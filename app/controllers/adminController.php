@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../models/Usuario.php';
+require_once __DIR__ . '/../models/Evento.php';
 require_once __DIR__ . '/../models/MascotaAdopcion.php';
 require_once __DIR__ . '/../models/Solicitante.php';
 require_once __DIR__ . '/../models/Articulo.php';
@@ -163,33 +164,33 @@ class adminController
         $enfermedad = $_POST['enfermedad'];
         MascotaAdopcion::update($idMascota, $nombre, $raza, $edad, $peso, $tipo, $descripcion, $estado, $atencion, $enfermedad);
 
-        if(isset($_FILES['imagenes']) && count(array_filter($_FILES['imagenes']['name'])) > 0){
-        $rutas = [];
-        $directorio = 'app/uploads/'; 
+        if (isset($_FILES['imagenes']) && count(array_filter($_FILES['imagenes']['name'])) > 0) {
+            $rutas = [];
+            $directorio = 'app/uploads/';
 
-        if (!file_exists($directorio)) {
-            mkdir($directorio, 0777, true); 
-        }
+            if (!file_exists($directorio)) {
+                mkdir($directorio, 0777, true);
+            }
 
-        for ($i = 0; $i < count($_FILES['imagenes']['name']) && $i < 4; $i++) {
-            $nombreTemp = $_FILES['imagenes']['tmp_name'][$i];
-            $nombreFinal = uniqid() . '_' . basename($_FILES['imagenes']['name'][$i]);
-            $rutaDestino = $directorio . $nombreFinal;
+            for ($i = 0; $i < count($_FILES['imagenes']['name']) && $i < 4; $i++) {
+                $nombreTemp = $_FILES['imagenes']['tmp_name'][$i];
+                $nombreFinal = uniqid() . '_' . basename($_FILES['imagenes']['name'][$i]);
+                $rutaDestino = $directorio . $nombreFinal;
 
-            if (move_uploaded_file($nombreTemp, $rutaDestino)) {
-                $rutas[] = $rutaDestino;
-            } else {
+                if (move_uploaded_file($nombreTemp, $rutaDestino)) {
+                    $rutas[] = $rutaDestino;
+                } else {
+                    $rutas[] = null;
+                }
+            }
+
+
+            while (count($rutas) < 4) {
                 $rutas[] = null;
             }
-        }
 
-     
-        while (count($rutas) < 4) {
-            $rutas[] = null;
+            MascotaAdopcion::actualizarImagenes($idMascota, $rutas[0], $rutas[1], $rutas[2], $rutas[3]);
         }
-
-        MascotaAdopcion::actualizarImagenes($idMascota, $rutas[0], $rutas[1], $rutas[2], $rutas[3]);
-    }
         header('Location: index.php?c=admin&a=adopciones');
     }
     public function agregarAnuncio()
@@ -383,7 +384,7 @@ class adminController
             echo "Acceso no permitido.";
         }
     }
-    
+
     //CRUD SOLICITANTES
     public function solicitantes()
     {
@@ -430,8 +431,8 @@ class adminController
             $gasto = $_POST['gastos'];
             $post_adopcion = $_POST['post_adopcion'];
 
-            $resultado = Solicitante::add($acuerdo, $tipo_vivienda, $descripcion_vivienda, $patio, $mudanza, $cuido, $gasto, $post_adopcion);
-            var_dump($resultado);
+            //$resultado = Solicitante::add($acuerdo, $tipo_vivienda, $descripcion_vivienda, $patio, $mudanza, $cuido, $gasto, $post_adopcion);
+            //var_dump($resultado);
             /*
         header("Location: index.php?c=admin&a=solicitantes");
         } else {
@@ -473,6 +474,168 @@ class adminController
     }
     //FIN CRUD SOLICITANTES
 
+    //CRUD DE EVENTOS
+    // CRUD EVENTOS
+    public function eventos()
+    {
+        $titulo = "Eventos";
+        $eventos = Evento::getAll();
+        require_once("app/views/head.php");
+        require_once("app/views/admin/eventos.php");
+    }
+
+    public function agregarEvento()
+    {
+        $titulo = "Agregar Evento";
+        require_once("app/views/head.php");
+        require_once("app/views/admin/agregarEvento.php");
+    }
+
+    public function guardarEvento()
+    {
+        if (isset($_POST['id_usuario'], $_POST['id_categoria'], $_POST['nombre'], $_POST['descripcion'], $_POST['fecha'], $_POST['hora'], $_POST['ubicacion'])) {
+
+            $id_usuario = $_POST['id_usuario'];
+            $id_categoria = $_POST['id_categoria'];
+            $nombre = $_POST['nombre'];
+            $descripcion = $_POST['descripcion'];
+            $fecha = $_POST['fecha'];
+            $hora = $_POST['hora'];
+            $ubicacion = $_POST['ubicacion'];
+
+            $rutaWeb = null;
+            if (isset($_FILES['imagenEvento']) && $_FILES['imagenEvento']['error'] === 0) {
+                $rutaTemporal = $_FILES['imagenEvento']['tmp_name'];
+                $nombreArchivo = uniqid() . "_" . basename($_FILES['imagenEvento']['name']);
+                $directorioDestino = 'app/uploads/';
+                $rutaImagen = $directorioDestino . $nombreArchivo;
+                $rutaWeb = 'app/uploads/' . $nombreArchivo;
+
+                if (!is_dir($directorioDestino)) {
+                    mkdir($directorioDestino, 0755, true);
+                }
+
+                move_uploaded_file($rutaTemporal, $rutaImagen);
+            }
+
+            $resultado = Evento::add($id_usuario, $id_categoria, $nombre, $descripcion, $fecha, $hora, $ubicacion, $rutaWeb);
+            if ($resultado === 1) {
+                header("Location: index.php?c=admin&a=eventos");
+            } else {
+                echo "No se pudo agregar el evento. Error: " . $resultado['error'];
+            }
+        } else {
+            echo "No se pudo agregar el evento. Faltan datos.";
+        }
+    }
+
+    public function editarEvento()
+    {
+        if (isset($_GET['id'])) {
+            $titulo = "Editar Evento";
+            $evento = Evento::buscarEvento($_GET['id']);
+            if ($evento) {
+                require_once("app/views/head.php");
+                require_once("app/views/admin/editarEvento.php");
+            } else {
+                echo "Evento no encontrado.";
+            }
+        } else {
+            echo "No se proporcionó un ID de evento.";
+        }
+    }
+
+    public function guardarEditEvento()
+    {
+        if (isset($_POST['id'], $_POST['id_usuario'], $_POST['id_categoria'], $_POST['nombre'], $_POST['descripcion'], $_POST['fecha'], $_POST['hora'], $_POST['ubicacion'])) {
+
+            $id = $_POST['id'];
+            $id_usuario = $_POST['id_usuario'];
+            $id_categoria = $_POST['id_categoria'];
+            $nombre = $_POST['nombre'];
+            $descripcion = $_POST['descripcion'];
+            $fecha = $_POST['fecha'];
+            $hora = $_POST['hora'];
+            $ubicacion = $_POST['ubicacion'];
+
+            $rutaWeb = "";
+            if (isset($_FILES['imagenEventoEdit']) && $_FILES['imagenEventoEdit']['error'] === 0) {
+                $rutaTemporal = $_FILES['imagenEventoEdit']['tmp_name'];
+                $nombreArchivo = uniqid() . "_" . basename($_FILES['imagenEventoEdit']['name']);
+                $directorioDestino = 'app/uploads/';
+                $rutaImagen = $directorioDestino . $nombreArchivo;
+                $rutaWeb = 'app/uploads/' . $nombreArchivo;
+
+                if (!is_dir($directorioDestino)) {
+                    mkdir($directorioDestino, 0755, true);
+                }
+
+                move_uploaded_file($rutaTemporal, $rutaImagen);
+            }
+
+            $resultado = Evento::update($id, $id_usuario, $id_categoria, $nombre, $descripcion, $fecha, $hora, $ubicacion, $rutaWeb);
+            if ($resultado === 1) {
+                header("Location: index.php?c=admin&a=eventos");
+            } else {
+                echo "No se pudo actualizar el evento. Error: " . $resultado['error'];
+            }
+        } else {
+            echo "No se pudo actualizar el evento. Faltan datos.";
+        }
+    }
+
+    public function eliminarEvento()
+    {
+        if (isset($_POST['id'])) {
+            $id = $_POST['id'];
+
+            $resultado = Evento::delete($id);
+            if ($resultado === 1) {
+                header('Location: index.php?c=admin&a=eventos');
+                exit;
+            } else {
+                echo "Error al eliminar el evento. Error: " . $resultado['error'];
+            }
+        } else {
+            echo "Acceso no permitido.";
+        }
+    }
+
+    public function calendario()
+    {
+        $titulo = "Eventos";
+        $eventos = Evento::getAll();
+        var_dump($eventos);
+        require_once("app/views/head.php");
+        require_once("app/views/landing/calendario.php");
+    }
+
+    public function carrusel()
+    {
+        $titulo = "Carrusel de Eventos";
+        $eventosCarrusel = Evento::getProximosEventos(3);
+
+        if (count($eventosCarrusel) < 2) {
+            $loop = false;
+        } else {
+            $loop = true;
+        }
+
+        if ($eventosCarrusel === null) {
+            $eventosCarrusel = [];
+        }
+
+        foreach ($eventosCarrusel as &$evento) {
+            $usuario = Usuario::buscarUsuario($evento['id_usuario']);
+            $evento['nombre_organizador'] = $usuario ? $usuario['nombre'] : "Desconocido";
+        }
+
+        require_once("app/views/landing/calendario.php");
+    }
+
+
+
+    //FIN DE CRUD DE EVENTOS
     public function error()
     {
         echo "Error en el controller de admin";

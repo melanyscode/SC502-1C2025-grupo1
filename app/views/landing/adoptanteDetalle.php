@@ -9,6 +9,7 @@ if (isset($_GET['id'])) {
     if (isset($_SESSION['user'])) {
         $idUsuario = (int)$_SESSION['user']['id_usuario'];
         $envio = Solicitante::envioSolicitud($idUsuario, $id);
+   
     }
 }
 ?>

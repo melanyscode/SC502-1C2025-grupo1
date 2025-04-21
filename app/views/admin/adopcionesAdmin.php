@@ -7,10 +7,10 @@
     <div class=" m-3 ms-1 p-4 bg-white rounded-5">
         <h1 class=" text-center txt-azul-oscuro mt-5">Adopciones</h1>
         <div class="ms-4">
-            <?php include "buscar.php" ?>
+           
         </div>
         <div class="ms-4 my-5">
-            <a href="index.php?controller=admin&action=agregarAnuncio" class="my-5  py-2 px-4 bg-celeste rounded-pill text-decoration-none">Crear anuncio</a>
+            <a href="index.php?c=admin&a=agregarAnuncio" class="my-5  py-2 px-4 bg-celeste rounded-pill text-decoration-none">Crear anuncio</a>
         </div>
         <div class="ms-4">
             <p></p>
