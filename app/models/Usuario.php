@@ -170,4 +170,21 @@ class Usuario
         header("Location: index.php?c=usuario&a=login");
         exit();
     }
+
+    public static function getAdmins(): array
+    {
+        global $conn;
+        try {
+            $sql = "SELECT * FROM usuario WHERE id_rol = 1";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                return $result->fetch_all(MYSQLI_ASSOC);
+            } else {
+                return [];
+            }
+        } catch (mysqli_sql_exception $e) {
+            return ["error" => "Error al obtener administradores: " . $e->getMessage()];
+        }
+    }
 }
