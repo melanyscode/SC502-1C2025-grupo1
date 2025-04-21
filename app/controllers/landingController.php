@@ -182,7 +182,7 @@ public function calendarioBusqueda()
         $post_adopcion = $_POST['seguimiento'];
 
         $solicitud = Solicitante::add($idUsuario, $idMascota, $acuerdo, $tipo_vivienda, $descripcion_vivienda, $patio, $mudanza, $cuido, $gastos, $post_adopcion);
-        if ($solicitud = false) {
+        if ($solicitud = !false) {
             header("Location: index.php?c=landing&a=detalle&id=" . $idMascota . "&mensaje=Solicitud enviada");
             exit;
         } else {

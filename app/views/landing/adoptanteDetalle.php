@@ -20,7 +20,7 @@ if (isset($_GET['id'])) {
     <nav aria-label="breadcrumb " class="mt-3 px-5c container">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.php" class="text-dark">Inicio</a></li>
-            <li class="breadcrumb-item"><a href="adoptante.php" class="text-dark">Adoptantes</a></li>
+            <li class="breadcrumb-item"><a href="index.php?c=landing&a=adopta" class="text-dark">Adopta</a></li>
             <li class="breadcrumb-item active text-dark" aria-current="page">Detalle</li>
         </ol>
     </nav>
@@ -160,7 +160,7 @@ if (isset($_GET['id'])) {
 
                 <?php } elseif( isset($_SESSION['user']) && $envio) { ?>
                 <div class="bg-celeste text-center my-5 p-4 rounded-5" style="max-width: 600px; margin: 0 auto;">
-                    <h5 class="mb-3">Ya enviaste una solicitud, te estaremos contacto pronto</h5>
+                    <h5 class="mb-3">Ya enviaste una solicitud, te estaremos contactando pronto</h5>
                     
                 </div>
 
