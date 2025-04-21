@@ -104,7 +104,7 @@
     <div class="blog-left-column">
         <h1>Accede a nuestro blog</h1>
         <h4>Este sitio es ideal para ti porque contiene información sobre cuidado dental para tu mascota</h4>
-        <a href="blog.php" class="blog-btn-visit">Visitar artículo</a>
+        <a href="index.php?c=landing&a=blog" class="blog-btn-visit">Visitar artículo</a>
     </div>
     <div class="blog-right-column">
         <img src="assets/img/bg-23.jpg" alt="Imagen del blog" class="blog-image">
