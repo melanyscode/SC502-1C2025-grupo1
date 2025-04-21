@@ -21,12 +21,12 @@ class Articulo
         }
     }
 
-    public static function add($id_categoria, $id_usuario, $titulo, $contenido, $fecha, $imagen_url)
+    public static function add($id_categoria, $id_subcategoria, $id_usuario, $titulo, $contenido, $fecha, $imagen_url)
     {
         global $conn;
         try {
-            $stmt = $conn->prepare("INSERT INTO articulo (id_categoria, id_usuario, titulo, contenido, fecha, imagen_url) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("iissss", $id_categoria, $id_usuario, $titulo, $contenido, $fecha, $imagen_url);
+            $stmt = $conn->prepare("INSERT INTO articulo (id_categoria, id_subcategoria, id_usuario, titulo, contenido, fecha, imagen_url) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("iiissss", $id_categoria, $id_subcategoria, $id_usuario, $titulo, $contenido, $fecha, $imagen_url);
             return $stmt->execute() ? 1 : 0;
         } catch (mysqli_sql_exception $e) {
             return ["error" => "Error al agregar artículo: " . $e->getMessage()];
@@ -45,12 +45,12 @@ class Articulo
         }
     }
 
-    public static function update($id_articulo, $id_categoria, $id_usuario, $titulo, $contenido, $fecha, $imagen_url)
+    public static function update($id_articulo, $id_categoria, $id_subcategoria, $id_usuario, $titulo, $contenido, $fecha, $imagen_url)
 {
     global $conn;
     try {
-        $stmt = $conn->prepare("UPDATE articulo SET id_categoria = ?, id_usuario = ?, titulo = ?, contenido = ?, fecha = ?, imagen_url = ? WHERE id_articulo = ?");
-        $stmt->bind_param("iissssi", $id_categoria, $id_usuario, $titulo, $contenido, $fecha, $imagen_url, $id_articulo);
+        $stmt = $conn->prepare("UPDATE articulo SET id_categoria = ?, id_subcategoria = ?, id_usuario = ?, titulo = ?, contenido = ?, fecha = ?, imagen_url = ? WHERE id_articulo = ?");
+        $stmt->bind_param("iiissssi", $id_categoria, $id_subcategoria, $id_usuario, $titulo, $contenido, $fecha, $imagen_url, $id_articulo);
 
         if ($stmt->execute()) {
             return 1;
