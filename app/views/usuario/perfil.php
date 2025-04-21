@@ -60,7 +60,7 @@ $mascotas = MascotaPerdida::buscarMascotaPerdida($user);
         <!-- Parte derecha -->
         <div class="perfil-right">
         <?php
-            if ($mascota != null) { ?>
+            if ($mascotas != null) { ?>
             <h2>Mis compañeros</h2>
             <?php foreach ($mascotas as $a): ?>
             <div class="perfil-mascotas-right">

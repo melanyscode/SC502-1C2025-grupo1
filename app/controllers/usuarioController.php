@@ -12,9 +12,6 @@ class usuarioController
             session_start();
         }
 
-        file_put_contents('session_id_debug.txt', session_id());
-        var_dump($_SESSION);
-
         if (isset($_SESSION['user'])) {
             $usuario = $_SESSION['user'];
         } else {
