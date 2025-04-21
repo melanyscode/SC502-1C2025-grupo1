@@ -74,6 +74,7 @@ class adminController
     }
     public function guardarEditUsuario()
     {
+        session_start();
         if (isset($_POST['id'], $_POST['nombreEdit'], $_POST['apellidoEdit'], $_POST['telefonoEdit'], $_POST['correoEdit'], $_POST['estadoEdit'], $_POST['rolEdit'])) {
             $id = $_POST['id'];
             $nombre = $_POST['nombreEdit'];
@@ -89,7 +90,7 @@ class adminController
             if (isset($_FILES['editFotoUsuario']) && $_FILES['editFotoUsuario']['error'] === 0) {
                 $rutaTemporal = $_FILES['editFotoUsuario']['tmp_name'];
                 $nombreArchivo = uniqid() . "_" . basename($_FILES['editFotoUsuario']['name']);
-                $directorioDestino = '../uploads/';
+                $directorioDestino = 'app/uploads/';
                 $rutaImagen = $directorioDestino . $nombreArchivo;
                 $rutaWeb = 'app/uploads/' . $nombreArchivo;
                 if (!is_dir($directorioDestino)) {
@@ -101,9 +102,20 @@ class adminController
 
 
             Usuario::update($id, $nombre, $apellido, $telefono, $correo, $direccion, $estado, $rol, $rutaWeb);
-            header("Location: index.php?c=admin&a=usuario");
-        } else {
-            echo "No se pudo agregar el usuario";
+            if ($_SESSION['user']['id_usuario'] == $id) {
+                $_SESSION['user']['nombre'] = $nombre;
+                $_SESSION['user']['correo'] = $correo;
+                $_SESSION['user']['telefono'] = $telefono;
+                $_SESSION['user']['estado'] = $estado;
+                $_SESSION['user']['id_rol'] = (int)$rol;
+
+                if ($rutaImagen) {
+                    $_SESSION['user']['img_url'] = $rutaWeb;
+                }
+                header("Location: index.php?c=admin&a=usuario");
+            } else {
+                header("Location: index.php?c=admin&a=usuario");
+            }
         }
     }
     public function eliminarUsuario()
@@ -135,22 +147,107 @@ class adminController
     {
         $titulo = "Editar Anuncio";
         require_once("app/views/head.php");
-
         require_once("app/views/admin/editarAnuncio.php");
     }
-    public function agregarAdopcion()
+    public function guardarEditAnuncio()
     {
+        $idMascota = $_POST['id'];
+        $nombre = $_POST['nombre'];
+        $raza = $_POST['raza'];
+        $edad = $_POST['edad'];
+        $peso = $_POST['peso'];
+        $tipo = $_POST['tipo'];
+        $descripcion = $_POST['descripcion'];
+        $estado = $_POST['estado'];
+        $atencion = $_POST['atencion'];
+        $enfermedad = $_POST['enfermedad'];
+        MascotaAdopcion::update($idMascota, $nombre, $raza, $edad, $peso, $tipo, $descripcion, $estado, $atencion, $enfermedad);
+
+        if(isset($_FILES['imagenes']) && count(array_filter($_FILES['imagenes']['name'])) > 0){
+        $rutas = [];
+        $directorio = 'app/uploads/'; 
+
+        if (!file_exists($directorio)) {
+            mkdir($directorio, 0777, true); 
+        }
+
+        for ($i = 0; $i < count($_FILES['imagenes']['name']) && $i < 4; $i++) {
+            $nombreTemp = $_FILES['imagenes']['tmp_name'][$i];
+            $nombreFinal = uniqid() . '_' . basename($_FILES['imagenes']['name'][$i]);
+            $rutaDestino = $directorio . $nombreFinal;
+
+            if (move_uploaded_file($nombreTemp, $rutaDestino)) {
+                $rutas[] = $rutaDestino;
+            } else {
+                $rutas[] = null;
+            }
+        }
+
+     
+        while (count($rutas) < 4) {
+            $rutas[] = null;
+        }
+
+        MascotaAdopcion::actualizarImagenes($idMascota, $rutas[0], $rutas[1], $rutas[2], $rutas[3]);
+    }
+        header('Location: index.php?c=admin&a=adopciones');
+    }
+    public function agregarAnuncio()
+    {
+        session_start();
+        $user = $_SESSION['user']['id_usuario'];
         $titulo = "Agregar Anuncio";
         require_once("app/views/head.php");
-
         require_once("app/views/admin/agregarAnuncio.php");
     }
-    public function eliminarAdopcion(){
-        if(isset($_POST['id'])){
+
+    public function guardarAnuncio()
+    {
+        $idUsuario = $_POST['usuario'];
+        $nombre = $_POST['nombreMascota'];
+        $raza = $_POST['raza'];
+        $edad = $_POST['edad'];
+        $peso = $_POST['peso'];
+        $tipo = $_POST['tipo'];
+        $descripcion = $_POST['descripcion'];
+        $estado = $_POST['estado'];
+        $atencion = $_POST['atencion'];
+        $enfermedad = $_POST['enfermedad'];
+
+
+        $idMascota = MascotaAdopcion::add($idUsuario, $nombre, $raza, $edad, $peso, $tipo, $descripcion, $estado, $atencion, $enfermedad);
+        if ($idMascota) {
+
+            $urls = [];
+            $uploadDir = "app/uploads/";
+
+            foreach ($_FILES['imagenes']['tmp_name'] as $i => $tmpName) {
+                if ($_FILES['imagenes']['error'][$i] === 0) {
+                    $fileName = uniqid() . "_" . basename($_FILES['imagenes']['name'][$i]);
+                    $destination = $uploadDir . $fileName;
+
+                    if (move_uploaded_file($tmpName, $destination)) {
+                        $urls[] = $destination;
+                    }
+                }
+            }
+
+
+            while (count($urls) < 4) {
+                $urls[] = null;
+            }
+
+            MascotaAdopcion::agregarImagenes($idMascota, $urls[0], $urls[1], $urls[2], $urls[3]);
+        }
+        header('Location: index.php?c=admin&a=adopciones');
+    }
+    public function eliminarAdopcion()
+    {
+        if (isset($_POST['id'])) {
             $id = $_POST['id'];
 
             if (MascotaAdopcion::delete($id)) {
-               
+
                 header('Location: index.php?c=admin&a=adopciones');
                 exit;
             } else {
@@ -160,6 +257,7 @@ class adminController
             echo "Acceso no permitido.";
         }
     }
+
 
     //FIN CRUD ADOPCIONES
 

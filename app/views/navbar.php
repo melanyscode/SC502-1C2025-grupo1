@@ -3,8 +3,6 @@ if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
 
-file_put_contents('session_id_debug.txt', session_id());
-var_dump($_SESSION);
 ?>
 
 <nav class="navbar m-0 py-3 text-center d-flex align-items-center justify-content-center">
