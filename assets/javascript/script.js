@@ -106,14 +106,83 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
 
-            //solo limpiar si el valor actual no está visible
             if (!subcategoriaSelect.querySelector('option:checked')?.style?.display || subcategoriaSelect.querySelector('option:checked').style.display === 'none') {
                 subcategoriaSelect.value = primeraVisible?.value || '';
             }
         }
 
-        console.log("🧪 Listo para escuchar cambios de categoría");
         categoriaSelect.addEventListener('change', filtrarSubcategorias);
         filtrarSubcategorias();
     }
+
+    //menú de categorías y subcategorías
+    document.querySelectorAll(".categoria-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const categoriaId = btn.dataset.categoria;
+
+            // Mostrar solo subcategorías de esta categoría
+            document.querySelectorAll(".subcategoria-btn-wrapper").forEach(wrapper => {
+                wrapper.classList.add("d-none");
+                if (wrapper.dataset.categoria === categoriaId) {
+                    wrapper.classList.remove("d-none");
+                }
+            });
+
+            // Ocultar todos los artículos
+            document.querySelectorAll(".subcategoria-articulos").forEach(div => {
+                div.classList.add("d-none");
+            });
+        });
+    });
+
+    //activar como predeterminado la categoría "Cuidado" y subcategoría "Higiene y Estética"
+    const btnCategoriaDefault = document.querySelector('[data-categoria="1"]');
+    const btnSubcategoriaDefault = document.querySelector('[data-subcategoria="2"]');
+
+    if (btnCategoriaDefault) {
+        btnCategoriaDefault.click();
+        btnCategoriaDefault.classList.add("active");
+    }
+    setTimeout(() => {
+        if (btnSubcategoriaDefault) {
+            btnSubcategoriaDefault.click();
+            btnSubcategoriaDefault.classList.add("active");
+        }
+    }, 100);
+
+
+    //artículos de la subcategoría seleccionada
+    document.querySelectorAll(".subcategoria-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const subcatId = btn.dataset.subcategoria;
+
+            document.querySelectorAll(".subcategoria-articulos").forEach(div => {
+                div.classList.add("d-none");
+            });
+
+            const target = document.querySelector(`[data-subcategoria-articulos="${subcatId}"]`);
+            if (target) {
+                target.classList.remove("d-none");
+            }
+        });
+    });
+
+
+    //marcar botón activo de categoría
+    document.querySelectorAll(".categoria-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            document.querySelectorAll(".categoria-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+        });
+    });
+
+    //marcar botón activo de subcategoría
+    document.querySelectorAll(".subcategoria-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            document.querySelectorAll(".subcategoria-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+        });
+    });
+
+
 });
